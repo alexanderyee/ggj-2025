@@ -25,3 +25,7 @@ Scenes="*res://addons/scene_manager/scenes.gd"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg", "res://addons/scene_manager/plugin.cfg")
+
+[layer_names]
+
+3d_physics/layer_4="environment"

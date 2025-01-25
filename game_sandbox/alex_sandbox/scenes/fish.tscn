@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwa1khoaqnlam"]
+
+[ext_resource type="PackedScene" uid="uid://b26t8ciy38cme" path="res://game_sandbox/alex_sandbox/assets/FishV1.fbx" id="1_2pejj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_srqoy"]
+albedo_color = Color(0.411765, 1, 1, 1)
+
+[node name="FishV1" instance=ExtResource("1_2pejj")]
+
+[node name="FishV1" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_srqoy")
