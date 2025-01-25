@@ -1,8 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjm5trsh5ponb"]
+[gd_scene load_steps=5 format=3 uid="uid://bjm5trsh5ponb"]
 
 [sub_resource type="Environment" id="Environment_1thx3"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_s26kr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_niry1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_i17vl"]
 
 [node name="Main" type="Node3D"]
 
@@ -15,6 +19,14 @@ environment = SubResource("Environment_1thx3")
 navigation_mesh = SubResource("NavigationMesh_s26kr")
 
 [node name="Environment" type="Node3D" parent="."]
+
+[node name="Default Cube" type="StaticBody3D" parent="Environment"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Default Cube"]
+shape = SubResource("BoxShape3D_niry1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Default Cube"]
+mesh = SubResource("BoxMesh_i17vl")
 
 [node name="NeedsSystem" type="Node3D" parent="."]
 
