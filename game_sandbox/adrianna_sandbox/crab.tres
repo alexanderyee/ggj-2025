@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CrabNeeds" load_steps=2 format=3 uid="uid://bxc03nxuvihlk"]
+
+[ext_resource type="Script" path="res://scripts/crabneeds.gd" id="1_crhog"]
+
+[resource]
+script = ExtResource("1_crhog")
+food = 100
+shelter = 100
+comfort = 100
+community = 100

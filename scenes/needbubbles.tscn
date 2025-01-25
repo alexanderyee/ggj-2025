@@ -1,0 +1,83 @@
+[gd_scene load_steps=11 format=3 uid="uid://cilawvjala22h"]
+
+[ext_resource type="Texture2D" uid="uid://bundy5rmyihep" path="res://game_sandbox/adrianna_sandbox/assets/NeedBubble.png" id="1_wqdxm"]
+[ext_resource type="Texture2D" uid="uid://dqe6imgh3gxtc" path="res://game_sandbox/adrianna_sandbox/assets/FoodBubble.png" id="2_lpjh7"]
+[ext_resource type="Texture2D" uid="uid://dombmrw4d218y" path="res://game_sandbox/adrianna_sandbox/assets/ShelterBubble.png" id="3_y2bby"]
+[ext_resource type="Texture2D" uid="uid://djunkdvprw0ft" path="res://game_sandbox/adrianna_sandbox/assets/ComfortBubble.png" id="4_e17nq"]
+[ext_resource type="Texture2D" uid="uid://buyxeal1sr15q" path="res://game_sandbox/adrianna_sandbox/assets/CommunityBubble.png" id="5_m0ck5"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6sjye"]
+viewport_path = NodePath("Needs Bubble")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_qeoed"]
+viewport_path = NodePath("Food Bubble")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_2pvxb"]
+viewport_path = NodePath("Shelter Bubble")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_dqih8"]
+viewport_path = NodePath("Comfort Bubble")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_wsfg1"]
+viewport_path = NodePath("Community Bubble")
+
+[node name="Needs Emotes" type="Node3D"]
+
+[node name="Needs Bubble" type="SubViewport" parent="."]
+size = Vector2i(600, 600)
+
+[node name="Speech" type="TextureRect" parent="Needs Bubble"]
+offset_right = 600.0
+offset_bottom = 600.0
+texture = ExtResource("1_wqdxm")
+
+[node name="Speech Bubble Sprite" type="Sprite3D" parent="Needs Bubble"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.73299, 0, 0)
+texture = SubResource("ViewportTexture_6sjye")
+
+[node name="Food Bubble" type="SubViewport" parent="."]
+size = Vector2i(210, 210)
+
+[node name="Food Sprite" type="Sprite3D" parent="Food Bubble"]
+texture = SubResource("ViewportTexture_qeoed")
+
+[node name="Food" type="TextureRect" parent="Food Bubble"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_lpjh7")
+
+[node name="Shelter Bubble" type="SubViewport" parent="."]
+size = Vector2i(210, 210)
+
+[node name="Shelter Sprite" type="Sprite3D" parent="Shelter Bubble"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.22674, 0, 0)
+texture = SubResource("ViewportTexture_2pvxb")
+
+[node name="Shelter" type="TextureRect" parent="Shelter Bubble"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_y2bby")
+
+[node name="Comfort Bubble" type="SubViewport" parent="."]
+size = Vector2i(210, 210)
+
+[node name="Comfort Sprite" type="Sprite3D" parent="Comfort Bubble"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.49121, 0, 0)
+texture = SubResource("ViewportTexture_dqih8")
+
+[node name="Comfort" type="TextureRect" parent="Comfort Bubble"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_e17nq")
+
+[node name="Community Bubble" type="SubViewport" parent="."]
+size = Vector2i(210, 210)
+
+[node name="Community Sprite" type="Sprite3D" parent="Community Bubble"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.73696, 0, 0)
+texture = SubResource("ViewportTexture_wsfg1")
+
+[node name="Community" type="TextureRect" parent="Community Bubble"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_m0ck5")
