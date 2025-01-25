@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ubc2c26dddwr"
-path="res://.godot/imported/CommunityBubble.png-d77285eb2914dcbd894089aebf71185f.ctex"
+uid="uid://bundy5rmyihep"
+path="res://.godot/imported/NeedBubble.png-3af67f2cbe98b740f06104d2bde79927.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_sandbox/adrianna_sandbox/CommunityBubble.png"
-dest_files=["res://.godot/imported/CommunityBubble.png-d77285eb2914dcbd894089aebf71185f.ctex"]
+source_file="res://game_sandbox/adrianna_sandbox/assets/NeedBubble.png"
+dest_files=["res://.godot/imported/NeedBubble.png-3af67f2cbe98b740f06104d2bde79927.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bd8ak2b5y8ocu"
-path="res://.godot/imported/ComfortBubble.png-f8a6511e0a1fc7faab77b3c63c969f9f.ctex"
+uid="uid://djunkdvprw0ft"
+path="res://.godot/imported/ComfortBubble.png-0e9cf0633ce4e54743d82c59a4afe3a9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_sandbox/adrianna_sandbox/ComfortBubble.png"
-dest_files=["res://.godot/imported/ComfortBubble.png-f8a6511e0a1fc7faab77b3c63c969f9f.ctex"]
+source_file="res://game_sandbox/adrianna_sandbox/assets/ComfortBubble.png"
+dest_files=["res://.godot/imported/ComfortBubble.png-0e9cf0633ce4e54743d82c59a4afe3a9.ctex"]
 
 [params]
 

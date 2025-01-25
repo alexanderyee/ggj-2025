@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dombmrw4d218y"
-path="res://.godot/imported/ShelterBubble.png-06693b572bb80cdf4ce53feef9253d57.ctex"
+path="res://.godot/imported/ShelterBubble.png-2aa5d4bc7bea0324045e483f9553b9a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_sandbox/adrianna_sandbox/ShelterBubble.png"
-dest_files=["res://.godot/imported/ShelterBubble.png-06693b572bb80cdf4ce53feef9253d57.ctex"]
+source_file="res://game_sandbox/adrianna_sandbox/assets/ShelterBubble.png"
+dest_files=["res://.godot/imported/ShelterBubble.png-2aa5d4bc7bea0324045e483f9553b9a3.ctex"]
 
 [params]
 

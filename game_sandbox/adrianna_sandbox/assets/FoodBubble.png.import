@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfjvjj1q531fa"
-path="res://.godot/imported/FoodBubble.png-f28ce8f1440d765b39c1b163821994c5.ctex"
+uid="uid://dqe6imgh3gxtc"
+path="res://.godot/imported/FoodBubble.png-0ef2836010929c5e944a3f725e1d34d5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_sandbox/adrianna_sandbox/FoodBubble.png"
-dest_files=["res://.godot/imported/FoodBubble.png-f28ce8f1440d765b39c1b163821994c5.ctex"]
+source_file="res://game_sandbox/adrianna_sandbox/assets/FoodBubble.png"
+dest_files=["res://.godot/imported/FoodBubble.png-0ef2836010929c5e944a3f725e1d34d5.ctex"]
 
 [params]
 

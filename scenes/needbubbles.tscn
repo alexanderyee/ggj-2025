@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://cilawvjala22h"]
 
-[ext_resource type="Texture2D" uid="uid://djythuhvitghy" path="res://game_sandbox/adrianna_sandbox/NeedBubble.png" id="1_0txic"]
-[ext_resource type="Texture2D" uid="uid://cfjvjj1q531fa" path="res://game_sandbox/adrianna_sandbox/FoodBubble.png" id="2_gyle8"]
-[ext_resource type="Texture2D" uid="uid://dombmrw4d218y" path="res://game_sandbox/adrianna_sandbox/ShelterBubble.png" id="3_oucf4"]
-[ext_resource type="Texture2D" uid="uid://bd8ak2b5y8ocu" path="res://game_sandbox/adrianna_sandbox/ComfortBubble.png" id="4_nrw4n"]
-[ext_resource type="Texture2D" uid="uid://ubc2c26dddwr" path="res://game_sandbox/adrianna_sandbox/CommunityBubble.png" id="5_p1k0y"]
+[ext_resource type="Texture2D" path="res://game_sandbox/adrianna_sandbox/NeedBubble.png" id="1_wqdxm"]
+[ext_resource type="Texture2D" path="res://game_sandbox/adrianna_sandbox/FoodBubble.png" id="2_lpjh7"]
+[ext_resource type="Texture2D" path="res://game_sandbox/adrianna_sandbox/ShelterBubble.png" id="3_y2bby"]
+[ext_resource type="Texture2D" path="res://game_sandbox/adrianna_sandbox/ComfortBubble.png" id="4_e17nq"]
+[ext_resource type="Texture2D" path="res://game_sandbox/adrianna_sandbox/CommunityBubble.png" id="5_m0ck5"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_6sjye"]
 viewport_path = NodePath("Needs Bubble")
@@ -29,7 +29,7 @@ size = Vector2i(600, 600)
 [node name="Speech" type="TextureRect" parent="Needs Bubble"]
 offset_right = 600.0
 offset_bottom = 600.0
-texture = ExtResource("1_0txic")
+texture = ExtResource("1_wqdxm")
 
 [node name="Speech Bubble Sprite" type="Sprite3D" parent="Needs Bubble"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.73299, 0, 0)
@@ -44,7 +44,7 @@ texture = SubResource("ViewportTexture_qeoed")
 [node name="Food" type="TextureRect" parent="Food Bubble"]
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("2_gyle8")
+texture = ExtResource("2_lpjh7")
 
 [node name="Shelter Bubble" type="SubViewport" parent="."]
 size = Vector2i(210, 210)
@@ -56,7 +56,7 @@ texture = SubResource("ViewportTexture_2pvxb")
 [node name="Shelter" type="TextureRect" parent="Shelter Bubble"]
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("3_oucf4")
+texture = ExtResource("3_y2bby")
 
 [node name="Comfort Bubble" type="SubViewport" parent="."]
 size = Vector2i(210, 210)
@@ -68,7 +68,7 @@ texture = SubResource("ViewportTexture_dqih8")
 [node name="Comfort" type="TextureRect" parent="Comfort Bubble"]
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("4_nrw4n")
+texture = ExtResource("4_e17nq")
 
 [node name="Community Bubble" type="SubViewport" parent="."]
 size = Vector2i(210, 210)
@@ -80,4 +80,4 @@ texture = SubResource("ViewportTexture_wsfg1")
 [node name="Community" type="TextureRect" parent="Community Bubble"]
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("5_p1k0y")
+texture = ExtResource("5_m0ck5")

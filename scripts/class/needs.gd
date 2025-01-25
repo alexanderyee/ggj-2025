@@ -1,11 +1,6 @@
-extends Node
+extends CrabNeeds
 
 class_name Needs
-
-var food
-var shelter
-var comfort
-var community
 
 var total
 
