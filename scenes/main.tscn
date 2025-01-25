@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://dwqqnft73i6ia" path="res://game_sandbox/devone_sandbox/assets/photo_studio_loft_hall_2k.exr" id="1_drluy"]
 [ext_resource type="Environment" uid="uid://ws3wl4s12s5h" path="res://default_env.tres" id="1_q1gcq"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="2_8vgn0"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_iyltw"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="3_v1m45"]
 [ext_resource type="PackedScene" uid="uid://ddr0eyav0x5cr" path="res://scenes/selectables/seashell.tscn" id="5_ohhq1"]
 [ext_resource type="Script" path="res://addons/DragAndDrop3D/nodes/drag_and_drop_3d.gd" id="5_s6p64"]
 [ext_resource type="PackedScene" uid="uid://dnw670y81o6wc" path="res://game_sandbox/devone_sandbox/fish_tank.tscn" id="6_78ovq"]
+[ext_resource type="PackedScene" path="res://scenes/crab.tscn" id="9_386os"]
 
 [sub_resource type="Resource" id="Resource_r1ygu"]
 script = ExtResource("2_8vgn0")
@@ -51,7 +51,7 @@ albedo_color = Color(7.46027e-07, 0, 0.403407, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_i17vl"]
 material = SubResource("StandardMaterial3D_qgeg3")
 
-[node name="Main" type="Node3D"]
+[node name="Main2" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_q1gcq")
@@ -75,11 +75,6 @@ look_at_damping = true
 transform = Transform3D(1, -0.000682079, 0.000303226, -4.04019e-07, 0.405733, 0.913992, -0.000746444, -0.913991, 0.405733, 0, 14.519, 6.445)
 environment = SubResource("Environment_wotah")
 fov = 74.0
-
-[node name="PhantomCameraHost" type="Node" parent="HostCamera"]
-process_priority = 300
-process_physics_priority = 300
-script = ExtResource("3_iyltw")
 
 [node name="DragAndDropManager" type="Node3D" parent="."]
 script = ExtResource("5_s6p64")
@@ -120,5 +115,20 @@ spot_range = 7.0
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 
 [node name="CrabCast" type="Node3D" parent="."]
+
+[node name="Crab" parent="CrabCast" instance=ExtResource("9_386os")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.96564, 0, 0)
+tick_length_milliseconds = 1200
+
+[node name="Crab2" parent="CrabCast" instance=ExtResource("9_386os")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.41744, 0, -0.698341)
+tick_length_milliseconds = 1100
+
+[node name="Crab3" parent="CrabCast" instance=ExtResource("9_386os")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.684, 0, -3.31727)
+tick_length_milliseconds = 1300
+
+[node name="Crab4" parent="CrabCast" instance=ExtResource("9_386os")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38386, 0, -3.61803)
 
 [node name="UIRoot" type="CanvasLayer" parent="."]
