@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjm5trsh5ponb"]
+[gd_scene load_steps=10 format=3 uid="uid://bjm5trsh5ponb"]
 
+[ext_resource type="PackedScene" uid="uid://dfsep4rjt4s4m" path="res://scenes/crab.tscn" id="1_ca7al"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="1_cgvsa"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="2_8vgn0"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_iyltw"]
@@ -26,10 +27,9 @@ environment = SubResource("Environment_1thx3")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.844991, -0.327394, 0.422851, 0, 0.7907, 0.612203, -0.53478, -0.517307, 0.668135, 0, 2.72948, -2.52983)
 
-[node name="MainCamera" type="Node3D" parent="." node_paths=PackedStringArray("follow_target", "look_at_target")]
+[node name="MainCamera" type="Node3D" parent="." node_paths=PackedStringArray("look_at_target")]
 transform = Transform3D(0.778334, -0.314942, 0.543146, -4.48823e-05, 0.86506, 0.501668, -0.62785, -0.39049, 0.673292, 2, 1.845, 2.47541)
 script = ExtResource("1_cgvsa")
-follow_target = NodePath("..")
 look_at_mode = 2
 look_at_target = NodePath("..")
 tween_resource = SubResource("Resource_r1ygu")
@@ -50,6 +50,7 @@ navigation_mesh = SubResource("NavigationMesh_s26kr")
 [node name="Environment" type="Node3D" parent="."]
 
 [node name="Default Cube" type="StaticBody3D" parent="Environment"]
+collision_layer = 9
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Default Cube"]
 shape = SubResource("BoxShape3D_niry1")
@@ -62,5 +63,7 @@ mesh = SubResource("BoxMesh_i17vl")
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 
 [node name="CrabCast" type="Node3D" parent="."]
+
+[node name="Crab" parent="CrabCast" instance=ExtResource("1_ca7al")]
 
 [node name="UIRoot" type="CanvasLayer" parent="."]
