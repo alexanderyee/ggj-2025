@@ -21,10 +21,15 @@ Global="*res://scripts/global.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 SceneManager="*res://addons/scene_manager/scene_manager.tscn"
 Scenes="*res://addons/scene_manager/scenes.gd"
+DragAndDropGroupHelper="*res://addons/DragAndDrop3D/DragAndDropGroupHelper.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg", "res://addons/scene_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/DragAndDrop3D/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/scene_manager/plugin.cfg")
+
+[global_group]
+
+moveable="Defines PhysicsBodies that can be moved with the mouse"
 
 [layer_names]
 

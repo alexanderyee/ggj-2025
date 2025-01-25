@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c57k5o4cupjit"]
+
+[ext_resource type="Script" path="res://game_sandbox/devone_sandbox/drag_drop_3d.gd" id="1_gx0fy"]
+
+[node name="DragDrop3D" type="Node3D"]
+script = ExtResource("1_gx0fy")

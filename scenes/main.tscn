@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bjm5trsh5ponb"]
+[gd_scene load_steps=13 format=3 uid="uid://bjm5trsh5ponb"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="1_cgvsa"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="2_8vgn0"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_iyltw"]
 [ext_resource type="PackedScene" uid="uid://yaw41h3vjeti" path="res://game_sandbox/jake_sandbox/Assets/Models/seashell.glb" id="4_j48th"]
+[ext_resource type="Script" path="res://addons/DragAndDrop3D/nodes/drag_and_drop_3d.gd" id="5_s6p64"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kbcgm"]
 
@@ -34,24 +35,26 @@ environment = SubResource("Environment_1thx3")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.844991, -0.327394, 0.422851, 0, 0.7907, 0.612203, -0.53478, -0.517307, 0.668135, 0, 2.72948, -2.52983)
+shadow_enabled = true
 
-[node name="MainCamera" type="Node3D" parent="." node_paths=PackedStringArray("look_at_target")]
+[node name="MainCamera" type="Node3D" parent="."]
 transform = Transform3D(0.999999, -1.40884e-17, 2.11362e-17, 3.84857e-18, 0.906522, 0.422159, -2.51079e-17, -0.422159, 0.906522, 0, 2, 2.602)
 script = ExtResource("1_cgvsa")
-look_at_mode = 2
-look_at_target = NodePath("../Environment/seashell")
 tween_resource = SubResource("Resource_r1ygu")
 follow_offset = Vector3(0, 1.845, 0)
 look_at_offset = Vector3(0, 0.785, 0)
 look_at_damping = true
 
 [node name="HostCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, -1.40884e-17, 2.11362e-17, 3.84857e-18, 0.906522, 0.422159, -2.5108e-17, -0.422159, 0.906522, 0, 2, 2.602)
+transform = Transform3D(1, -1.40883e-17, 2.11362e-17, 3.84857e-18, 0.906522, 0.422159, -2.51079e-17, -0.422159, 0.906522, 0, 2, 2.602)
 
 [node name="PhantomCameraHost" type="Node" parent="HostCamera"]
 process_priority = 300
 process_physics_priority = 300
 script = ExtResource("3_iyltw")
+
+[node name="DragAndDropManager" type="Node3D" parent="."]
+script = ExtResource("5_s6p64")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_s26kr")
@@ -70,6 +73,11 @@ shape = SubResource("BoxShape3D_niry1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Default Cube"]
 mesh = SubResource("BoxMesh_i17vl")
+
+[node name="Floor" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+use_collision = true
+size = Vector3(18, 1, 18)
 
 [node name="NeedsSystem" type="Node3D" parent="."]
 
