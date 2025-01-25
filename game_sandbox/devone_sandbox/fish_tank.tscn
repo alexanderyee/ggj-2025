@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnw670y81o6wc"]
+
+[ext_resource type="Shader" path="res://game_sandbox/devone_sandbox/glass.gdshader" id="1_gcsfv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ibo6"]
+albedo_color = Color(0.196443, 0.0921203, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k0tw7"]
+render_priority = 0
+shader = ExtResource("1_gcsfv")
+shader_parameter/albedo = Color(1, 1, 1, 0.0901961)
+shader_parameter/roughness = 0.15
+shader_parameter/normal_strength = 1.0
+shader_parameter/edge_color = Color(0, 0, 0, 1)
+
+[node name="FishTank" type="Node3D"]
+
+[node name="Borders" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.440705, 0, 0, 0, 1, 0, 0, 0)
+size = Vector3(32, 24, 18)
+material = SubResource("StandardMaterial3D_1ibo6")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Borders"]
+operation = 2
+size = Vector3(30, 34, 16)
+material = SubResource("StandardMaterial3D_1ibo6")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Borders"]
+operation = 2
+size = Vector3(30, 22, 30)
+material = SubResource("StandardMaterial3D_1ibo6")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Borders"]
+operation = 2
+size = Vector3(34, 22, 16)
+material = SubResource("StandardMaterial3D_1ibo6")
+
+[node name="GlassLeftWall" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.8808, 0.0260258, -0.0160556)
+size = Vector3(1, 10, 16)
+material = SubResource("ShaderMaterial_k0tw7")
+
+[node name="GlassRightWall" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0304, 0.0260258, -0.0160556)
+size = Vector3(1, 10, 16)
+material = SubResource("ShaderMaterial_k0tw7")
+
+[node name="GlassForwardWall" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.85515)
+size = Vector3(30, 10, 1)
+material = SubResource("ShaderMaterial_k0tw7")
+
+[node name="GlassBackwardWall" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.78107)
+size = Vector3(29.825, 10, 1)
+material = SubResource("ShaderMaterial_k0tw7")

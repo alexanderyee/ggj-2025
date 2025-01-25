@@ -113,4 +113,5 @@ func toggle_outline() -> void:
 		mat.next_pass.shader = OUTLINE_SHDR
 	
 	is_outline_enabled = !is_outline_enabled
+	mat.next_pass.set_shader_parameter("outline_color", Color.BLUE)
 	mat.next_pass.set_shader_parameter("enabled", is_outline_enabled)
