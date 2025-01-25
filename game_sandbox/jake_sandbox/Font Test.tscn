@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnabke52s3enw"]
+
+[ext_resource type="FontFile" uid="uid://c0bue0kcnh2gq" path="res://game_sandbox/jake_sandbox/Assets/Fonts/BubblegumSans-Regular.ttf" id="1_ww77j"]
+
+[node name="FontTest" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("1_ww77j")
+text = "She sells seashells by the seashore."
