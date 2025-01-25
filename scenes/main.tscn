@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjm5trsh5ponb"]
+
+[sub_resource type="Environment" id="Environment_1thx3"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_s26kr"]
+
+[node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1thx3")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_s26kr")
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="NeedsSystem" type="Node3D" parent="."]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+
+[node name="CrabCast" type="Node3D" parent="."]
+
+[node name="UIRoot" type="CanvasLayer" parent="."]
