@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cinlkpyb6xcfw"]
+
+[ext_resource type="PackedScene" uid="uid://yaw41h3vjeti" path="res://game_sandbox/jake_sandbox/Assets/Models/seashell.glb" id="1_fylir"]
+
+[node name="Art Asset Scene" type="Node3D"]
+
+[node name="seashell" parent="." instance=ExtResource("1_fylir")]
+transform = Transform3D(0.285805, 0.958288, 0, -0.958288, 0.285805, 0, 0, 0, 1, -1.33379, 0, 0.272669)
