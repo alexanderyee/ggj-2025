@@ -1,10 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://pu7cklmac3oe"]
+[gd_scene load_steps=11 format=3 uid="uid://cilawvjala22h"]
 
-[ext_resource type="Texture2D" uid="uid://bundy5rmyihep" path="res://game_sandbox/adrianna_sandbox/assets/NeedBubble.png" id="1_wqdxm"]
-[ext_resource type="Texture2D" uid="uid://dqe6imgh3gxtc" path="res://game_sandbox/adrianna_sandbox/assets/FoodBubble.png" id="2_lpjh7"]
-[ext_resource type="Texture2D" uid="uid://dombmrw4d218y" path="res://game_sandbox/adrianna_sandbox/assets/ShelterBubble.png" id="3_y2bby"]
-[ext_resource type="Texture2D" uid="uid://djunkdvprw0ft" path="res://game_sandbox/adrianna_sandbox/assets/ComfortBubble.png" id="4_e17nq"]
-[ext_resource type="Texture2D" uid="uid://buyxeal1sr15q" path="res://game_sandbox/adrianna_sandbox/assets/CommunityBubble.png" id="5_m0ck5"]
+[ext_resource type="Texture2D" path="res://game_sandbox/adrianna_sandbox/NeedBubble.png" id="1_wqdxm"]
+[ext_resource type="Texture2D" path="res://game_sandbox/adrianna_sandbox/FoodBubble.png" id="2_lpjh7"]
+[ext_resource type="Texture2D" path="res://game_sandbox/adrianna_sandbox/ShelterBubble.png" id="3_y2bby"]
+[ext_resource type="Texture2D" path="res://game_sandbox/adrianna_sandbox/ComfortBubble.png" id="4_e17nq"]
+[ext_resource type="Texture2D" path="res://game_sandbox/adrianna_sandbox/CommunityBubble.png" id="5_m0ck5"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_6sjye"]
 viewport_path = NodePath("Needs Bubble")
