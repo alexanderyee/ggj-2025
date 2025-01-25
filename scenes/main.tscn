@@ -1,10 +1,19 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjm5trsh5ponb"]
+[gd_scene load_steps=12 format=3 uid="uid://bjm5trsh5ponb"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="1_cgvsa"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="2_8vgn0"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_iyltw"]
+[ext_resource type="PackedScene" uid="uid://yaw41h3vjeti" path="res://game_sandbox/jake_sandbox/Assets/Models/seashell.glb" id="4_j48th"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kbcgm"]
+
+[sub_resource type="Sky" id="Sky_o5002"]
+sky_material = SubResource("ProceduralSkyMaterial_kbcgm")
 
 [sub_resource type="Environment" id="Environment_1thx3"]
+background_mode = 2
+background_energy_multiplier = 1.5
+sky = SubResource("Sky_o5002")
 
 [sub_resource type="Resource" id="Resource_r1ygu"]
 script = ExtResource("2_8vgn0")
@@ -26,18 +35,18 @@ environment = SubResource("Environment_1thx3")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.844991, -0.327394, 0.422851, 0, 0.7907, 0.612203, -0.53478, -0.517307, 0.668135, 0, 2.72948, -2.52983)
 
-[node name="MainCamera" type="Node3D" parent="." node_paths=PackedStringArray("follow_target", "look_at_target")]
-transform = Transform3D(0.778334, -0.314942, 0.543146, -4.48823e-05, 0.86506, 0.501668, -0.62785, -0.39049, 0.673292, 2, 1.845, 2.47541)
+[node name="MainCamera" type="Node3D" parent="." node_paths=PackedStringArray("look_at_target")]
+transform = Transform3D(0.999999, -1.40884e-17, 2.11362e-17, 3.84857e-18, 0.906522, 0.422159, -2.51079e-17, -0.422159, 0.906522, 0, 2, 2.602)
 script = ExtResource("1_cgvsa")
-follow_target = NodePath("..")
 look_at_mode = 2
-look_at_target = NodePath("..")
+look_at_target = NodePath("../Environment/seashell")
 tween_resource = SubResource("Resource_r1ygu")
 follow_offset = Vector3(0, 1.845, 0)
+look_at_offset = Vector3(0, 0.785, 0)
 look_at_damping = true
 
 [node name="HostCamera" type="Camera3D" parent="."]
-transform = Transform3D(0.778334, -0.314942, 0.543146, -4.48823e-05, 0.86506, 0.501668, -0.62785, -0.39049, 0.673292, 2, 1.845, 2.47541)
+transform = Transform3D(1, -1.40884e-17, 2.11362e-17, 3.84857e-18, 0.906522, 0.422159, -2.5108e-17, -0.422159, 0.906522, 0, 2, 2.602)
 
 [node name="PhantomCameraHost" type="Node" parent="HostCamera"]
 process_priority = 300
@@ -49,7 +58,12 @@ navigation_mesh = SubResource("NavigationMesh_s26kr")
 
 [node name="Environment" type="Node3D" parent="."]
 
+[node name="seashell" parent="Environment" instance=ExtResource("4_j48th")]
+transform = Transform3D(0.332329, 0.100969, 0.35967, -0.344137, -0.104557, 0.347329, 0.145351, -0.478407, -1.57217e-08, 0, 0, 0)
+
 [node name="Default Cube" type="StaticBody3D" parent="Environment"]
+transform = Transform3D(-0.325123, 0, 0.945672, 0, 1, 0, -0.945672, 0, -0.325123, 0, 0, 0)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Default Cube"]
 shape = SubResource("BoxShape3D_niry1")
