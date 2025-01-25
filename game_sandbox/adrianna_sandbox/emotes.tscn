@@ -9,20 +9,11 @@
 
 [node name="Emotes" type="Node" node_paths=PackedStringArray("speechSprite", "foodSprite", "shelterSprite", "comfortSprite", "communitySprite")]
 script = ExtResource("1_ewvhq")
-foodXCoord = null
-shelterXCoord = null
-comfortXCoord = null
-communityXCoord = null
-emoteID = null
 speechSprite = NodePath("Speech")
 foodSprite = NodePath("Emote Bubble/Food")
 shelterSprite = NodePath("Emote Bubble/Shelter")
 comfortSprite = NodePath("Emote Bubble/Comfort")
 communitySprite = NodePath("Emote Bubble/Community")
-food = null
-shelter = null
-comfort = null
-community = null
 
 [node name="Transparency" type="Node3D" parent="."]
 

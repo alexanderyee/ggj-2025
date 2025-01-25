@@ -53,7 +53,7 @@ func _process(delta: float) -> void:
 func emote(stat_id):
 	findsprite(stat_id)
 	startspritetimer(stat_id)
-	setcoords(stat_id)
+	#setcoords(stat_id)
 
 func findsprite(stat_id):
 	
@@ -86,6 +86,7 @@ func startspritetimer(stat_id):
 		communityEmoteTimer = 5
 
 func updatespritetimer(subtract):
+	pass
 
 ##  0-3 - Check whether the need has to be fucked with or not
 func checkneed(stat_id: int): 
