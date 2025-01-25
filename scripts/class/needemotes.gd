@@ -10,6 +10,18 @@ var shelterXCoord : int = 20
 var comfortXCoord : int = 40
 var communityXCoord : int = 60
 
+var prevFood : int
+var prevShelter : int
+var prevComfort : int
+var prevCommunity : int
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	prevFood = food
+	prevShelter = shelter
+	prevComfort = comfort
+	prevCommunity = community
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
@@ -22,16 +34,24 @@ func _process(delta: float) -> void:
 func checkneed(stat_id: int): 
 
 	if stat_id == 0:	
-		checkpercentage(food, stat_id)
+		if prevFood != food:
+			checkpercentage(food, stat_id)
+		prevFood = food
 		
 	elif stat_id == 1:
-		checkpercentage(shelter, stat_id)
+		if prevShelter != shelter:
+			checkpercentage(shelter, stat_id)
+		prevShelter = shelter
 		
 	elif stat_id == 2:
-		checkpercentage(comfort, stat_id)
+		if prevComfort != comfort:
+			checkpercentage(comfort, stat_id)
+		prevComfort = comfort
 		
 	else:
-		checkpercentage(community, stat_id)
+		if prevCommunity != community:
+			checkpercentage(community, stat_id)
+		prevCommunity = community
 
 func checkpercentage(need: int, stat_id: int):
 	
@@ -44,8 +64,10 @@ func checkpercentage(need: int, stat_id: int):
 	elif need < 75:
 		starttimer(stat_id, 60)
 		
+		# I'm putting this below 0 so that when remaining time is checked,
+		# it's going to be out of range and can't possibly be duplicated.
 	else:
-		starttimer(stat_id, 0)
+		starttimer(stat_id, -60)
 
 func starttimer(stat_id: int, time: float):
 	
@@ -63,14 +85,34 @@ func starttimer(stat_id: int, time: float):
 
 func countdowntimer(stat_id: int, subtract: float):
 	
-	if stat_id == 0:	
+	if stat_id == 0:
 		foodTimer = foodTimer - subtract;
+		
+		if foodTimer <= 0:
+			if foodTimer > -60:
+				#Emote
+				checkneed(0)
 		
 	elif stat_id == 1:
 		shelterTimer = shelterTimer - subtract;
 		
+		if shelterTimer <= 0:
+			if shelterTimer > -60:
+				#Emote
+				checkneed(1)
+		
 	elif stat_id == 2:
 		comfortTimer = comfortTimer - subtract;
 		
+		if comfortTimer <= 0:
+			if comfortTimer > -60:
+				#Emote
+				checkneed(2)
+		
 	else:
 		communityTimer = communityTimer - subtract;
+		
+		if communityTimer <= 0:
+			if communityTimer > -60:
+				#Emote
+				checkneed(3)
