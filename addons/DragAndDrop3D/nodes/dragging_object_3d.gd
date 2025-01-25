@@ -15,6 +15,8 @@ const OUTLINE_SHDR = preload("res://game_sandbox/devone_sandbox/outline.gdshader
 
 var objectBody: CollisionObject3D
 var snapPosition: Vector3
+var is_outline_enabled: bool = false
+
 
 func _ready() -> void:
 	_check_editor_child()
@@ -60,6 +62,8 @@ func _is_dragging(draggingObject, boolean) -> void:
 	
 	if boolean: dragging_started.emit()
 	else: dragging_stopped.emit()
+	
+	toggle_outline()
 
 func _on_object_body_3d_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event is InputEventMouseButton:
@@ -95,3 +99,18 @@ func _get_configuration_warnings() -> PackedStringArray:
 		return ["This node has no CollisionObject, so you can't interact with it\n\nConsider adding a StaticBody3D, CharacterBody3D, RigigBody3D or Area3D as a child to difine its body"]
 	else:
 		return []
+
+
+func toggle_outline() -> void:
+	var mesh: MeshInstance3D = find_child("Mesh")
+	
+	if not mesh or not mesh.get_active_material(0): 
+		return
+	
+	var mat: Material = mesh.get_active_material(0)
+	if not mat.next_pass:
+		mat.next_pass = ShaderMaterial.new()
+		mat.next_pass.shader = OUTLINE_SHDR
+	
+	is_outline_enabled = !is_outline_enabled
+	mat.next_pass.set_shader_parameter("enabled", is_outline_enabled)

@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://c72fj1ou1hxq1"]
+[gd_scene load_steps=10 format=3 uid="uid://drrq77c2cq086"]
 
 [ext_resource type="Script" path="res://addons/DragAndDrop3D/nodes/drag_and_drop_3d.gd" id="1_jrmpd"]
 [ext_resource type="Script" path="res://addons/DragAndDrop3D/nodes/dragging_object_3d.gd" id="2_mfk1w"]
-[ext_resource type="Shape3D" uid="uid://depk078v245k4" path="res://game_sandbox/devone_sandbox/seashell_collision_shape.shape" id="3_y18ug"]
-[ext_resource type="ArrayMesh" uid="uid://8o6yc0pwts15" path="res://game_sandbox/devone_sandbox/seashell.mesh" id="5_nfmk3"]
+[ext_resource type="PackedScene" uid="uid://ddr0eyav0x5cr" path="res://scenes/selectables/seashell.tscn" id="2_qifdf"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_7xjb2"]
 
@@ -30,19 +29,7 @@ transform = Transform3D(1, 0, 0, 0, 0.933142, 0.359508, 0, -0.359508, 0.933142, 
 [node name="DragAndDrop3D" type="Node3D" parent="."]
 script = ExtResource("1_jrmpd")
 
-[node name="Seashell" type="Node3D" parent="."]
-script = ExtResource("2_mfk1w")
-heightOffset = 1.0
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Seashell"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Seashell/StaticBody3D"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-shape = ExtResource("3_y18ug")
-
-[node name="Mesh" type="MeshInstance3D" parent="Seashell/StaticBody3D"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-mesh = ExtResource("5_nfmk3")
+[node name="Seashell" parent="." instance=ExtResource("2_qifdf")]
 
 [node name="DraggingObject3D2" type="Node3D" parent="."]
 script = ExtResource("2_mfk1w")
