@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7nhh6gy0vbp7"]
+[gd_scene load_steps=8 format=3 uid="uid://c7nhh6gy0vbp7"]
 
 [ext_resource type="Script" path="res://scripts/class/needemotes.gd" id="1_ewvhq"]
 [ext_resource type="Texture2D" uid="uid://bundy5rmyihep" path="res://game_sandbox/adrianna_sandbox/assets/NeedBubble.png" id="2_ap6k3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dombmrw4d218y" path="res://game_sandbox/adrianna_sandbox/assets/ShelterBubble.png" id="4_0wi8v"]
 [ext_resource type="Texture2D" uid="uid://djunkdvprw0ft" path="res://game_sandbox/adrianna_sandbox/assets/ComfortBubble.png" id="5_qxtwj"]
 [ext_resource type="Texture2D" uid="uid://buyxeal1sr15q" path="res://game_sandbox/adrianna_sandbox/assets/CommunityBubble.png" id="6_w7gea"]
+[ext_resource type="PackedScene" uid="uid://by78d05jdjq4e" path="res://game_sandbox/adrianna_sandbox/wincondition.tscn" id="7_d6f42"]
 
 [node name="Emotes" type="Node3D" node_paths=PackedStringArray("speechFoodSprite", "speechShelterSprite", "speechComfortSprite", "speechCommunitySprite", "foodSprite", "shelterSprite", "comfortSprite", "communitySprite")]
 script = ExtResource("1_ewvhq")
@@ -77,3 +78,5 @@ transform = Transform3D(0.435692, 0, 0, 0, 0.435692, 0, 0, 0, 0.435692, 0, 0, 0)
 billboard = 1
 shaded = true
 texture = ExtResource("2_ap6k3")
+
+[node name="Wincondition" parent="." instance=ExtResource("7_d6f42")]

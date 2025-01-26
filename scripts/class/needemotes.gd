@@ -2,10 +2,14 @@ extends Needs
 
 class_name EmoteNeeds
 
+signal on_cond_changed
+
 ## emoteID should go from 0 - 8. 0 is the 'nothing' emote. 
 @export var emoteID : int = 0
 
 @export var crabCoords : CollisionShape3D
+
+@export var wincondition : int
 
 @export var speechFoodSprite : Sprite3D
 @export var speechShelterSprite : Sprite3D
@@ -34,8 +38,6 @@ var comfortTimerOn : bool = false
 var communityTimerOn : bool = false
 var winTimerOn : bool = false
 
-var wincondition : int
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
@@ -58,7 +60,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
+	if crabCoords == null:
+		return
 	checkneed(0)
 	checkneed(1)
 	checkneed(2)
@@ -82,24 +85,24 @@ func emote(stat_id):
 	startspritetimer(stat_id)
 
 func setcoords(stat_id):
-	
-	var xCoords : int = crabCoords.global_position.x + (stat_id / 50)
-	
-	if stat_id == 1:
-		speechFoodSprite.global_position.x = xCoords
-		foodSprite.global_position.x = xCoords
+	if crabCoords:
+		var xCoords : int = crabCoords.global_position.x + (stat_id / 50)
 		
-	elif stat_id == 2:
-		speechShelterSprite.global_position.x = xCoords
-		shelterSprite.global_position.x = xCoords
-		
-	elif stat_id == 3:
-		speechComfortSprite.global_position.x = xCoords
-		comfortSprite.global_position.x = xCoords
-		
-	elif stat_id == 4:
-		speechCommunitySprite.global_position.x = xCoords
-		communitySprite.global_position.x = xCoords
+		if stat_id == 1:
+			speechFoodSprite.global_position.x = xCoords
+			foodSprite.global_position.x = xCoords
+			
+		elif stat_id == 2:
+			speechShelterSprite.global_position.x = xCoords
+			shelterSprite.global_position.x = xCoords
+			
+		elif stat_id == 3:
+			speechComfortSprite.global_position.x = xCoords
+			comfortSprite.global_position.x = xCoords
+			
+		elif stat_id == 4:
+			speechCommunitySprite.global_position.x = xCoords
+			communitySprite.global_position.x = xCoords
 
 func findsprite(stat_id):
 	
@@ -207,7 +210,7 @@ func checkpercentage(need: int, stat_id: int):
 	elif need < 100:
 		if ((food >= 75) || (shelter >= 75) || (comfort >= 75) || (community >= 75)) && (winTimerOn == false):
 			winTimerOn = true
-			starttimer(4, 15)
+			starttimer(4, 3)
 
 func starttimer(stat_id: int, time: float):
 	
@@ -280,4 +283,6 @@ func countdowntimer(stat_id: int, subtract: float):
 			if winTimer > -60:
 				
 				wincondition += 1
+				emit_signal("on_cond_changed")
+				print("WinCond: %d" % wincondition)
 				winTimerOn = false

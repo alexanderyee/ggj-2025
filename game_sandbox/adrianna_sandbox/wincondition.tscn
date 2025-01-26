@@ -1,10 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://by78d05jdjq4e"]
+[gd_scene load_steps=3 format=3 uid="uid://by78d05jdjq4e"]
 
-[ext_resource type="Texture2D" uid="uid://bundy5rmyihep" path="res://game_sandbox/adrianna_sandbox/assets/NeedBubble.png" id="1_4plhx"]
+[ext_resource type="PackedScene" uid="uid://8do6ot5jryi2" path="res://game_sandbox/devone_sandbox/bubbles.tscn" id="1_akowq"]
+[ext_resource type="Script" path="res://scripts/wincondition.gd" id="1_uvpej"]
 
-[node name="Wincondition" type="Node3D"]
-
-[node name="Bubble" type="Sprite3D" parent="."]
-texture = ExtResource("1_4plhx")
+[node name="Wincondition" type="Node3D" node_paths=PackedStringArray("bubbles")]
+script = ExtResource("1_uvpej")
+bubbles = NodePath("Bubbles")
 
 [node name="CrabCoords" type="Node3D" parent="."]
+
+[node name="Bubbles" parent="." instance=ExtResource("1_akowq")]
+emitting = false
+amount = 1
+one_shot = true

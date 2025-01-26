@@ -1,6 +1,8 @@
 class_name Crab
 extends CharacterBody3D
 
+signal on_win_cond_changed(crab)
+
 @export var speed := 1.0
 @export var tick_length_milliseconds := 1000 # could randomize this
 @export var fov_radius_meters := 0.5
@@ -10,6 +12,8 @@ extends CharacterBody3D
 @onready var crab_voice: AudioStreamPlayer3D = $AudioStreamPlayer3D
 @onready var crab_model: Node3D = $CollisionShape3D/CrabModel
 @onready var scuttle_vfx: AudioStreamPlayer = $ScuttleVFX
+@onready var win_condition_bubble: GPUParticles3D = %WinConditionBubble
+@onready var emotes: EmoteNeeds = %Emotes
 
 var current_fixation = null
 
@@ -79,4 +83,9 @@ func sort_objects_within_crab_vision(obj1, obj2):
 
 func _on_timer_timeout() -> void:
 	emote()
+	pass # Replace with function body.
+
+
+func _on_emotes_on_cond_changed() -> void:
+	emit_signal("on_win_cond_changed", self)
 	pass # Replace with function body.
