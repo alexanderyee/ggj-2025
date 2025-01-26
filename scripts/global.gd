@@ -6,6 +6,7 @@ extends Node
 const crab_sound_names = ["crab", "hand", "frightened", "scared", "food"]
 var crab_tts_sounds = {}
 
+@onready var drag_n_drop_manager : DragAndDrop3D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	preload_crab_voices()
