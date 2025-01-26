@@ -1,5 +1,6 @@
 extends Menu
 
+@onready var modeltester : Node3D = $SubViewportContainer/SubViewport/ModelTester
 
 func _ready() -> void:
 	var fade_in_first_scene_options = SceneManager.create_options(1, "circle")
@@ -7,8 +8,15 @@ func _ready() -> void:
 	SceneManager.show_first_scene(fade_in_first_scene_options, first_scene_general_options)
 	
 	print("Main Menu loaded successfully.")
-	pass
+	$MarginContainer/VBoxContainer/Play.mouse_entered.connect(on_play_mouse_entered)
+	$MarginContainer/VBoxContainer/Play.mouse_exited.connect(on_play_mouse_exited)
+	
 
+func on_play_mouse_entered():
+	modeltester.crab.set_shock()
+
+func on_play_mouse_exited():
+	modeltester.crab.set_normal()
 
 func _on_play_pressed() -> void:
 	print("Starting the game...")

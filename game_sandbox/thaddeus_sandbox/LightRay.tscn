@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://imvxybwdpjmx"]
+
+[ext_resource type="Script" path="res://game_sandbox/thaddeus_sandbox/light_ray.gd" id="1_b71ag"]
+[ext_resource type="Texture2D" uid="uid://drnb7qa2uwcou" path="res://game_sandbox/thaddeus_sandbox/ray.png" id="2_uobgg"]
+
+[node name="LightRay" type="Node3D"]
+script = ExtResource("1_b71ag")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+modulate = Color(0.405473, 0.771672, 1, 1)
+texture = ExtResource("2_uobgg")

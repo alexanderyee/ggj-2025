@@ -18,7 +18,7 @@ $Legs/LegArmatrure/Target_RightLeg2, $Legs/LegArmatrure/Target_RightLeg3]
 @onready var current_move_vec : Vector3 = Vector3.ZERO
 @onready var pos_lastframe : Vector3 = global_position
 
-
+@onready var animplayer = $Crab2/AnimationPlayer
 @onready var eyes = $Crab2/Eyes
 @onready var pupil1 = $Crab2/Eyes/Eye/Pupil
 @onready var pupil2 = $Crab2/Eyes/Eye2/Pupil
@@ -99,7 +99,6 @@ func _process(delta: float) -> void:
 	var variance:float = 0.1
 	pupil_timer -= delta
 	if current_emotion == EMOTIONS.SHOCK: 
-		print("FDSd")
 		pupil_timer -= delta*5.0
 	if pupil_timer <= 0.0:
 		pupil_timer = randf_range(0.2, 0.9)

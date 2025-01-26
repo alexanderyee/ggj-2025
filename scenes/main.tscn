@@ -9,16 +9,16 @@
 [ext_resource type="PackedScene" uid="uid://ddr0eyav0x5cr" path="res://scenes/selectables/seashell.tscn" id="5_ohhq1"]
 [ext_resource type="Script" path="res://addons/DragAndDrop3D/nodes/drag_and_drop_3d.gd" id="5_s6p64"]
 [ext_resource type="PackedScene" uid="uid://dnw670y81o6wc" path="res://game_sandbox/devone_sandbox/fish_tank.tscn" id="6_78ovq"]
-[ext_resource type="PackedScene" path="res://game_sandbox/thaddeus_sandbox/Hand.tscn" id="8_rjwfd"]
+[ext_resource type="PackedScene" uid="uid://bw2a2nieojo3x" path="res://game_sandbox/thaddeus_sandbox/Hand.tscn" id="8_rjwfd"]
 [ext_resource type="PackedScene" uid="uid://dfsep4rjt4s4m" path="res://scenes/crab.tscn" id="9_386os"]
-[ext_resource type="PackedScene" path="res://game_sandbox/devone_sandbox/rock.tscn" id="9_ovke5"]
+[ext_resource type="PackedScene" uid="uid://dd41hl1os2gx2" path="res://game_sandbox/devone_sandbox/rock.tscn" id="9_ovke5"]
 [ext_resource type="Texture2D" uid="uid://h8nkf61rxc3y" path="res://game_sandbox/devone_sandbox/assets/SpotLightMask.png" id="10_4fthu"]
 [ext_resource type="Shader" path="res://game_sandbox/devone_sandbox/caustic.gdshader" id="10_28cv8"]
 [ext_resource type="Texture2D" uid="uid://d2jtf8p66f2ei" path="res://game_sandbox/devone_sandbox/assets/SpotLightMaskLine.png" id="11_se7xa"]
-[ext_resource type="PackedScene" path="res://scenes/mouse_position.tscn" id="12_8awkg"]
+[ext_resource type="PackedScene" uid="uid://d3mgwdjbjyq0b" path="res://scenes/mouse_position.tscn" id="12_8awkg"]
 [ext_resource type="PackedScene" uid="uid://cvb85hrhl8k2s" path="res://game_sandbox/jake_sandbox/Assets/Models/doughnut_coral.glb" id="13_puxit"]
 [ext_resource type="PackedScene" uid="uid://s3755bhbqwk7" path="res://game_sandbox/jake_sandbox/Assets/Models/pineapple_house.glb" id="14_abfds"]
-[ext_resource type="PackedScene" path="res://game_sandbox/devone_sandbox/bubbles.tscn" id="16_5iowc"]
+[ext_resource type="PackedScene" uid="uid://8do6ot5jryi2" path="res://game_sandbox/devone_sandbox/bubbles.tscn" id="16_5iowc"]
 [ext_resource type="AudioStream" uid="uid://124qdt1buj80" path="res://game_sandbox/fluffy_sandbox/Music/crembient.ogg" id="17_46pjg"]
 [ext_resource type="Script" path="res://addons/DragAndDrop3D/nodes/dragging_object_3d.gd" id="19_78aoa"]
 [ext_resource type="PackedScene" uid="uid://bh3ix7ppos4l7" path="res://scenes/moss_ball.tscn" id="20_chi6s"]
@@ -48,7 +48,7 @@ panorama = ExtResource("1_drluy")
 [sub_resource type="Sky" id="Sky_o5002"]
 sky_material = SubResource("PanoramaSkyMaterial_6jsnm")
 
-[sub_resource type="Environment" id="Environment_0d8bl"]
+[sub_resource type="Environment" id="Environment_pq8it"]
 background_mode = 2
 background_energy_multiplier = 1.5
 sky = SubResource("Sky_o5002")
@@ -99,8 +99,8 @@ follow_offset = Vector3(0, 1.845, 0)
 look_at_damping = true
 
 [node name="HostCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, -0.000682079, 0.000303226, -4.04019e-07, 0.405733, 0.913992, -0.000746444, -0.913991, 0.405733, 0, 14.519, 6.445)
-environment = SubResource("Environment_0d8bl")
+transform = Transform3D(1, -0.000682079, 0.000303226, -4.0399e-07, 0.405733, 0.913992, -0.000746444, -0.913991, 0.405733, 0, 14.519, 6.445)
+environment = SubResource("Environment_pq8it")
 fov = 74.0
 
 [node name="PhantomCameraHost" type="Node" parent="HostCamera"]
