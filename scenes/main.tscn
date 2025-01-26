@@ -45,7 +45,7 @@ panorama = ExtResource("1_drluy")
 [sub_resource type="Sky" id="Sky_o5002"]
 sky_material = SubResource("PanoramaSkyMaterial_6jsnm")
 
-[sub_resource type="Environment" id="Environment_v36u4"]
+[sub_resource type="Environment" id="Environment_krhse"]
 background_mode = 2
 background_energy_multiplier = 1.5
 sky = SubResource("Sky_o5002")
@@ -73,6 +73,7 @@ environment = ExtResource("1_q1gcq")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.844991, -0.327394, 0.422851, 0, 0.7907, 0.612203, -0.53478, -0.517307, 0.668135, 0, 2.72948, -2.52983)
+shadow_enabled = true
 
 [node name="MainCamera" type="Node3D" parent="." node_paths=PackedStringArray("look_at_target")]
 transform = Transform3D(0.999999, -0.000682079, 0.000303226, -4.04019e-07, 0.405733, 0.913992, -0.000746443, -0.913991, 0.405733, 0, 14.519, 6.445)
@@ -87,7 +88,7 @@ look_at_damping = true
 
 [node name="HostCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, -0.000682079, 0.000303226, -4.04019e-07, 0.405733, 0.913992, -0.000746444, -0.913991, 0.405733, 0, 14.519, 6.445)
-environment = SubResource("Environment_v36u4")
+environment = SubResource("Environment_krhse")
 fov = 74.0
 
 [node name="PhantomCameraHost" type="Node" parent="HostCamera"]
@@ -104,7 +105,7 @@ navigation_mesh = SubResource("NavigationMesh_s26kr")
 [node name="Environment" type="Node3D" parent="."]
 
 [node name="Seashell2" parent="Environment" instance=ExtResource("5_ohhq1")]
-transform = Transform3D(0.999713, -0.0239611, 0, 0.0239611, 0.999713, 0, 0, 0, 1, 10.6345, -1.26305, 5.47246)
+transform = Transform3D(0.999713, -0.0239611, 0, 0.0239611, 0.999713, 0, 0, 0, 1, 7.83454, -1.26305, 6.73697)
 
 [node name="Rock" parent="Environment" instance=ExtResource("9_ovke5")]
 transform = Transform3D(-0.967378, 0, 0.253336, 0, 1, 0, -0.253336, 0, -0.967378, -5.77909, -1.39049, -6.78566)
