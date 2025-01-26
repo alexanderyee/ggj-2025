@@ -1,10 +1,5 @@
 extends Needs
 
-@export var foodXCoord : int = 0
-@export var shelterXCoord : int = 20
-@export var comfortXCoord : int = 40
-@export var communityXCoord : int = 60
-
 ## emoteID should go from 0 - 8. 0 is the 'nothing' emote. 
 @export var emoteID : int = 0
 
@@ -14,10 +9,10 @@ extends Needs
 @export var comfortSprite : Sprite3D
 @export var communitySprite : Sprite3D
 
-var foodTimer : float
-var shelterTimer : float
-var comfortTimer : float
-var communityTimer : float
+var foodTimer : float = -60
+var shelterTimer : float = -60
+var comfortTimer : float = -60
+var communityTimer : float = -60
 
 var foodEmoteTimer : float
 var shelterEmoteTimer : float
@@ -53,7 +48,11 @@ func _process(delta: float) -> void:
 func emote(stat_id):
 	findsprite(stat_id)
 	startspritetimer(stat_id)
-	#setcoords(stat_id)
+	setcoords(stat_id)
+
+func setcoords(stat_id):
+	
+	speechSprite.global_position.x += stat_id * 10
 
 func findsprite(stat_id):
 	
@@ -86,7 +85,33 @@ func startspritetimer(stat_id):
 		communityEmoteTimer = 5
 
 func updatespritetimer(subtract):
-	pass
+	if foodEmoteTimer != -60:
+		foodEmoteTimer -= subtract
+		if foodEmoteTimer <= 0:
+			speechSprite.transparency = 1
+			foodSprite.transparency = 1
+			foodEmoteTimer = -60
+	
+	if shelterEmoteTimer != -60:
+		shelterEmoteTimer -= subtract
+		if shelterEmoteTimer <= 0:
+			speechSprite.transparency = 1
+			shelterSprite.transparency = 1
+			shelterEmoteTimer = -60
+	
+	if comfortEmoteTimer != -60:
+		comfortEmoteTimer -= subtract
+		if comfortEmoteTimer <= 0:
+			speechSprite.transparency = 1
+			comfortSprite.transparency = 1
+			comfortEmoteTimer = -60
+	
+	if communityEmoteTimer != -60:
+		communityEmoteTimer -= subtract
+		if communityEmoteTimer <= 0:
+			speechSprite.transparency = 1
+			communitySprite.transparency = 1
+			communityEmoteTimer = -60
 
 ##  0-3 - Check whether the need has to be fucked with or not
 func checkneed(stat_id: int): 
