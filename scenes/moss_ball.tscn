@@ -5,6 +5,5 @@
 [sub_resource type="SphereMesh" id="SphereMesh_shd7o"]
 
 [node name="Moss Ball" type="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.05817, 0, 0)
 mesh = SubResource("SphereMesh_shd7o")
 surface_material_override/0 = ExtResource("1_soipw")
