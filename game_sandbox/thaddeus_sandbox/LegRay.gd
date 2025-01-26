@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 		mod = min(2.0, mod)
 		
 		if abs(angle_difference(ang1, ang2)) < 1.5:
-			hit_pos += crab_model.current_move_vec*0.5*mod
+			hit_pos += crab_model.current_move_vec*0.5*mod*crab_model.leg_predictive_factor
 		else:
-			hit_pos += crab_model.current_move_vec*0.2*mod
+			hit_pos += crab_model.current_move_vec*0.2*mod*crab_model.leg_predictive_factor
 		step_target.global_position = hit_pos
