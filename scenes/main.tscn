@@ -1,14 +1,17 @@
-[gd_scene load_steps=19 format=3 uid="uid://bjm5trsh5ponb"]
+[gd_scene load_steps=23 format=3 uid="uid://bjm5trsh5ponb"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="1_cgvsa"]
 [ext_resource type="Texture2D" uid="uid://dwqqnft73i6ia" path="res://game_sandbox/devone_sandbox/assets/photo_studio_loft_hall_2k.exr" id="1_drluy"]
 [ext_resource type="Environment" uid="uid://ws3wl4s12s5h" path="res://default_env.tres" id="1_q1gcq"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="2_8vgn0"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_iyltw"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="3_v1m45"]
 [ext_resource type="PackedScene" uid="uid://ddr0eyav0x5cr" path="res://scenes/selectables/seashell.tscn" id="5_ohhq1"]
 [ext_resource type="Script" path="res://addons/DragAndDrop3D/nodes/drag_and_drop_3d.gd" id="5_s6p64"]
 [ext_resource type="PackedScene" uid="uid://dnw670y81o6wc" path="res://game_sandbox/devone_sandbox/fish_tank.tscn" id="6_78ovq"]
 [ext_resource type="PackedScene" path="res://scenes/crab.tscn" id="9_386os"]
+[ext_resource type="Texture2D" uid="uid://h8nkf61rxc3y" path="res://game_sandbox/devone_sandbox/assets/SpotLightMask.png" id="10_4fthu"]
+[ext_resource type="Texture2D" uid="uid://d2jtf8p66f2ei" path="res://game_sandbox/devone_sandbox/assets/SpotLightMaskLine.png" id="11_se7xa"]
 
 [sub_resource type="Resource" id="Resource_r1ygu"]
 script = ExtResource("2_8vgn0")
@@ -34,7 +37,7 @@ panorama = ExtResource("1_drluy")
 [sub_resource type="Sky" id="Sky_o5002"]
 sky_material = SubResource("PanoramaSkyMaterial_6jsnm")
 
-[sub_resource type="Environment" id="Environment_wotah"]
+[sub_resource type="Environment" id="Environment_8y24j"]
 background_mode = 2
 background_energy_multiplier = 1.5
 sky = SubResource("Sky_o5002")
@@ -51,14 +54,16 @@ albedo_color = Color(7.46027e-07, 0, 0.403407, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_i17vl"]
 material = SubResource("StandardMaterial3D_qgeg3")
 
-[node name="Main2" type="Node3D"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vhxc3"]
+albedo_color = Color(1, 0.839216, 0, 1)
+
+[node name="Main" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_q1gcq")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.844991, -0.327394, 0.422851, 0, 0.7907, 0.612203, -0.53478, -0.517307, 0.668135, 0, 2.72948, -2.52983)
-shadow_enabled = true
 
 [node name="MainCamera" type="Node3D" parent="." node_paths=PackedStringArray("look_at_target")]
 transform = Transform3D(0.999999, -0.000682079, 0.000303226, -4.04019e-07, 0.405733, 0.913992, -0.000746443, -0.913991, 0.405733, 0, 14.519, 6.445)
@@ -73,8 +78,13 @@ look_at_damping = true
 
 [node name="HostCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, -0.000682079, 0.000303226, -4.04019e-07, 0.405733, 0.913992, -0.000746444, -0.913991, 0.405733, 0, 14.519, 6.445)
-environment = SubResource("Environment_wotah")
+environment = SubResource("Environment_8y24j")
 fov = 74.0
+
+[node name="PhantomCameraHost" type="Node" parent="HostCamera"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("3_iyltw")
 
 [node name="DragAndDropManager" type="Node3D" parent="."]
 script = ExtResource("5_s6p64")
@@ -85,7 +95,7 @@ navigation_mesh = SubResource("NavigationMesh_s26kr")
 [node name="Environment" type="Node3D" parent="."]
 
 [node name="Seashell" parent="Environment" instance=ExtResource("5_ohhq1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27759, 0.180054, -3.92865)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27759, -1.26305, -6.11404)
 
 [node name="Default Cube" type="StaticBody3D" parent="Environment"]
 transform = Transform3D(-0.325123, 0, 0.945672, 0, 1, 0, -0.945672, 0, -0.325123, 3, 0, -3)
@@ -102,13 +112,49 @@ mesh = SubResource("BoxMesh_i17vl")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 use_collision = true
 size = Vector3(32, 1, 18)
+material = SubResource("StandardMaterial3D_vhxc3")
 
 [node name="FishTank" parent="Environment" instance=ExtResource("6_78ovq")]
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Environment"]
 transform = Transform3D(0.905754, 0, 0.423804, 0, 1, 0, -0.423804, 0, 0.905754, 10.2191, 0.393497, -5.50217)
 light_energy = 4.0
+light_specular = 10.0
 spot_range = 7.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Environment"]
+transform = Transform3D(0.378859, 0.925455, 4.04529e-08, 6.30673e-16, -4.37114e-08, 1, 0.925455, -0.378859, -1.65604e-08, -2.01552, 1.32242, -7.07055)
+light_projector = ExtResource("10_4fthu")
+light_specular = 5.465
+shadow_enabled = true
+spot_attenuation = -1.0
+spot_angle = 53.0
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Environment"]
+transform = Transform3D(0.378859, 0.925455, 4.04529e-08, 6.30673e-16, -4.37114e-08, 1, 0.925455, -0.378859, -1.65604e-08, -15.2972, 1.32242, 0.427837)
+light_projector = ExtResource("10_4fthu")
+light_specular = 5.465
+shadow_enabled = true
+spot_attenuation = -1.0
+spot_angle = 53.0
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Environment"]
+transform = Transform3D(-0.0945581, 0.485983, 0.868838, -0.883294, 0.361599, -0.298391, -0.459184, -0.795655, 0.395074, -10.4986, 1.32242, 9.91528)
+light_energy = 1.242
+light_projector = ExtResource("11_se7xa")
+light_size = 10.0
+shadow_enabled = true
+spot_range = 7.0
+spot_angle = 53.0
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="Environment"]
+transform = Transform3D(-0.0344084, -0.68476, -0.727956, -0.883294, 0.361599, -0.298391, 0.467555, 0.632733, -0.617286, 12.864, -2.06481, -1.61481)
+light_energy = 1.702
+light_projector = ExtResource("11_se7xa")
+light_specular = 10.0
+shadow_enabled = true
+spot_range = 8.184
+spot_angle = 53.0
 
 [node name="NeedsSystem" type="Node3D" parent="."]
 
