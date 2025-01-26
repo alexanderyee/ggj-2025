@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dfsep4rjt4s4m"]
 
 [ext_resource type="Script" path="res://scripts/class/crab.gd" id="1_x3l5e"]
-[ext_resource type="PackedScene" uid="uid://cp14c34qqbyvn" path="res://game_sandbox/thaddeus_sandbox/CrabModel.tscn" id="2_ahruy"]
+[ext_resource type="PackedScene" uid="uid://pxgf0xl24adb" path="res://game_sandbox/thaddeus_sandbox/CrabModel.tscn" id="2_ahruy"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0ajk3"]
 
@@ -10,6 +10,7 @@ radius = 5.0
 
 [node name="Crab" type="CharacterBody3D"]
 script = ExtResource("1_x3l5e")
+speed = 1.7
 fov_radius_meters = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -17,6 +18,7 @@ shape = SubResource("SphereShape3D_0ajk3")
 
 [node name="CrabModel" parent="CollisionShape3D" instance=ExtResource("2_ahruy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.167051, 0)
+body_rotation_factor = 12.0
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

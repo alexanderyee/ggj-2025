@@ -1,7 +1,7 @@
 class_name Crab
 extends CharacterBody3D
 
-@export var speed := 1
+@export var speed := 1.0
 @export var tick_length_milliseconds := 1000 # could randomize this
 @export var fov_radius_meters := 0.5
 @onready var timer: Timer = $Timer
@@ -35,7 +35,11 @@ func _physics_process(delta: float) -> void:
 			if direction:
 				velocity.x = direction.x * speed
 				velocity.z = direction.z * speed
+			
+			var current_ang : float = global_rotation.y
 			look_at(current_fixation.position)
+			var modified_ang : float = global_rotation.y
+			global_rotation.y = lerp_angle(current_ang, modified_ang, delta*2.0)
 		else:
 			velocity = Vector3.ZERO
 	else:
