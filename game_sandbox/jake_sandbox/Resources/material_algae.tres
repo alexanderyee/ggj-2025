@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://dp5fdduux38vg"]
+
+[ext_resource type="Texture2D" uid="uid://brw1l8d7fpqfp" path="res://game_sandbox/jake_sandbox/Assets/Materials/Moss001_516_Color.jpg" id="1_qkl4e"]
+[ext_resource type="Texture2D" uid="uid://dsgtc3aewv5f8" path="res://game_sandbox/jake_sandbox/Assets/Materials/Moss001_516_AmbientOcclusion.jpg" id="2_in4sq"]
+[ext_resource type="Texture2D" uid="uid://jol1dt0r7xkh" path="res://game_sandbox/jake_sandbox/Assets/Materials/Moss001_516_NormalDX.jpg" id="3_0kxdv"]
+[ext_resource type="Texture2D" uid="uid://cbpiawqm4m4pd" path="res://game_sandbox/jake_sandbox/Assets/Materials/Moss001_516_Roughness.jpg" id="4_4r85r"]
+
+[resource]
+albedo_texture = ExtResource("1_qkl4e")
+roughness_texture = ExtResource("4_4r85r")
+normal_enabled = true
+normal_texture = ExtResource("3_0kxdv")
+ao_enabled = true
+ao_texture = ExtResource("2_in4sq")
