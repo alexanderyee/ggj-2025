@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bjm5trsh5ponb"]
+[gd_scene load_steps=26 format=3 uid="uid://bjm5trsh5ponb"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="1_cgvsa"]
 [ext_resource type="Texture2D" uid="uid://dwqqnft73i6ia" path="res://game_sandbox/devone_sandbox/assets/photo_studio_loft_hall_2k.exr" id="1_drluy"]
@@ -9,9 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://ddr0eyav0x5cr" path="res://scenes/selectables/seashell.tscn" id="5_ohhq1"]
 [ext_resource type="Script" path="res://addons/DragAndDrop3D/nodes/drag_and_drop_3d.gd" id="5_s6p64"]
 [ext_resource type="PackedScene" uid="uid://dnw670y81o6wc" path="res://game_sandbox/devone_sandbox/fish_tank.tscn" id="6_78ovq"]
-[ext_resource type="PackedScene" path="res://scenes/crab.tscn" id="9_386os"]
+[ext_resource type="PackedScene" uid="uid://dfsep4rjt4s4m" path="res://scenes/crab.tscn" id="9_386os"]
 [ext_resource type="Texture2D" uid="uid://h8nkf61rxc3y" path="res://game_sandbox/devone_sandbox/assets/SpotLightMask.png" id="10_4fthu"]
 [ext_resource type="Texture2D" uid="uid://d2jtf8p66f2ei" path="res://game_sandbox/devone_sandbox/assets/SpotLightMaskLine.png" id="11_se7xa"]
+[ext_resource type="PackedScene" uid="uid://clokowewa7geu" path="res://game_sandbox/jake_sandbox/Scenes/chest.tscn" id="12_2aqk5"]
+[ext_resource type="PackedScene" uid="uid://cvb85hrhl8k2s" path="res://game_sandbox/jake_sandbox/Assets/Models/doughnut_coral.glb" id="13_puxit"]
+[ext_resource type="PackedScene" uid="uid://s3755bhbqwk7" path="res://game_sandbox/jake_sandbox/Assets/Models/pineapple_house.glb" id="14_abfds"]
 
 [sub_resource type="Resource" id="Resource_r1ygu"]
 script = ExtResource("2_8vgn0")
@@ -37,7 +40,8 @@ panorama = ExtResource("1_drluy")
 [sub_resource type="Sky" id="Sky_o5002"]
 sky_material = SubResource("PanoramaSkyMaterial_6jsnm")
 
-[sub_resource type="Environment" id="Environment_15p5b"]
+[sub_resource type="Environment" id="Environment_x6thh"]
+
 background_mode = 2
 background_energy_multiplier = 1.5
 sky = SubResource("Sky_o5002")
@@ -78,7 +82,7 @@ look_at_damping = true
 
 [node name="HostCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, -0.000682079, 0.000303226, -4.04019e-07, 0.405733, 0.913992, -0.000746444, -0.913991, 0.405733, 0, 14.519, 6.445)
-environment = SubResource("Environment_15p5b")
+environment = SubResource("Environment_x6thh")
 fov = 74.0
 
 [node name="PhantomCameraHost" type="Node" parent="HostCamera"]
@@ -96,6 +100,9 @@ navigation_mesh = SubResource("NavigationMesh_s26kr")
 
 [node name="Seashell" parent="Environment" instance=ExtResource("5_ohhq1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27759, -1.26305, -6.11404)
+
+[node name="Seashell2" parent="Environment" instance=ExtResource("5_ohhq1")]
+transform = Transform3D(0.999713, -0.0239611, 0, 0.0239611, 0.999713, 0, 0, 0, 1, 10.6345, -1.26305, 5.47246)
 
 [node name="Default Cube" type="StaticBody3D" parent="Environment"]
 transform = Transform3D(-0.325123, 0, 0.945672, 0, 1, 0, -0.945672, 0, -0.325123, 3, 0, -3)
@@ -155,6 +162,21 @@ light_specular = 10.0
 shadow_enabled = true
 spot_range = 8.184
 spot_angle = 53.0
+
+[node name="treasure_chest" parent="Environment" instance=ExtResource("12_2aqk5")]
+transform = Transform3D(-0.010559, 0, -0.999944, 0, 1, 0, 0.999944, 0, -0.010559, -11.6419, -1.5, 5.38209)
+
+[node name="doughnut_coral" parent="Environment" instance=ExtResource("13_puxit")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3714, -1.5, 0.399492)
+
+[node name="doughnut_coral2" parent="Environment" instance=ExtResource("13_puxit")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7468, -1.5, -6.78977)
+
+[node name="doughnut_coral3" parent="Environment" instance=ExtResource("13_puxit")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.42484, -1.5, 2.93493)
+
+[node name="pineapple_house" parent="Environment" instance=ExtResource("14_abfds")]
+transform = Transform3D(-0.774217, 0, 1.28475, 0, 1.5, 0, -1.28475, 0, -0.774217, 10.0106, -1.5, -4.72789)
 
 [node name="NeedsSystem" type="Node3D" parent="."]
 
