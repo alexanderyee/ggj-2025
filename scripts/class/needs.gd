@@ -10,13 +10,6 @@ extends Node3D
 @export var comfort : = 10
 @export var community : = 10
 
-# These are set to 60, because starting at 100%
-# of a property would be boring.
-@export var food : = 60
-@export var shelter : = 60
-@export var comfort : = 60
-@export var community : = 60
-
 var total
 
 # Called when the node enters the scene tree for the first time.
