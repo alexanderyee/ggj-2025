@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://q0u0ipdiqmw7"]
+
+[ext_resource type="Script" path="res://scripts/class/needemotes.gd" id="1_ewvhq"]
+[ext_resource type="Texture2D" uid="uid://bundy5rmyihep" path="res://game_sandbox/adrianna_sandbox/assets/NeedBubble.png" id="2_ap6k3"]
+[ext_resource type="Texture2D" uid="uid://dqe6imgh3gxtc" path="res://game_sandbox/adrianna_sandbox/assets/FoodBubble.png" id="3_2g8tb"]
+[ext_resource type="Texture2D" uid="uid://dombmrw4d218y" path="res://game_sandbox/adrianna_sandbox/assets/ShelterBubble.png" id="4_0wi8v"]
+[ext_resource type="Texture2D" uid="uid://djunkdvprw0ft" path="res://game_sandbox/adrianna_sandbox/assets/ComfortBubble.png" id="5_qxtwj"]
+[ext_resource type="Texture2D" uid="uid://buyxeal1sr15q" path="res://game_sandbox/adrianna_sandbox/assets/CommunityBubble.png" id="6_w7gea"]
+
+[node name="Emotes" type="Node" node_paths=PackedStringArray("speechSprite", "foodSprite", "shelterSprite", "comfortSprite", "communitySprite")]
+script = ExtResource("1_ewvhq")
+foodXCoord = null
+shelterXCoord = null
+comfortXCoord = null
+communityXCoord = null
+emoteID = null
+speechSprite = NodePath("Speech")
+foodSprite = NodePath("Emote Bubble/Food")
+shelterSprite = NodePath("Emote Bubble/Shelter")
+comfortSprite = NodePath("Emote Bubble/Comfort")
+communitySprite = NodePath("Emote Bubble/Community")
+food = null
+shelter = null
+comfort = null
+community = null
+
+[node name="Transparency" type="Node3D" parent="."]
+
+[node name="Coords" type="Node3D" parent="."]
+
+[node name="Speech" type="Sprite3D" parent="."]
+billboard = 1
+texture = ExtResource("2_ap6k3")
+
+[node name="Emote Bubble" type="Node3D" parent="."]
+
+[node name="Stat ID" type="Node3D" parent="Emote Bubble"]
+
+[node name="Food" type="Sprite3D" parent="Emote Bubble"]
+billboard = 1
+texture = ExtResource("3_2g8tb")
+
+[node name="Shelter" type="Sprite3D" parent="Emote Bubble"]
+billboard = 1
+texture = ExtResource("4_0wi8v")
+
+[node name="Comfort" type="Sprite3D" parent="Emote Bubble"]
+billboard = 1
+texture = ExtResource("5_qxtwj")
+
+[node name="Community" type="Sprite3D" parent="Emote Bubble"]
+billboard = 1
+texture = ExtResource("6_w7gea")
