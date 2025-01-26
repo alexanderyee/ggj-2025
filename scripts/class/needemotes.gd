@@ -21,18 +21,13 @@ var shelterEmoteTimer : float
 var comfortEmoteTimer : float
 var communityEmoteTimer : float
 
-var prevFood : int
-var prevShelter : int
-var prevComfort : int
-var prevCommunity : int
+var foodTimerOn : bool = false
+var shelterTimerOn : bool = false
+var comfortTimerOn : bool = false
+var communityTimerOn : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	prevFood = food
-	prevShelter = shelter
-	prevComfort = comfort
-	prevCommunity = community
-  
 	speechSprite.transparency = 1
 	foodSprite.transparency = 1
 	shelterSprite.transparency = 1
@@ -52,15 +47,15 @@ func _process(delta: float) -> void:
 	checkneed(2)
 	checkneed(3)
 	
-	checkpercentage(food, 0)
-	checkpercentage(shelter, 1)
-	checkpercentage(comfort, 2)
-	checkpercentage(community, 3)
-	
 	setcoords(0)
 	setcoords(1)
 	setcoords(2)
 	setcoords(3)
+	
+	countdowntimer(0, delta)
+	countdowntimer(1, delta)
+	countdowntimer(2, delta)
+	countdowntimer(3, delta)
 	
 	updatespritetimer(delta)
 
@@ -156,24 +151,20 @@ func checkneed(stat_id: int):
 	# Basically, it tells it if there's no change, don't fuck with the timers.
 
 	if stat_id == 0:	
-		if prevFood != food:
+		if !foodTimerOn:
 			checkpercentage(food, stat_id)
-		prevFood = food
 		
 	elif stat_id == 1:
-		if prevShelter != shelter:
+		if !shelterTimerOn:
 			checkpercentage(shelter, stat_id)
-		prevShelter = shelter
 		
 	elif stat_id == 2:
-		if prevComfort != comfort:
+		if !comfortTimerOn:
 			checkpercentage(comfort, stat_id)
-		prevComfort = comfort
 		
 	else:
-		if prevCommunity != community:
+		if !communityTimerOn:
 			checkpercentage(community, stat_id)
-		prevCommunity = community
 
 func checkpercentage(need: int, stat_id: int):
 	
@@ -194,16 +185,20 @@ func checkpercentage(need: int, stat_id: int):
 func starttimer(stat_id: int, time: float):
 	
 	if stat_id == 0:	
-		foodTimer = time;
+		foodTimer = time
+		foodTimerOn = true
 		
 	elif stat_id == 1:
-		shelterTimer = time;
+		shelterTimer = time
+		shelterTimerOn = true
 		
 	elif stat_id == 2:
-		comfortTimer = time;
+		comfortTimer = time
+		comfortTimerOn = true
 		
 	else:
-		communityTimer = time;
+		communityTimer = time
+		communityTimerOn = true
 
 func countdowntimer(stat_id: int, subtract: float):
 	
@@ -212,31 +207,37 @@ func countdowntimer(stat_id: int, subtract: float):
 		
 		if foodTimer <= 0:
 			if foodTimer > -60:
+				
 				emote(1)
 				checkneed(0)
+				foodTimerOn = false
 		
 	elif stat_id == 1:
 		shelterTimer = shelterTimer - subtract;
 		
 		if shelterTimer <= 0:
 			if shelterTimer > -60:
-
+				
 				emote(2)
 				checkneed(1)
+				shelterTimerOn = false
 		
 	elif stat_id == 2:
 		comfortTimer = comfortTimer - subtract;
 		
 		if comfortTimer <= 0:
 			if comfortTimer > -60:
+				
 				emote(3)
-
 				checkneed(2)
+				comfortTimerOn = false
 		
 	else:
 		communityTimer = communityTimer - subtract;
 		
 		if communityTimer <= 0:
 			if communityTimer > -60:
+				
 				emote(4)
 				checkneed(3)
+				communityTimerOn = false

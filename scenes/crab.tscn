@@ -37,7 +37,7 @@ max_polyphony = 10
 [node name="Defineneeds" parent="." instance=ExtResource("3_d4k28")]
 
 [node name="Emotes" parent="." node_paths=PackedStringArray("crabCoords") instance=ExtResource("4_dny1i")]
-transform = Transform3D(0.719471, 0, 0, 0, 0.719471, 0, 0, 0, 1, 0, 3.12939, 0)
+transform = Transform3D(1.02868, 0, 0, 0, 1.02868, 0, 0, 0, 1, 0, 3.12939, 0)
 crabCoords = NodePath("../CollisionShape3D")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
