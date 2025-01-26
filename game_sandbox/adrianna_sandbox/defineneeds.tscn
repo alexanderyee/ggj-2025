@@ -4,6 +4,10 @@
 
 [node name="Defineneeds" type="Node3D"]
 script = ExtResource("1_whw0u")
+food = 10
+shelter = 10
+comfort = 10
+community = 10
 
 [node name="food" type="Node3D" parent="."]
 

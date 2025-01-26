@@ -7,23 +7,23 @@
 [ext_resource type="Texture2D" uid="uid://djunkdvprw0ft" path="res://game_sandbox/adrianna_sandbox/assets/ComfortBubble.png" id="5_qxtwj"]
 [ext_resource type="Texture2D" uid="uid://buyxeal1sr15q" path="res://game_sandbox/adrianna_sandbox/assets/CommunityBubble.png" id="6_w7gea"]
 
-[node name="Emotes" type="Node3D" node_paths=PackedStringArray("speechSprite", "foodSprite", "shelterSprite", "comfortSprite", "communitySprite")]
+[node name="Emotes" type="Node3D" node_paths=PackedStringArray("speechFoodSprite", "speechShelterSprite", "speechComfortSprite", "speechCommunitySprite", "foodSprite", "shelterSprite", "comfortSprite", "communitySprite")]
 script = ExtResource("1_ewvhq")
-speechSprite = NodePath("Speech")
+speechFoodSprite = NodePath("Emote Bubble/FoodSpeech")
+speechShelterSprite = NodePath("Emote Bubble/ShelterSpeech")
+speechComfortSprite = NodePath("Emote Bubble/ComfortSpeech")
+speechCommunitySprite = NodePath("Emote Bubble/CommunitySpeech")
 foodSprite = NodePath("Emote Bubble/Food")
 shelterSprite = NodePath("Emote Bubble/Shelter")
 comfortSprite = NodePath("Emote Bubble/Comfort")
 communitySprite = NodePath("Emote Bubble/Community")
+food = 10
+shelter = 10
+comfort = 10
 
 [node name="Transparency" type="Node3D" parent="."]
 
 [node name="Coords" type="Node3D" parent="."]
-
-[node name="Speech" type="Sprite3D" parent="."]
-transform = Transform3D(0.435692, 0, 0, 0, 0.435692, 0, 0, 0, 0.435692, 0, 0, 0)
-billboard = 1
-shaded = true
-texture = ExtResource("2_ap6k3")
 
 [node name="Emote Bubble" type="Node3D" parent="."]
 
@@ -56,3 +56,27 @@ billboard = 1
 shaded = true
 render_priority = 1
 texture = ExtResource("6_w7gea")
+
+[node name="FoodSpeech" type="Sprite3D" parent="Emote Bubble"]
+transform = Transform3D(0.435692, 0, 0, 0, 0.435692, 0, 0, 0, 0.435692, 0, 0, 0)
+billboard = 1
+shaded = true
+texture = ExtResource("2_ap6k3")
+
+[node name="ShelterSpeech" type="Sprite3D" parent="Emote Bubble"]
+transform = Transform3D(0.435692, 0, 0, 0, 0.435692, 0, 0, 0, 0.435692, 0, 0, 0)
+billboard = 1
+shaded = true
+texture = ExtResource("2_ap6k3")
+
+[node name="ComfortSpeech" type="Sprite3D" parent="Emote Bubble"]
+transform = Transform3D(0.435692, 0, 0, 0, 0.435692, 0, 0, 0, 0.435692, 0, 0, 0)
+billboard = 1
+shaded = true
+texture = ExtResource("2_ap6k3")
+
+[node name="CommunitySpeech" type="Sprite3D" parent="Emote Bubble"]
+transform = Transform3D(0.435692, 0, 0, 0, 0.435692, 0, 0, 0, 0.435692, 0, 0, 0)
+billboard = 1
+shaded = true
+texture = ExtResource("2_ap6k3")
