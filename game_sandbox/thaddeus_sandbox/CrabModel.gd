@@ -1,6 +1,7 @@
 extends Node3D
-
+@export var leg_predictive_factor : float = 1.0
 @onready var eyes_target : Marker3D = $EyesTarget
+@export var body_rotation_factor : float = 7.0
 
 @onready var step_distance : float = 0.3
 
@@ -87,7 +88,7 @@ func _process(delta: float) -> void:
 	var crabmesh_rotate_axis = Vector3.FORWARD
 	crabmesh_rotate_axis = crabmesh_rotate_axis.rotated(Vector3.UP, crabmesh_rotate_y)
 	var mesh_rot_target = min(speed*0.1, 0.5)
-	mesh_rot = lerpf(mesh_rot, mesh_rot_target, delta * 7.0)
+	mesh_rot = lerpf(mesh_rot, mesh_rot_target, delta * body_rotation_factor)
 	crabmesh.rotate(crabmesh_rotate_axis, mesh_rot)
 	
 	eyes.rotate(crabmesh_rotate_axis, mesh_rot*2.0)

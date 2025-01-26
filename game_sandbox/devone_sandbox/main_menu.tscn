@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://s0kvktblx7cj"]
+[gd_scene load_steps=5 format=3 uid="uid://g7nhxo6dhaxt"]
 
 [ext_resource type="Script" path="res://game_sandbox/devone_sandbox/menu/main_menu.gd" id="1_gcpvp"]
 [ext_resource type="Texture2D" uid="uid://bspf4arc8ti01" path="res://game_sandbox/devone_sandbox/menu/assets/button_square_flat.png" id="2_fmfis"]

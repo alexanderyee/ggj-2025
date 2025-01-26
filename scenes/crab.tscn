@@ -1,17 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://dfsep4rjt4s4m"]
+[gd_scene load_steps=5 format=3 uid="uid://dfsep4rjt4s4m"]
 
 [ext_resource type="Script" path="res://scripts/class/crab.gd" id="1_x3l5e"]
+[ext_resource type="PackedScene" uid="uid://pxgf0xl24adb" path="res://game_sandbox/thaddeus_sandbox/CrabModel.tscn" id="2_ahruy"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0ajk3"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ns67v"]
+radius = 5.0
 
 [node name="Crab" type="CharacterBody3D"]
 script = ExtResource("1_x3l5e")
-fov_radius_meters = 1.0
+speed = 1.7
+fov_radius_meters = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_0ajk3")
+
+[node name="CrabModel" parent="CollisionShape3D" instance=ExtResource("2_ahruy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.167051, 0)
+body_rotation_factor = 12.0
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
@@ -26,3 +33,11 @@ shape = SubResource("SphereShape3D_ns67v")
 max_polyphony = 10
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="CrabVision" to="." method="_on_crab_vision_body_entered"]
+[connection signal="body_exited" from="CrabVision" to="." method="_on_crab_vision_body_exited"]
+
+[editable path="CollisionShape3D/CrabModel"]
+[editable path="CollisionShape3D/CrabModel/Crab2"]
+[editable path="CollisionShape3D/CrabModel/Crab2/Eyes/Eye"]
+[editable path="CollisionShape3D/CrabModel/Crab2/Eyes/Eye2"]
+[editable path="CollisionShape3D/CrabModel/Legs"]
