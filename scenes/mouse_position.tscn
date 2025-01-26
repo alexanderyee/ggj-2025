@@ -12,6 +12,7 @@ radius = 0.1
 script = ExtResource("1_82pne")
 
 [node name="MousePositionBody" type="CharacterBody3D" parent="." groups=["hand"]]
+visible = false
 collision_layer = 8
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="MousePositionBody"]
