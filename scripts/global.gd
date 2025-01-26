@@ -5,7 +5,11 @@ extends Node
 # TODO: make these into resources and add an audiolibrary class
 const crab_sound_names = ["crab", "hand", "frightened", "scared", "food"]
 var crab_tts_sounds = {}
-
+## 0 = food
+## 1 = shelter
+## 2 = comfort
+## 3 = community
+enum CRAB_NEEDS {FOOD, SHELTER, COMFORT, COMMUNITY}
 @onready var drag_n_drop_manager: DragAndDrop3D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

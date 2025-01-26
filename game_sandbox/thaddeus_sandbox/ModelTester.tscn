@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://colohtmwn61ji"]
 
 [ext_resource type="Script" path="res://game_sandbox/thaddeus_sandbox/model_tester.gd" id="1_sg145"]
-[ext_resource type="PackedScene" uid="uid://pxgf0xl24adb" path="res://game_sandbox/thaddeus_sandbox/CrabModel.tscn" id="2_lh3ck"]
+[ext_resource type="PackedScene" uid="uid://xi61mkik355y" path="res://game_sandbox/thaddeus_sandbox/CrabModel.tscn" id="2_lh3ck"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_5w44w"]
 size = Vector3(20, 1, 20)

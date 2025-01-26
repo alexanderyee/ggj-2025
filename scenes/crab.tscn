@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dfsep4rjt4s4m"]
 
 [ext_resource type="Script" path="res://scripts/class/crab.gd" id="1_x3l5e"]
-[ext_resource type="PackedScene" path="res://game_sandbox/thaddeus_sandbox/CrabModel.tscn" id="2_ahruy"]
+[ext_resource type="PackedScene" uid="uid://xi61mkik355y" path="res://game_sandbox/thaddeus_sandbox/CrabModel.tscn" id="2_ahruy"]
 [ext_resource type="AudioStream" uid="uid://cejoy0c6mbv8d" path="res://game_sandbox/fluffy_sandbox/sfx/scuttle.wav" id="3_4dibv"]
 [ext_resource type="PackedScene" uid="uid://d2j6u7une1aln" path="res://game_sandbox/adrianna_sandbox/defineneeds.tscn" id="3_d4k28"]
 [ext_resource type="PackedScene" uid="uid://c7nhh6gy0vbp7" path="res://game_sandbox/adrianna_sandbox/emotes.tscn" id="4_dny1i"]
@@ -38,6 +38,7 @@ max_polyphony = 10
 [node name="ScuttleVFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_4dibv")
 volume_db = -16.0
+
 [node name="Defineneeds" parent="." instance=ExtResource("3_d4k28")]
 
 [node name="Emotes" parent="." node_paths=PackedStringArray("crabCoords") instance=ExtResource("4_dny1i")]

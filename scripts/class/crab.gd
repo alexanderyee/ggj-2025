@@ -10,8 +10,10 @@ extends CharacterBody3D
 @onready var crab_voice: AudioStreamPlayer3D = $AudioStreamPlayer3D
 @onready var crab_model: Node3D = $CollisionShape3D/CrabModel
 @onready var scuttle_vfx: AudioStreamPlayer = $ScuttleVFX
+@onready var needs: Needs = $Defineneeds
 
 var current_fixation = null
+var current_objects_within_fov := []
 
 func _ready() -> void:
 	timer.wait_time = tick_length_milliseconds / 1000.0
@@ -27,6 +29,7 @@ func _physics_process(delta: float) -> void:
 	var objects_within_fov : Array[Node3D] = crab_vision.get_overlapping_bodies()
 	# sort objects by distance from crab
 	objects_within_fov.sort_custom(sort_objects_within_crab_vision)
+	current_objects_within_fov = objects_within_fov.duplicate()
 	if objects_within_fov.size() > 0:
 		var closest_object = objects_within_fov[0]
 		current_fixation = closest_object
@@ -54,10 +57,23 @@ func _physics_process(delta: float) -> void:
 		scuttle_vfx.play()
 
 func emote() -> void:
-	
-	
 	# bubble up what the crab is thinking
 	
+	# update crab's needs every crab tick
+	# TODO make these enums in global
+	## 0 = food 
+	## 1 = shelter
+	## 2 = comfort
+	## 3 = community
+	if !current_objects_within_fov.is_empty():
+		# get groups of each object within fov
+		var all_groups_within_fov = []
+		for fixation in current_objects_within_fov:
+			var fixation_groups = fixation.get_groups()
+			for fixation_group in fixation_groups:
+				all_groups_within_fov.append(fixation_group)
+		adjust_needs(all_groups_within_fov)
+		
 	# play TTS soundfx
 	if !crab_voice.playing:
 		crab_voice.play()
@@ -76,6 +92,28 @@ func sort_objects_within_crab_vision(obj1, obj2):
 		global_transform.origin.distance_to(obj2.global_transform.origin):
 			return true
 	return false
+
+func adjust_needs(all_groups_within_fov):
+	# TODO maybe there's a better way to keep track of whether a need is being
+	#      currently met... but we got 2 hours
+	var need_counter = [0, 0, 0, 0]
+	for group in all_groups_within_fov:
+		if group == "food":
+			needs.decrease(Global.CRAB_NEEDS.FOOD)
+			need_counter[Global.CRAB_NEEDS.FOOD] += 1
+		if group == "shelter":
+			needs.decrease(Global.CRAB_NEEDS.SHELTER)
+			need_counter[Global.CRAB_NEEDS.SHELTER] += 1
+		if group == "comfort":
+			needs.decrease(Global.CRAB_NEEDS.COMFORT)
+			need_counter[Global.CRAB_NEEDS.COMFORT] += 1
+		if group == "community":
+			needs.decrease(Global.CRAB_NEEDS.COMMUNITY)
+			need_counter[Global.CRAB_NEEDS.COMMUNITY] += 1
+	for i in range(need_counter.size() - 1):
+		if need_counter[i] <= 0:
+			needs.increase(i)
+		
 
 func _on_timer_timeout() -> void:
 	emote()
