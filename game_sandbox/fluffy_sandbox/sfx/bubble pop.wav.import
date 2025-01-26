@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://wgmjeradocsc"
+path="res://.godot/imported/bubble pop.wav-f27048e5cda1882794647915fbd5561e.sample"
+
+[deps]
+
+source_file="res://game_sandbox/fluffy_sandbox/sfx/bubble pop.wav"
+dest_files=["res://.godot/imported/bubble pop.wav-f27048e5cda1882794647915fbd5561e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

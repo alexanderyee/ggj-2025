@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=3 uid="uid://btf5fqqctoyid"]
+
+[ext_resource type="PackedScene" uid="uid://c6qvrm4du4utv" path="res://game_sandbox/jake_sandbox/Scenes/chest_two_eletric_boogaloo.glb" id="1_q5wtw"]
+
+[sub_resource type="Animation" id="Animation_oc60g"]
+resource_name = "idle"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chest_001:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.933333, 2, 3.23333, 5, 6.13333, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.309, 0, 0), Vector3(-0.785398, 0, 0), Vector3(-1.309, 0, 0), Vector3(-0.785398, 0, 0), Vector3(-0.799235, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chest Planks_001:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.933333, 2, 3.23333, 5, 6.13333, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.309, 0, 0), Vector3(-0.785398, 0, 0), Vector3(-1.309, 0, 0), Vector3(-0.785398, 0, 0), Vector3(-0.810413, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_03a75"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chest_001:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chest Planks_001:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_866tf"]
+_data = {
+"RESET": SubResource("Animation_03a75"),
+"idle": SubResource("Animation_oc60g")
+}
+
+[node name="chest_three" instance=ExtResource("1_q5wtw")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+libraries = {
+"": SubResource("AnimationLibrary_866tf")
+}
+autoplay = "idle"
