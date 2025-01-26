@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cor16fxb43qho"]
+
+[ext_resource type="Script" path="res://addons/DragAndDrop3D/nodes/dragging_object_3d.gd" id="1_bp0xk"]
+[ext_resource type="PackedScene" uid="uid://s3755bhbqwk7" path="res://game_sandbox/jake_sandbox/Assets/Models/pineapple_house.glb" id="2_usj6g"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q8msw"]
+radius = 1.33672
+height = 6.0
+
+[node name="PineappleHouse" type="Node3D"]
+script = ExtResource("1_bp0xk")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.395738, 1.75929, 0)
+shape = SubResource("CapsuleShape3D_q8msw")
+
+[node name="pineapple_house" parent="StaticBody3D" instance=ExtResource("2_usj6g")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
