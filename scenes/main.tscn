@@ -10,7 +10,9 @@
 [ext_resource type="Script" path="res://addons/DragAndDrop3D/nodes/drag_and_drop_3d.gd" id="5_s6p64"]
 [ext_resource type="PackedScene" uid="uid://dnw670y81o6wc" path="res://game_sandbox/devone_sandbox/fish_tank.tscn" id="6_78ovq"]
 [ext_resource type="PackedScene" uid="uid://dfsep4rjt4s4m" path="res://scenes/crab.tscn" id="9_386os"]
+[ext_resource type="PackedScene" uid="uid://dd41hl1os2gx2" path="res://game_sandbox/devone_sandbox/rock.tscn" id="9_ovke5"]
 [ext_resource type="Texture2D" uid="uid://h8nkf61rxc3y" path="res://game_sandbox/devone_sandbox/assets/SpotLightMask.png" id="10_4fthu"]
+[ext_resource type="Shader" path="res://game_sandbox/devone_sandbox/caustic.gdshader" id="10_28cv8"]
 [ext_resource type="Texture2D" uid="uid://d2jtf8p66f2ei" path="res://game_sandbox/devone_sandbox/assets/SpotLightMaskLine.png" id="11_se7xa"]
 [ext_resource type="PackedScene" uid="uid://clokowewa7geu" path="res://game_sandbox/jake_sandbox/Scenes/chest.tscn" id="12_2aqk5"]
 [ext_resource type="PackedScene" uid="uid://d3mgwdjbjyq0b" path="res://scenes/mouse_position.tscn" id="12_8awkg"]
@@ -43,7 +45,7 @@ panorama = ExtResource("1_drluy")
 [sub_resource type="Sky" id="Sky_o5002"]
 sky_material = SubResource("PanoramaSkyMaterial_6jsnm")
 
-[sub_resource type="Environment" id="Environment_pm1n1"]
+[sub_resource type="Environment" id="Environment_v36u4"]
 background_mode = 2
 background_energy_multiplier = 1.5
 sky = SubResource("Sky_o5002")
@@ -52,15 +54,16 @@ tonemap_exposure = 0.25
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_s26kr"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_niry1"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qgeg3"]
-albedo_color = Color(7.46027e-07, 0, 0.403407, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_i17vl"]
-material = SubResource("StandardMaterial3D_qgeg3")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_drp6g"]
+render_priority = 0
+shader = ExtResource("10_28cv8")
+shader_parameter/iteration_times = 5
+shader_parameter/speed = 0.5
+shader_parameter/color = Color(1, 0.870588, 0.501961, 1)
+shader_parameter/intensity = 0.005
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vhxc3"]
+next_pass = SubResource("ShaderMaterial_drp6g")
 albedo_color = Color(1, 0.839216, 0, 1)
 
 [node name="Main" type="Node3D"]
@@ -84,7 +87,7 @@ look_at_damping = true
 
 [node name="HostCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, -0.000682079, 0.000303226, -4.04019e-07, 0.405733, 0.913992, -0.000746444, -0.913991, 0.405733, 0, 14.519, 6.445)
-environment = SubResource("Environment_pm1n1")
+environment = SubResource("Environment_v36u4")
 fov = 74.0
 
 [node name="PhantomCameraHost" type="Node" parent="HostCamera"]
@@ -100,22 +103,11 @@ navigation_mesh = SubResource("NavigationMesh_s26kr")
 
 [node name="Environment" type="Node3D" parent="."]
 
-[node name="Seashell" parent="Environment" instance=ExtResource("5_ohhq1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27759, -1.26305, -6.11404)
-
 [node name="Seashell2" parent="Environment" instance=ExtResource("5_ohhq1")]
 transform = Transform3D(0.999713, -0.0239611, 0, 0.0239611, 0.999713, 0, 0, 0, 1, 10.6345, -1.26305, 5.47246)
 
-[node name="Default Cube" type="StaticBody3D" parent="Environment"]
-transform = Transform3D(-0.325123, 0, 0.945672, 0, 1, 0, -0.945672, 0, -0.325123, 3, 0, -3)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Default Cube"]
-transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0)
-shape = SubResource("BoxShape3D_niry1")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Default Cube"]
-transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, -1, 0)
-mesh = SubResource("BoxMesh_i17vl")
+[node name="Rock" parent="Environment" instance=ExtResource("9_ovke5")]
+transform = Transform3D(-0.967378, 0, 0.253336, 0, 1, 0, -0.253336, 0, -0.967378, -5.77909, -1.39049, -6.78566)
 
 [node name="Floor" type="CSGBox3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
@@ -182,9 +174,6 @@ transform = Transform3D(-0.010559, 0, -0.999944, 0, 1, 0, 0.999944, 0, -0.010559
 [node name="doughnut_coral" parent="Environment" instance=ExtResource("13_puxit")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3714, -1.5, 0.399492)
 
-[node name="doughnut_coral2" parent="Environment" instance=ExtResource("13_puxit")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7468, -1.5, -6.78977)
-
 [node name="doughnut_coral3" parent="Environment" instance=ExtResource("13_puxit")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.42484, -1.5, 2.93493)
 
@@ -203,20 +192,20 @@ autoplay = true
 [node name="Crab" parent="CrabCast" instance=ExtResource("9_386os")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.96564, 0, 0)
 tick_length_milliseconds = 1200
-fov_radius_meters = 6.0
+fov_radius_meters = 4.0
 
 [node name="Crab2" parent="CrabCast" instance=ExtResource("9_386os")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.41744, 0, -0.698341)
 tick_length_milliseconds = 1100
-fov_radius_meters = 6.0
+fov_radius_meters = 4.0
 
 [node name="Crab3" parent="CrabCast" instance=ExtResource("9_386os")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.684, 0, -3.31727)
 tick_length_milliseconds = 1300
-fov_radius_meters = 6.0
+fov_radius_meters = 4.0
 
 [node name="Crab4" parent="CrabCast" instance=ExtResource("9_386os")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38386, 0, -3.61803)
-fov_radius_meters = 6.0
+fov_radius_meters = 4.0
 
 [node name="UIRoot" type="CanvasLayer" parent="."]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dd41hl1os2gx2"]
+
+[ext_resource type="Script" path="res://addons/DragAndDrop3D/nodes/dragging_object_3d.gd" id="1_4vegi"]
+[ext_resource type="ArrayMesh" uid="uid://eqwbdje4dapw" path="res://game_sandbox/devone_sandbox/rock-med.mesh" id="2_5q7u6"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ok8eo"]
+points = PackedVector3Array(-0.0661834, 1.95107, 1.08944, -0.460181, 0.0903108, -1.12173, -0.408035, -0.195255, -0.960354, 1.45051, 0.537365, 0.0657908, -0.358464, 0.0997688, 1.77315, -1.70158, 0.676338, 0.00210243, 0.222709, 1.84341, -0.219714, 0.977221, 0.0362338, 1.25274, -1.33393, 0.148287, 1.13953, -0.838501, 1.65161, 1.13135, 0.275179, 1.80529, 1.3336, 0.807762, 0.394162, -0.855051, -0.951936, -0.253201, -0.724163, 0.759473, 1.85063, 0.116486, 0.511415, -0.132032, -0.604104, -0.25823, 1.88332, -0.0238382, -1.44826, 0.0898414, -0.677832, 1.44806, 0.196045, 0.407482, -0.355007, 1.60005, 1.51234, -0.986679, 0.346654, -0.901017, 0.316678, 1.45439, -0.552302, 0.605662, 1.88763, 0.790753, 0.96595, 0.14294, 1.34172, -0.552226, 1.94869, 0.699045, -1.68877, 0.191488, -0.132317, -0.260726, 0.0526293, 1.77026, -1.4867, 0.340978, 0.947168, -0.259937, 0.395729, -1.09307, -1.12235, 0.447523, 1.31853, -1.22241, 0.0608101, 1.22571, 0.797216, 0.831264, -0.697271, -0.1147, 0.147447, 1.77534)
+
+[node name="Rock" type="Node3D"]
+script = ExtResource("1_4vegi")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_ok8eo")
+
+[node name="Mesh" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = ExtResource("2_5q7u6")
+skeleton = NodePath("../..")
