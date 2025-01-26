@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://c4kyiwo0wkhpk"]
+[gd_scene load_steps=12 format=3 uid="uid://c4kyiwo0wkhpk"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="1_2ncpv"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="2_m65ry"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_q1j4j"]
 [ext_resource type="PackedScene" uid="uid://yaw41h3vjeti" path="res://game_sandbox/jake_sandbox/Assets/Models/seashell.glb" id="4_p228f"]
-[ext_resource type="PackedScene" uid="uid://dfsep4rjt4s4m" path="res://scenes/crab.tscn" id="5_kgg2k"]
+[ext_resource type="PackedScene" path="res://scenes/crab.tscn" id="5_kgg2k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kbcgm"]
 
@@ -48,11 +47,6 @@ look_at_damping = true
 
 [node name="HostCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, -1.40883e-17, 2.11362e-17, 3.84857e-18, 0.906522, 0.422159, -2.51079e-17, -0.422159, 0.906522, 0, 2, 2.602)
-
-[node name="PhantomCameraHost" type="Node" parent="HostCamera"]
-process_priority = 300
-process_physics_priority = 300
-script = ExtResource("3_q1j4j")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_s26kr")
