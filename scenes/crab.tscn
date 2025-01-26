@@ -38,6 +38,7 @@ max_polyphony = 10
 [node name="ScuttleVFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_4dibv")
 volume_db = -16.0
+
 [node name="Defineneeds" parent="." instance=ExtResource("3_d4k28")]
 
 [node name="Emotes" parent="." node_paths=PackedStringArray("crabCoords") instance=ExtResource("4_dny1i")]
