@@ -34,6 +34,10 @@ func _ready() -> void:
 		_set_default_snap_position()
 		_set_late_signals()
 
+func _process(delta: float) -> void:
+	if not Engine.is_editor_hint(): 
+		visible = Global.drag_n_drop_manager._currentDraggingObject != self
+
 func _set_group() -> void:
 	if Engine.is_editor_hint(): return
 	
@@ -58,6 +62,7 @@ func _get_object_body() -> CollisionObject3D:
 	return null	
 
 func _is_dragging(draggingObject, boolean) -> void:
+	
 	if not draggingObject == self: return
 	
 	if boolean: dragging_started.emit()

@@ -31,12 +31,21 @@ signal dragging_stopped(draggingObject: DraggingObject3D)
 var _currentDraggingObject: DraggingObject3D
 var _otherObjectOnPosition: DraggingObject3D
 
+@onready var hand : Node3D = $Hand
+
 func _ready() -> void:
 	if not Engine.is_editor_hint(): 
 		DragAndDropGroupHelper.group_added.connect(_set_dragging_object_signals)
-
+		Global.drag_n_drop_manager = self
+	
 	_set_group()
 	
+
+#func _process(delta: float) -> void:
+	#print(draggingObject == self)	
+	#if _currentDraggingObject is DraggingObject3D:
+		#
+
 func _set_group() -> void:
 	if Engine.is_editor_hint(): return
 	
@@ -57,9 +66,17 @@ func _input(event: InputEvent) -> void:
 		if _currentDraggingObject and event.button_index == 1 and not event.is_pressed():
 			stop_drag()
 	elif event is InputEventMouseMotion:
+		var mousePosition3D = _get_3d_mouse_position()
 		if _currentDraggingObject: 
-			_handle_drag()
-			
+			_handle_drag(mousePosition3D)
+		var hand_pos = _get_3d_mouse_position_for_hand()
+		if hand_pos is Vector3:
+			hand.global_position.x = hand_pos.x
+			hand.y_target = hand_pos.y
+			hand.global_position.z = hand_pos.z
+				
+		
+
 func stop_drag() -> void:
 	var swaped = _swap_dragging_objects()
 	
@@ -70,15 +87,17 @@ func stop_drag() -> void:
 	_currentDraggingObject = null
 	
 	
-func _handle_drag() -> void:
-	var mousePosition3D = _get_3d_mouse_position()
+func _handle_drag(mouse_pos) -> void:
+	var mousePosition3D = mouse_pos#_get_3d_mouse_position()
 	
 	if not mousePosition3D: return
 
 	mousePosition3D.y += _currentDraggingObject.get_height_offset()
 	_currentDraggingObject.objectBody.global_position = mousePosition3D
 	
-func _get_3d_mouse_position():
+	hand
+
+func _get_3d_mouse_position_for_hand():
 	var mousePosition := get_viewport().get_mouse_position()
 	var currentCamera := get_viewport().get_camera_3d()
 	var params := PhysicsRayQueryParameters3D.new()
@@ -88,21 +107,46 @@ func _get_3d_mouse_position():
 	params.collide_with_areas = true
 	params.exclude = _get_excluded_objects()
 	params.set_collision_mask(collisionMask)
+	#params.collision_mask = 0b1 #masked to collision layer 1
+	var worldspace := get_world_3d().direct_space_state
+	var intersect := worldspace.intersect_ray(params)
+	if not intersect: return
+	
+	
+	var newPosition = intersect.position
+	
+	newPosition.y += 0.25
+	newPosition.z += 0.1
+	return newPosition
+
+func _get_3d_mouse_position():#thaddeus fucked with this so it could give mouse pos even when not dragging an object
+	var mousePosition := get_viewport().get_mouse_position()
+	var currentCamera := get_viewport().get_camera_3d()
+	var params := PhysicsRayQueryParameters3D.new()
+	
+	params.from = currentCamera.project_ray_origin(mousePosition)
+	params.to = currentCamera.project_position(mousePosition, mousePositionDepth)
+	params.collide_with_areas = true
+	
+	params.exclude = _get_excluded_objects()
+	params.set_collision_mask(collisionMask)
+	#params.collision_mask = 0b1 #masked to collision layer 1
 	
 	var worldspace := get_world_3d().direct_space_state
 	var intersect := worldspace.intersect_ray(params)
 
 	if not intersect: return
 	
+	
 	var snapPosition = _get_snap_position(intersect.collider)
 	var isColliderParentDraggingObject = intersect.collider.get_parent() is DraggingObject3D
-	
-	if useSnap and snapPosition: 
-		_currentDraggingObject.snapPosition = snapPosition
-	else: 
-		_currentDraggingObject.snapPosition = intersect.position
-	
-	_set_dragging_object_on_position(snapPosition, intersect.collider)
+	if _currentDraggingObject: 
+		if useSnap and snapPosition: 
+			_currentDraggingObject.snapPosition = snapPosition
+		else: 
+			_currentDraggingObject.snapPosition = intersect.position
+		
+		_set_dragging_object_on_position(snapPosition, intersect.collider)
 	
 	var newPosition
 	if snapPosition and not isColliderParentDraggingObject: newPosition =  snapPosition
@@ -113,12 +157,12 @@ func _get_3d_mouse_position():
 func _get_excluded_objects() -> Array:
 	var exclude := []
 	
-	exclude.append(_currentDraggingObject.get_rid())
+	if _currentDraggingObject: exclude.append(_currentDraggingObject.get_rid())
 	
 	for string in groupExclude:
 		for node in get_tree().get_nodes_in_group(string):
 			exclude.append(node.get_rid())
-			
+	
 	if useSnap and snapOverlap:
 		for object: DraggingObject3D in get_tree().get_nodes_in_group("draggingObjects"):
 			exclude.append(object.get_rid())

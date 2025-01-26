@@ -1,7 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://pxgf0xl24adb"]
+[gd_scene load_steps=15 format=3 uid="uid://xi61mkik355y"]
 
 [ext_resource type="Script" path="res://game_sandbox/thaddeus_sandbox/CrabModel.gd" id="1_81684"]
-[ext_resource type="Material" uid="uid://c5tikco34qrjo" path="res://game_sandbox/thaddeus_sandbox/CrabMaterial.tres" id="2_0oxjf"]
+[ext_resource type="Material" uid="uid://bqcpdtrbg355g" path="res://game_sandbox/thaddeus_sandbox/CrabMaterial.tres" id="2_0oxjf"]
 [ext_resource type="PackedScene" uid="uid://bpqt2jkyfhodc" path="res://game_sandbox/thaddeus_sandbox/Crab.glb" id="2_jskpr"]
 [ext_resource type="PackedScene" uid="uid://hi1ch4pnbewf" path="res://game_sandbox/thaddeus_sandbox/Eye.glb" id="3_g6tu0"]
 [ext_resource type="PackedScene" uid="uid://d4b14bl3auaso" path="res://game_sandbox/thaddeus_sandbox/Legs.glb" id="4_avb3u"]

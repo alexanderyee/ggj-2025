@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2j6u7une1aln"]
+
+[ext_resource type="Script" path="res://scripts/class/needs.gd" id="1_whw0u"]
+
+[node name="Defineneeds" type="Node3D"]
+script = ExtResource("1_whw0u")
+
+[node name="food" type="Node3D" parent="."]
+
+[node name="shelter" type="Node3D" parent="."]
+
+[node name="comfort" type="Node3D" parent="."]
+
+[node name="community" type="Node3D" parent="."]
