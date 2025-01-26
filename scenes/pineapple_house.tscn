@@ -10,7 +10,8 @@ height = 6.0
 [node name="PineappleHouse" type="Node3D"]
 script = ExtResource("1_bp0xk")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="." groups=["shelter"]]
+collision_layer = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.395738, 1.75929, 0)

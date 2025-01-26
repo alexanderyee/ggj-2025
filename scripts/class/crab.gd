@@ -65,24 +65,30 @@ func emote() -> void:
 	## 1 = shelter
 	## 2 = comfort
 	## 3 = community
+	var all_groups_within_fov = []
 	if !current_objects_within_fov.is_empty():
 		# get groups of each object within fov
-		var all_groups_within_fov = []
 		for fixation in current_objects_within_fov:
 			var fixation_groups = fixation.get_groups()
 			for fixation_group in fixation_groups:
 				all_groups_within_fov.append(fixation_group)
-		adjust_needs(all_groups_within_fov)
+	adjust_needs(all_groups_within_fov)
 		
 	# play TTS soundfx
 	if !crab_voice.playing:
 		crab_voice.play()
 	
 	var crab_voice_polyphonic := crab_voice.get_stream_playback()
-	# TODO: this should play whatever the crab is thinking, we just play a random
-	# tts sound for now
-	var rng = RandomNumberGenerator.new()
-	crab_voice_polyphonic.play_stream(Global.crab_tts_sounds[Global.crab_sound_names[rng.randi_range(0, Global.crab_sound_names.size() - 1)]])
+	# TODO: this should play what the crab is feeling as well, we only play
+	# whatever's near the crab currently
+	
+	if (!all_groups_within_fov.is_empty()):
+		var rng = RandomNumberGenerator.new()
+		var emote_to_play_index = rng.randi_range(0, all_groups_within_fov.size() - 1)
+		var emote_to_play = all_groups_within_fov[emote_to_play_index]
+		if (Global.crab_tts_sounds.has(emote_to_play)):
+			var tts_emote_to_play_stream = Global.crab_tts_sounds[emote_to_play]
+			crab_voice_polyphonic.play_stream(tts_emote_to_play_stream)
 	
 	pass
 
@@ -99,20 +105,20 @@ func adjust_needs(all_groups_within_fov):
 	var need_counter = [0, 0, 0, 0]
 	for group in all_groups_within_fov:
 		if group == "food":
-			needs.decrease(Global.CRAB_NEEDS.FOOD)
+			needs.increase(Global.CRAB_NEEDS.FOOD)
 			need_counter[Global.CRAB_NEEDS.FOOD] += 1
 		if group == "shelter":
-			needs.decrease(Global.CRAB_NEEDS.SHELTER)
+			needs.increase(Global.CRAB_NEEDS.SHELTER)
 			need_counter[Global.CRAB_NEEDS.SHELTER] += 1
 		if group == "comfort":
-			needs.decrease(Global.CRAB_NEEDS.COMFORT)
+			needs.increase(Global.CRAB_NEEDS.COMFORT)
 			need_counter[Global.CRAB_NEEDS.COMFORT] += 1
 		if group == "community":
-			needs.decrease(Global.CRAB_NEEDS.COMMUNITY)
+			needs.increase(Global.CRAB_NEEDS.COMMUNITY)
 			need_counter[Global.CRAB_NEEDS.COMMUNITY] += 1
-	for i in range(need_counter.size() - 1):
+	for i in range(need_counter.size()):
 		if need_counter[i] <= 0:
-			needs.increase(i)
+			needs.decrease(i)
 		
 
 func _on_timer_timeout() -> void:

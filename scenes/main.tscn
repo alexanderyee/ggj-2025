@@ -48,7 +48,7 @@ panorama = ExtResource("1_drluy")
 [sub_resource type="Sky" id="Sky_o5002"]
 sky_material = SubResource("PanoramaSkyMaterial_6jsnm")
 
-[sub_resource type="Environment" id="Environment_c0dgw"]
+[sub_resource type="Environment" id="Environment_nk16u"]
 background_mode = 2
 background_energy_multiplier = 1.5
 sky = SubResource("Sky_o5002")
@@ -99,7 +99,7 @@ look_at_damping = true
 
 [node name="HostCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, -0.000682079, 0.000303226, -4.04019e-07, 0.405733, 0.913992, -0.000746444, -0.913991, 0.405733, 0, 14.519, 6.445)
-environment = SubResource("Environment_c0dgw")
+environment = SubResource("Environment_nk16u")
 fov = 74.0
 
 [node name="PhantomCameraHost" type="Node" parent="HostCamera"]
@@ -210,7 +210,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.42484, -1.5, 2.93493)
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 8.21238, -1.01647, 3.43197)
 script = ExtResource("19_78aoa")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Moss Ball"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Moss Ball" groups=["food"]]
+collision_layer = 9
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Moss Ball/StaticBody3D"]
 shape = SubResource("SphereShape3D_sc8gp")
@@ -221,7 +222,8 @@ shape = SubResource("SphereShape3D_sc8gp")
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -6.22783, -1.01647, 6.85783)
 script = ExtResource("19_78aoa")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Moss Ball2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Moss Ball2" groups=["food"]]
+collision_layer = 9
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Moss Ball2/StaticBody3D"]
 shape = SubResource("SphereShape3D_sc8gp")
@@ -232,7 +234,8 @@ shape = SubResource("SphereShape3D_sc8gp")
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 13.4476, -1.01647, -0.597424)
 script = ExtResource("19_78aoa")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Moss Ball3"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Moss Ball3" groups=["food"]]
+collision_layer = 9
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Moss Ball3/StaticBody3D"]
 shape = SubResource("SphereShape3D_sc8gp")
@@ -243,14 +246,15 @@ shape = SubResource("SphereShape3D_sc8gp")
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 5.77684, -1.01647, -7.4631)
 script = ExtResource("19_78aoa")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Moss Ball4"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Moss Ball4" groups=["food"]]
+collision_layer = 9
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Moss Ball4/StaticBody3D"]
 shape = SubResource("SphereShape3D_sc8gp")
 
 [node name="Mesh" parent="Environment/Moss Ball4/StaticBody3D" instance=ExtResource("20_chi6s")]
 
-[node name="PineappleHouse" parent="Environment" instance=ExtResource("20_puhfo")]
+[node name="PineappleHouse" parent="Environment" groups=["shelter"] instance=ExtResource("20_puhfo")]
 transform = Transform3D(-0.450441, 0, 0.892806, 0, 1, 0, -0.892806, 0, -0.450441, 11.0578, -1.16812, -5.7793)
 
 [node name="NeedsSystem" type="Node3D" parent="."]
