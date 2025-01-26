@@ -35,7 +35,8 @@ func _ready() -> void:
 		_set_late_signals()
 
 func _process(delta: float) -> void:
-	visible = Global.drag_n_drop_manager._currentDraggingObject != self
+	if not Engine.is_editor_hint(): 
+		visible = Global.drag_n_drop_manager._currentDraggingObject != self
 
 func _set_group() -> void:
 	if Engine.is_editor_hint(): return
