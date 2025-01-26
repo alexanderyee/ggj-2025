@@ -1,10 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cinlkpyb6xcfw"]
+[gd_scene load_steps=6 format=3 uid="uid://cinlkpyb6xcfw"]
 
 [ext_resource type="PackedScene" uid="uid://yaw41h3vjeti" path="res://game_sandbox/jake_sandbox/Assets/Models/seashell.glb" id="1_84rlu"]
 [ext_resource type="PackedScene" uid="uid://cvb85hrhl8k2s" path="res://game_sandbox/jake_sandbox/Assets/Models/doughnut_coral.glb" id="2_am5xq"]
 [ext_resource type="PackedScene" uid="uid://btf5fqqctoyid" path="res://game_sandbox/jake_sandbox/Scenes/chest_three.tscn" id="3_1vbtb"]
 [ext_resource type="PackedScene" uid="uid://s3755bhbqwk7" path="res://game_sandbox/jake_sandbox/Assets/Models/pineapple_house.glb" id="4_27xfm"]
-
+[ext_resource type="PackedScene" uid="uid://bh3ix7ppos4l7" path="res://scenes/moss_ball.tscn" id="5_ib4na"]
 
 [node name="Art Asset Scene" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.881735, 0, 0)
@@ -17,5 +17,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.56123, 1.06907, 1.42138)
 
 [node name="chest_three" parent="." instance=ExtResource("3_1vbtb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.88173, 0, -1)
+
 [node name="pineapple_house" parent="." instance=ExtResource("4_27xfm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.84236, 0, -0.829877)
+
+[node name="Moss Ball" parent="." instance=ExtResource("5_ib4na")]
