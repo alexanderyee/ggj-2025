@@ -8,6 +8,7 @@
 
 [sub_resource type="SphereMesh" id="SphereMesh_shd7o"]
 
+
 [node name="Art Asset Scene" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.881735, 0, 0)
 
@@ -19,7 +20,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.56123, 1.06907, 1.42138)
 
 [node name="chest_three" parent="." instance=ExtResource("3_1vbtb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.88173, 0, -1)
-
 [node name="pineapple_house" parent="." instance=ExtResource("4_27xfm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.84236, 0, -0.829877)
 
