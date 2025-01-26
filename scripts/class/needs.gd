@@ -1,13 +1,14 @@
+class_name Needs
 extends Node3D
 
-class_name Needs
+
 
 # These are set to 60, because starting at 100%
 # of a property would be boring.
-@export var food : = 60
-@export var shelter : = 60
-@export var comfort : = 60
-@export var community : = 60
+@export var food : = 10
+@export var shelter : = 10
+@export var comfort : = 10
+@export var community : = 10
 
 var total
 
