@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpoiep7l663x1"]
+
+[ext_resource type="SphereMesh" uid="uid://5ggvoyax8m4u" path="res://game_sandbox/devone_sandbox/bubbles_particle.tres" id="1_ghegs"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fupdb"]
+direction = Vector3(0, 1, 0)
+spread = 90.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 9.8, 0)
+linear_accel_min = -2.86
+linear_accel_max = 15.72
+damping_min = 6.05
+damping_max = 15.927
+scale_min = 0.1
+scale_max = 0.5
+scale_over_velocity_max = 0.5
+
+[node name="Bubbles" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_fupdb")
+draw_pass_1 = ExtResource("1_ghegs")

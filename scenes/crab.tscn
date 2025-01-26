@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dfsep4rjt4s4m"]
+[gd_scene load_steps=5 format=3 uid="uid://dvl1wy82fj0df"]
 
 [ext_resource type="Script" path="res://scripts/class/crab.gd" id="1_x3l5e"]
+[ext_resource type="PackedScene" path="res://game_sandbox/thaddeus_sandbox/CrabModel.tscn" id="2_tu4ib"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0ajk3"]
 
@@ -24,5 +25,7 @@ shape = SubResource("SphereShape3D_ns67v")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 max_polyphony = 10
+
+[node name="CrabModel" parent="." instance=ExtResource("2_tu4ib")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
