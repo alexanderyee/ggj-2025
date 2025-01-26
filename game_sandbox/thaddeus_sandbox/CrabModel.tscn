@@ -1,0 +1,530 @@
+[gd_scene load_steps=15 format=3 uid="uid://pxgf0xl24adb"]
+
+[ext_resource type="Script" path="res://game_sandbox/thaddeus_sandbox/CrabModel.gd" id="1_81684"]
+[ext_resource type="Material" uid="uid://c5tikco34qrjo" path="res://game_sandbox/thaddeus_sandbox/CrabMaterial.tres" id="2_0oxjf"]
+[ext_resource type="PackedScene" uid="uid://bpqt2jkyfhodc" path="res://game_sandbox/thaddeus_sandbox/Crab.glb" id="2_jskpr"]
+[ext_resource type="PackedScene" uid="uid://hi1ch4pnbewf" path="res://game_sandbox/thaddeus_sandbox/Eye.glb" id="3_g6tu0"]
+[ext_resource type="PackedScene" uid="uid://d4b14bl3auaso" path="res://game_sandbox/thaddeus_sandbox/Legs.glb" id="4_avb3u"]
+[ext_resource type="Script" path="res://game_sandbox/thaddeus_sandbox/IK_start.gd" id="5_a4m8f"]
+[ext_resource type="Script" path="res://game_sandbox/thaddeus_sandbox/LegRay.gd" id="6_18dah"]
+[ext_resource type="Script" path="res://game_sandbox/thaddeus_sandbox/IK_Target.gd" id="6_p1lxt"]
+
+[sub_resource type="Animation" id="Animation_0pkw1"]
+resource_name = "Idle"
+length = 1.20833
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("CrabArmature/Skeleton3D:body")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("CrabArmature/Skeleton3D:body")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.707107, 0, 0, 0.707107)
+tracks/2/type = "position_3d"
+tracks/2/imported = true
+tracks/2/enabled = true
+tracks/2/path = NodePath("CrabArmature/Skeleton3D:claw-bicep.L")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, -0.538518, 0.352134, 0.0479448)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = true
+tracks/3/enabled = true
+tracks/3/path = NodePath("CrabArmature/Skeleton3D:claw-bicep.L")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0.158809, 0.00737807, 0.303774, 0.939386, 0.1, 1, 0.157888, 0.00664121, 0.303863, 0.939518, 0.166667, 1, 0.156525, 0.0055513, 0.303994, 0.939711, 0.2, 1, 0.155651, 0.00485264, 0.304078, 0.939833, 0.233333, 1, 0.154707, 0.00409844, 0.304168, 0.939963, 0.266667, 1, 0.153712, 0.00330348, 0.304262, 0.940099, 0.3, 1, 0.152684, 0.00248259, 0.304359, 0.940238, 0.333333, 1, 0.151643, 0.00165058, 0.304456, 0.940377, 0.4, 1, 0.149637, 4.95309e-05, 0.304642, 0.940639, 0.433333, 1, 0.148715, -0.000686178, 0.304727, 0.940758, 0.466667, 1, 0.147872, -0.00135893, 0.304804, 0.940865, 0.533333, 1, 0.146547, -0.00241556, 0.304925, 0.941031, 0.766667, 1, 0.147704, -0.00149321, 0.30482, 0.940886, 0.8, 1, 0.148564, -0.000806715, 0.304741, 0.940777, 0.833333, 1, 0.149526, -3.92686e-05, 0.304653, 0.940653, 0.866667, 1, 0.150577, 0.00080015, 0.304555, 0.940517, 0.9, 1, 0.151663, 0.00166654, 0.304454, 0.940374, 0.933333, 1, 0.152759, 0.00254193, 0.304352, 0.940228, 0.966667, 1, 0.153843, 0.00340832, 0.30425, 0.940081, 1, 1, 0.154894, 0.00424771, 0.30415, 0.939938, 1.03333, 1, 0.155854, 0.00501515, 0.304059, 0.939805, 1.06667, 1, 0.156713, 0.00570163, 0.303976, 0.939685, 1.13333, 1, 0.158036, 0.0067598, 0.303849, 0.939497, 1.20833, 1, 0.158643, 0.00724539, 0.30379, 0.93941)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = true
+tracks/4/enabled = true
+tracks/4/path = NodePath("CrabArmature/Skeleton3D:claw-forearm.L")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0.288329, 0.0503529, -0.0721405, 0.953481, 0.133333, 1, 0.289587, 0.0508574, -0.0723901, 0.953054, 0.2, 1, 0.290907, 0.0513871, -0.072652, 0.952604, 0.266667, 1, 0.292487, 0.0520212, -0.0729655, 0.952061, 0.366667, 1, 0.295005, 0.053032, -0.0734647, 0.95119, 0.433333, 1, 0.296553, 0.0536536, -0.0737716, 0.95065, 0.5, 1, 0.297843, 0.0541721, -0.0740274, 0.950197, 0.6, 1, 0.298864, 0.0545824, -0.0742298, 0.949837, 0.733333, 1, 0.297972, 0.054224, -0.074053, 0.950152, 0.8, 1, 0.296675, 0.0537029, -0.0737959, 0.950607, 0.9, 1, 0.294156, 0.0526912, -0.0732964, 0.951485, 1, 1, 0.291524, 0.0516347, -0.0727745, 0.952392, 1.06667, 1, 0.290041, 0.0510395, -0.0724802, 0.9529, 1.13333, 1, 0.28896, 0.0506061, -0.0722658, 0.953267, 1.20833, 1, 0.288464, 0.0504073, -0.0721674, 0.953436)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = true
+tracks/5/enabled = true
+tracks/5/path = NodePath("CrabArmature/Skeleton3D:claw-pincer-small.L")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, 0.336918, -0.00167615, 0.0118008, 0.941459)
+tracks/6/type = "rotation_3d"
+tracks/6/imported = true
+tracks/6/enabled = true
+tracks/6/path = NodePath("CrabArmature/Skeleton3D:claw-pincer-big.L")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, 0.00485338, 0.139564, 0.0292441, 0.989769)
+tracks/7/type = "position_3d"
+tracks/7/imported = true
+tracks/7/enabled = true
+tracks/7/path = NodePath("CrabArmature/Skeleton3D:claw-bicep.R")
+tracks/7/interp = 0
+tracks/7/loop_wrap = true
+tracks/7/keys = PackedFloat32Array(0, 1, 0.538518, 0.352134, 0.0479448)
+tracks/8/type = "rotation_3d"
+tracks/8/imported = true
+tracks/8/enabled = true
+tracks/8/path = NodePath("CrabArmature/Skeleton3D:claw-bicep.R")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array(0, 1, 0.158809, -0.00737807, -0.303774, 0.939386, 0.1, 1, 0.157881, -0.00685732, -0.30383, 0.939528, 0.166667, 1, 0.156509, -0.00608707, -0.303913, 0.939737, 0.233333, 1, 0.154678, -0.00506031, -0.304022, 0.94001, 0.266667, 1, 0.153677, -0.0044985, -0.304082, 0.940158, 0.3, 1, 0.152642, -0.00391836, -0.304142, 0.94031, 0.333333, 1, 0.151593, -0.00333037, -0.304203, 0.940462, 0.366667, 1, 0.150563, -0.00275285, -0.304263, 0.94061, 0.4, 1, 0.149574, -0.00219887, -0.30432, 0.940751, 0.433333, 1, 0.148646, -0.00167892, -0.304372, 0.940882, 0.5, 1, 0.147047, -0.000782962, -0.304463, 0.941105, 0.566667, 1, 0.146036, -0.000216791, -0.304519, 0.941245, 0.766667, 1, 0.147628, -0.00110855, -0.30443, 0.941025, 0.8, 1, 0.148494, -0.00159373, -0.304381, 0.940903, 0.9, 1, 0.151613, -0.00334165, -0.304202, 0.940459, 0.933333, 1, 0.152717, -0.0039603, -0.304138, 0.940299, 0.966667, 1, 0.153809, -0.00457259, -0.304074, 0.940139, 1, 1, 0.154866, -0.00516581, -0.304011, 0.939982, 1.03333, 1, 0.155833, -0.00570816, -0.303954, 0.939838, 1.06667, 1, 0.156698, -0.0061933, -0.303902, 0.939708, 1.13333, 1, 0.15803, -0.00694112, -0.303821, 0.939506, 1.20833, 1, 0.158642, -0.0072843, -0.303784, 0.939412)
+tracks/9/type = "rotation_3d"
+tracks/9/imported = true
+tracks/9/enabled = true
+tracks/9/path = NodePath("CrabArmature/Skeleton3D:claw-forearm.R")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = PackedFloat32Array(0, 1, 0.288329, -0.0503529, 0.0721405, 0.953481, 0.133333, 1, 0.289816, -0.0507142, 0.0722696, 0.953001, 0.2, 1, 0.291377, -0.0510935, 0.0724048, 0.952495, 0.3, 1, 0.294235, -0.0517881, 0.0726521, 0.951559, 0.333333, 1, 0.295238, -0.0520318, 0.0727388, 0.951229, 0.366667, 1, 0.296222, -0.0522711, 0.0728238, 0.950903, 0.433333, 1, 0.298052, -0.052716, 0.0729816, 0.950295, 0.5, 1, 0.299578, -0.0530869, 0.0731131, 0.949784, 0.566667, 1, 0.300541, -0.0533213, 0.0731961, 0.94946, 0.766667, 1, 0.299023, -0.0529521, 0.0730654, 0.94997, 0.8, 1, 0.298197, -0.0527512, 0.0729942, 0.950246, 0.833333, 1, 0.297273, -0.0525266, 0.0729145, 0.950554, 0.866667, 1, 0.296262, -0.0522809, 0.0728272, 0.95089, 0.933333, 1, 0.294164, -0.0517707, 0.0726459, 0.951583, 1, 1, 0.292107, -0.0512709, 0.072468, 0.952257, 1.03333, 1, 0.291181, -0.0510459, 0.0723878, 0.952559, 1.1, 1, 0.289644, -0.0506723, 0.0722546, 0.953057, 1.16667, 1, 0.28867, -0.0504358, 0.0721701, 0.953372, 1.20833, 1, 0.288489, -0.0503918, 0.0721544, 0.95343)
+tracks/10/type = "rotation_3d"
+tracks/10/imported = true
+tracks/10/enabled = true
+tracks/10/path = NodePath("CrabArmature/Skeleton3D:claw-pincer-small.R")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = PackedFloat32Array(0, 1, 0.336918, 0.00167615, -0.0118008, 0.941459)
+tracks/11/type = "rotation_3d"
+tracks/11/imported = true
+tracks/11/enabled = true
+tracks/11/path = NodePath("CrabArmature/Skeleton3D:claw-pincer-big.R")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = PackedFloat32Array(0, 1, 0.00485338, -0.139564, -0.0292441, 0.989769)
+
+[sub_resource type="Animation" id="Animation_j03q1"]
+resource_name = "Snap"
+length = 0.375
+tracks/0/type = "position_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("CrabArmature/Skeleton3D:body")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.0333333, 1, 0, 0.00391352, 0.00904599, 0.0666667, 1, 0, 0.0103429, 0.0239073, 0.1, 1, 0, 0.0159336, 0.0368301, 0.133333, 1, 0, 0.0181934, 0.0354283, 0.166667, 1, 0, 0.015492, 0.0026829, 0.2, 1, 0, 0.00999551, -0.0581299, 0.233333, 1, 0, 0.00533662, -0.0978922, 0.266667, 1, 0, 0.00226101, -0.102415, 0.3, 1, 0, 0.00076921, -0.0736373, 0.333333, 1, 0, 0.000116547, -0.0296242, 0.375, 1, 0, 0, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("CrabArmature/Skeleton3D:body")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.707107, 0, 0, 0.707107, 0.0666667, 1, -0.707502, 0, 0, 0.706712, 0.1, 1, -0.708291, 0, 0, 0.70592, 0.133333, 1, -0.710228, 0, 0, 0.703972, 0.166667, 1, -0.714501, 0, 0, 0.699635, 0.2, 1, -0.720683, 0, 0, 0.693265, 0.233333, 1, -0.724571, 0, 0, 0.689201, 0.266667, 1, -0.724185, 0, 0, 0.689605, 0.3, 1, -0.71943, 0, 0, 0.694565, 0.333333, 1, -0.712091, 0, 0, 0.702088, 0.366667, 1, -0.708106, 0, 0, 0.706106, 0.375, 1, -0.707107, 0, 0, 0.707107)
+tracks/2/type = "position_3d"
+tracks/2/imported = true
+tracks/2/enabled = true
+tracks/2/path = NodePath("CrabArmature/Skeleton3D:claw-bicep.L")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, -0.538518, 0.352134, 0.0479448, 0.0333333, 1, -0.53353, 0.337502, 0.0443611, 0.0666667, 1, -0.525335, 0.313464, 0.0384737, 0.1, 1, -0.51821, 0.292562, 0.0333542, 0.133333, 1, -0.514469, 0.281588, 0.0306664, 0.233333, 1, -0.514469, 0.281588, 0.0306664, 0.266667, 1, -0.516963, 0.288904, 0.0324583, 0.3, 1, -0.52302, 0.306671, 0.0368098, 0.333333, 1, -0.532283, 0.333844, 0.0434652, 0.375, 1, -0.538518, 0.352134, 0.0479448)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = true
+tracks/3/enabled = true
+tracks/3/path = NodePath("CrabArmature/Skeleton3D:claw-bicep.L")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0.158809, 0.00737807, 0.303774, 0.939386, 0.0333333, 1, 0.176694, 0.0132496, 0.326186, 0.928551, 0.0666667, 1, 0.20133, 0.0363526, 0.364551, 0.908431, 0.1, 1, 0.212828, 0.0852231, 0.401563, 0.886673, 0.133333, 1, 0.19234, 0.172219, 0.422501, 0.868815, 0.166667, 1, 0.120363, 0.311061, 0.41074, 0.848556, 0.2, 1, 0.0162859, 0.465546, 0.366228, 0.80553, 0.233333, 1, -0.0486154, 0.550137, 0.330463, 0.765363, 0.266667, 1, -0.050468, 0.530695, 0.31995, 0.783229, 0.3, 1, 0.00927102, 0.396166, 0.326939, 0.85795, 0.333333, 1, 0.102619, 0.162809, 0.319777, 0.927742, 0.366667, 1, 0.147875, 0.0386193, 0.307665, 0.93914, 0.375, 1, 0.158809, 0.00737807, 0.303774, 0.939386)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = true
+tracks/4/enabled = true
+tracks/4/path = NodePath("CrabArmature/Skeleton3D:claw-forearm.L")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0.288329, 0.0503529, -0.0721405, 0.953481, 0.0333333, 1, 0.295055, 0.0364502, -0.0900166, 0.950532, 0.0666667, 1, 0.305755, 0.0135373, -0.119309, 0.944508, 0.1, 1, 0.314675, -0.0063986, -0.144626, 0.938095, 0.133333, 1, 0.319209, -0.0168524, -0.157838, 0.934296, 0.233333, 1, 0.319209, -0.0168524, -0.157838, 0.934296, 0.266667, 1, 0.316198, -0.00988358, -0.149035, 0.936862, 0.3, 1, 0.308695, 0.0070551, -0.127559, 0.942543, 0.333333, 1, 0.296711, 0.0329711, -0.094478, 0.94971, 0.375, 1, 0.288329, 0.0503529, -0.0721405, 0.953481)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = true
+tracks/5/enabled = true
+tracks/5/path = NodePath("CrabArmature/Skeleton3D:claw-pincer-small.L")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, 0.336918, -0.00167615, 0.0118008, 0.941459, 0.0333333, 1, 0.373763, 0.00719881, -0.00863839, 0.927456, 0.0666667, 1, 0.432533, 0.0233548, -0.0415537, 0.900357, 0.1, 1, 0.482168, 0.0409243, -0.0690584, 0.872393, 0.133333, 1, 0.481878, 0.0552887, -0.0772289, 0.871075, 0.166667, 1, 0.373726, 0.0624378, -0.055223, 0.923786, 0.2, 1, 0.147593, 0.059786, -0.0128867, 0.987155, 0.233333, 1, -0.000186425, 0.0549407, 0.0153593, 0.998371, 0.266667, 1, -0.0184348, 0.0467331, 0.0262095, 0.998393, 0.3, 1, 0.0829163, 0.0331659, 0.0234633, 0.995728, 0.333333, 1, 0.237819, 0.0122072, 0.0168078, 0.971087, 0.375, 1, 0.336918, -0.00167615, 0.0118008, 0.941459)
+tracks/6/type = "rotation_3d"
+tracks/6/imported = true
+tracks/6/enabled = true
+tracks/6/path = NodePath("CrabArmature/Skeleton3D:claw-pincer-big.L")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, 0.00485338, 0.139564, 0.0292441, 0.989769, 0.0333333, 1, -0.0592294, 0.11707, 0.0497468, 0.990107, 0.0666667, 1, -0.165042, 0.0760862, 0.0832636, 0.979816, 0.1, 1, -0.254723, 0.034883, 0.111324, 0.959951, 0.133333, 1, -0.291274, 0.00673279, 0.12368, 0.948587, 0.166667, 1, -0.255868, -0.00210099, 0.11678, 0.95963, 0.2, 1, -0.178478, -0.00152847, 0.100181, 0.97883, 0.233333, 1, -0.101886, 0.00143532, 0.0808369, 0.991505, 0.266667, 1, -0.0432304, 0.0181525, 0.0620678, 0.99697, 0.3, 1, -0.00929685, 0.0533589, 0.0462767, 0.997459, 0.333333, 1, 0.00374918, 0.10513, 0.0346419, 0.993848, 0.375, 1, 0.00485338, 0.139564, 0.0292441, 0.989769)
+tracks/7/type = "position_3d"
+tracks/7/imported = true
+tracks/7/enabled = true
+tracks/7/path = NodePath("CrabArmature/Skeleton3D:claw-bicep.R")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = PackedFloat32Array(0, 1, 0.538518, 0.352134, 0.0479448, 0.0333333, 1, 0.528374, 0.340312, 0.0429556, 0.0666667, 1, 0.511708, 0.320891, 0.034759, 0.1, 1, 0.497217, 0.304002, 0.0276316, 0.133333, 1, 0.489609, 0.295136, 0.0238897, 0.233333, 1, 0.489609, 0.295136, 0.0238897, 0.266667, 1, 0.494681, 0.301047, 0.0263843, 0.3, 1, 0.506999, 0.315402, 0.0324426, 0.333333, 1, 0.525838, 0.337357, 0.0417083, 0.375, 1, 0.538518, 0.352134, 0.0479448)
+tracks/8/type = "rotation_3d"
+tracks/8/imported = true
+tracks/8/enabled = true
+tracks/8/path = NodePath("CrabArmature/Skeleton3D:claw-bicep.R")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array(0, 1, 0.158809, -0.00737807, -0.303774, 0.939386, 0.0333333, 1, 0.178783, -0.0282697, -0.335721, 0.924407, 0.0666667, 1, 0.207648, -0.0723832, -0.388354, 0.894888, 0.1, 1, 0.22468, -0.131374, -0.43512, 0.861934, 0.133333, 1, 0.210845, -0.198205, -0.449993, 0.844847, 0.166667, 1, 0.147155, -0.26626, -0.404101, 0.862643, 0.2, 1, 0.0506579, -0.317006, -0.30311, 0.897255, 0.233333, 1, -0.0105172, -0.340945, -0.233693, 0.910513, 0.266667, 1, -0.014839, -0.315254, -0.216658, 0.923826, 0.3, 1, 0.0346124, -0.231542, -0.244542, 0.940951, 0.333333, 1, 0.110312, -0.0973783, -0.282558, 0.947897, 0.375, 1, 0.158809, -0.00737807, -0.303774, 0.939386)
+tracks/9/type = "rotation_3d"
+tracks/9/imported = true
+tracks/9/enabled = true
+tracks/9/path = NodePath("CrabArmature/Skeleton3D:claw-forearm.R")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = PackedFloat32Array(0, 1, 0.288329, -0.0503529, 0.0721405, 0.953481, 0.0333333, 1, 0.300528, -0.0759028, 0.08603, 0.946848, 0.0666667, 1, 0.319935, -0.1178, 0.108705, 0.933782, 0.1, 1, 0.33607, -0.153946, 0.128164, 0.920289, 0.133333, 1, 0.344241, -0.172759, 0.138254, 0.912435, 0.233333, 1, 0.344241, -0.172759, 0.138254, 0.912435, 0.266667, 1, 0.338816, -0.160227, 0.131536, 0.917731, 0.3, 1, 0.325261, -0.129591, 0.115063, 0.929609, 0.333333, 1, 0.30353, -0.0822789, 0.089489, 0.945035, 0.375, 1, 0.288329, -0.0503529, 0.0721405, 0.953481)
+tracks/10/type = "rotation_3d"
+tracks/10/imported = true
+tracks/10/enabled = true
+tracks/10/path = NodePath("CrabArmature/Skeleton3D:claw-pincer-small.R")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = PackedFloat32Array(0, 1, 0.336918, 0.00167615, -0.0118008, 0.941459, 0.0333333, 1, 0.375849, -0.00408925, -0.00210524, 0.926669, 0.0666667, 1, 0.438292, -0.017891, 0.0122982, 0.898571, 0.1, 1, 0.490888, -0.0391166, 0.0215423, 0.870077, 0.133333, 1, 0.497136, -0.0676887, 0.0190901, 0.864818, 0.166667, 1, 0.411664, -0.103551, 0.00159841, 0.905432, 0.2, 1, 0.238579, -0.134997, -0.0221718, 0.961439, 0.233333, 1, 0.123138, -0.14888, -0.0404283, 0.980325, 0.266667, 1, 0.103371, -0.136617, -0.0471774, 0.984086, 0.3, 1, 0.170469, -0.0972221, -0.0409139, 0.979701, 0.333333, 1, 0.271681, -0.0377648, -0.0243192, 0.961339, 0.375, 1, 0.336918, 0.00167615, -0.0118008, 0.941459)
+tracks/11/type = "rotation_3d"
+tracks/11/imported = true
+tracks/11/enabled = true
+tracks/11/path = NodePath("CrabArmature/Skeleton3D:claw-pincer-big.R")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = PackedFloat32Array(0, 1, 0.00485338, -0.139564, -0.0292441, 0.989769, 0.0333333, 1, -0.0549751, -0.123882, -0.0244315, 0.990472, 0.0666667, 1, -0.153622, -0.0944977, -0.0162319, 0.983467, 0.1, 1, -0.23771, -0.0632498, -0.00894561, 0.969233, 0.133333, 1, -0.273581, -0.0398552, -0.00537594, 0.961008, 0.166667, 1, -0.245447, -0.030167, -0.0065161, 0.968919, 0.2, 1, -0.182571, -0.0295255, -0.00962212, 0.982702, 0.233333, 1, -0.116775, -0.0314157, -0.0136317, 0.992568, 0.266667, 1, -0.0613856, -0.0444246, -0.018217, 0.996959, 0.3, 1, -0.0231614, -0.0720479, -0.022908, 0.996869, 0.333333, 1, -0.00201054, -0.112609, -0.0270576, 0.993269, 0.375, 1, 0.00485338, -0.139564, -0.0292441, 0.989769)
+
+[sub_resource type="Animation" id="Animation_lswcy"]
+resource_name = "Woah"
+length = 0.375
+tracks/0/type = "position_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("CrabArmature/Skeleton3D:body")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("CrabArmature/Skeleton3D:body")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.707107, 0, 0, 0.707107)
+tracks/2/type = "position_3d"
+tracks/2/imported = true
+tracks/2/enabled = true
+tracks/2/path = NodePath("CrabArmature/Skeleton3D:claw-bicep.L")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, -0.538518, 0.352134, 0.0479448, 0.0333333, 1, -0.533678, 0.345626, 0.044574, 0.0666667, 1, -0.524481, 0.33326, 0.0381697, 0.1, 1, -0.513833, 0.318943, 0.0307542, 0.133333, 1, -0.504637, 0.306577, 0.0243498, 0.166667, 1, -0.499797, 0.300069, 0.0209791, 0.2, 1, -0.503018, 0.304401, 0.0232227, 0.233333, 1, -0.509585, 0.313231, 0.027796, 0.266667, 1, -0.518011, 0.32456, 0.0336638, 0.3, 1, -0.526809, 0.336389, 0.0397903, 0.333333, 1, -0.534491, 0.346719, 0.0451403, 0.375, 1, -0.538518, 0.352134, 0.0479448)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = true
+tracks/3/enabled = true
+tracks/3/path = NodePath("CrabArmature/Skeleton3D:claw-bicep.L")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0.158809, 0.00737807, 0.303774, 0.939386, 0.0333333, 1, 0.15296, 0.00551029, 0.303905, 0.940327, 0.0666667, 1, 0.141828, 0.00195992, 0.304122, 0.942014, 0.1, 1, 0.128913, -0.00215154, 0.30432, 0.943804, 0.133333, 1, 0.11774, -0.00570188, 0.304445, 0.945208, 0.166667, 1, 0.111855, -0.00756964, 0.304494, 0.945894, 0.2, 1, 0.115773, -0.00632655, 0.304463, 0.945441, 0.233333, 1, 0.123754, -0.00379159, 0.304383, 0.944469, 0.266667, 1, 0.133983, -0.000538388, 0.304249, 0.943123, 0.3, 1, 0.144648, 0.00285855, 0.304071, 0.9416, 0.333333, 1, 0.153943, 0.00582418, 0.303884, 0.940171, 0.366667, 1, 0.157836, 0.00706731, 0.303796, 0.939545, 0.375, 1, 0.158809, 0.00737807, 0.303774, 0.939386)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = true
+tracks/4/enabled = true
+tracks/4/path = NodePath("CrabArmature/Skeleton3D:claw-forearm.L")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0.288329, 0.0503529, -0.0721405, 0.953481, 0.0333333, 1, 0.30684, 0.0588465, -0.0769057, 0.946822, 0.0666667, 1, 0.341726, 0.0749636, -0.0858894, 0.932859, 0.1, 1, 0.381392, 0.0934702, -0.0961082, 0.91464, 0.133333, 1, 0.414911, 0.109269, -0.104748, 0.897183, 0.166667, 1, 0.432199, 0.117477, -0.109205, 0.887399, 0.2, 1, 0.420723, 0.112024, -0.106246, 0.893955, 0.233333, 1, 0.396974, 0.100795, -0.100124, 0.906768, 0.266667, 1, 0.365935, 0.0862347, -0.0921255, 0.922046, 0.3, 1, 0.332935, 0.0708882, -0.0836251, 0.936555, 0.333333, 1, 0.30373, 0.0574167, -0.076105, 0.947977, 0.375, 1, 0.288329, 0.0503529, -0.0721405, 0.953481)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = true
+tracks/5/enabled = true
+tracks/5/path = NodePath("CrabArmature/Skeleton3D:claw-pincer-small.L")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, 0.336918, -0.00167615, 0.0118008, 0.941459)
+tracks/6/type = "rotation_3d"
+tracks/6/imported = true
+tracks/6/enabled = true
+tracks/6/path = NodePath("CrabArmature/Skeleton3D:claw-pincer-big.L")
+tracks/6/interp = 0
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, 0.00485338, 0.139564, 0.0292441, 0.989769)
+tracks/7/type = "position_3d"
+tracks/7/imported = true
+tracks/7/enabled = true
+tracks/7/path = NodePath("CrabArmature/Skeleton3D:claw-bicep.R")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = PackedFloat32Array(0, 1, 0.538518, 0.352134, 0.0479448, 0.0333333, 1, 0.529992, 0.340824, 0.0432473, 0.0666667, 1, 0.513794, 0.319336, 0.0343222, 0.1, 1, 0.495037, 0.294455, 0.0239878, 0.133333, 1, 0.478838, 0.272966, 0.0150627, 0.166667, 1, 0.470313, 0.261656, 0.0103652, 0.2, 1, 0.475987, 0.269184, 0.0134919, 0.233333, 1, 0.487555, 0.284529, 0.0198653, 0.266667, 1, 0.502396, 0.304217, 0.0280426, 0.3, 1, 0.517893, 0.324773, 0.0365807, 0.333333, 1, 0.531425, 0.342724, 0.0440365, 0.375, 1, 0.538518, 0.352134, 0.0479448)
+tracks/8/type = "rotation_3d"
+tracks/8/imported = true
+tracks/8/enabled = true
+tracks/8/path = NodePath("CrabArmature/Skeleton3D:claw-bicep.R")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array(0, 1, 0.158809, -0.00737807, -0.303774, 0.939386, 0.0333333, 1, 0.144973, -0.00285349, -0.303683, 0.941675, 0.0666667, 1, 0.118556, 0.00575877, -0.303328, 0.945465, 0.1, 1, 0.0878441, 0.0157273, -0.302619, 0.948925, 0.133333, 1, 0.0612516, 0.0243214, -0.301749, 0.951107, 0.166667, 1, 0.0472587, 0.0288296, -0.301197, 0.951954, 0.2, 1, 0.0565709, 0.0258305, -0.301572, 0.951413, 0.233333, 1, 0.0755641, 0.0197002, -0.302246, 0.950026, 0.266667, 1, 0.0999056, 0.0118179, -0.302935, 0.947686, 0.3, 1, 0.125256, 0.00357761, -0.303441, 0.944575, 0.333333, 1, 0.147303, -0.00361483, -0.303703, 0.941304, 0.366667, 1, 0.15651, -0.0066255, -0.303763, 0.939781, 0.375, 1, 0.158809, -0.00737807, -0.303774, 0.939386)
+tracks/9/type = "rotation_3d"
+tracks/9/imported = true
+tracks/9/enabled = true
+tracks/9/path = NodePath("CrabArmature/Skeleton3D:claw-forearm.R")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = PackedFloat32Array(0, 1, 0.288329, -0.0503529, 0.0721405, 0.953481, 0.0333333, 1, 0.318594, -0.0591989, 0.0757841, 0.943001, 0.0666667, 1, 0.375587, -0.0759632, 0.0825284, 0.919975, 0.1, 1, 0.439722, -0.0950057, 0.0899223, 0.888556, 0.133333, 1, 0.493102, -0.111012, 0.0959023, 0.857514, 0.166667, 1, 0.520157, -0.119185, 0.098867, 0.839915, 0.2, 1, 0.50224, -0.113768, 0.0969089, 0.851716, 0.233333, 1, 0.464662, -0.102466, 0.092737, 0.874637, 0.266667, 1, 0.414844, -0.0875957, 0.08708, 0.90147, 0.3, 1, 0.361233, -0.0717277, 0.0808447, 0.926191, 0.333333, 1, 0.313494, -0.0577056, 0.075173, 0.94485, 0.375, 1, 0.288329, -0.0503529, 0.0721405, 0.953481)
+tracks/10/type = "rotation_3d"
+tracks/10/imported = true
+tracks/10/enabled = true
+tracks/10/path = NodePath("CrabArmature/Skeleton3D:claw-pincer-small.R")
+tracks/10/interp = 0
+tracks/10/loop_wrap = true
+tracks/10/keys = PackedFloat32Array(0, 1, 0.336918, 0.00167615, -0.0118008, 0.941459)
+tracks/11/type = "rotation_3d"
+tracks/11/imported = true
+tracks/11/enabled = true
+tracks/11/path = NodePath("CrabArmature/Skeleton3D:claw-pincer-big.R")
+tracks/11/interp = 0
+tracks/11/loop_wrap = true
+tracks/11/keys = PackedFloat32Array(0, 1, 0.00485338, -0.139564, -0.0292441, 0.989769)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ggjyk"]
+_data = {
+"Idle": SubResource("Animation_0pkw1"),
+"Snap": SubResource("Animation_j03q1"),
+"Woah": SubResource("Animation_lswcy")
+}
+
+[sub_resource type="BoxMesh" id="BoxMesh_bt3n4"]
+size = Vector3(0.325, 0.31, 0.305)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ilcsj"]
+albedo_color = Color(1.26343e-06, 0.479512, 0.0970643, 1)
+
+[node name="CrabModel" type="Node3D"]
+script = ExtResource("1_81684")
+
+[node name="Crab2" parent="." instance=ExtResource("2_jskpr")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Crab2/CrabArmature" index="0"]
+bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+bones/1/position = Vector3(-0.538518, 0.352134, 0.0479448)
+bones/1/rotation = Quaternion(0.158809, 0.00737807, 0.303774, 0.939386)
+bones/2/rotation = Quaternion(0.288329, 0.0503529, -0.0721405, 0.953481)
+bones/3/rotation = Quaternion(0.336918, -0.00167615, 0.0118008, 0.941459)
+bones/4/rotation = Quaternion(0.00485338, 0.139564, 0.0292441, 0.989769)
+bones/5/position = Vector3(0.538518, 0.352134, 0.0479448)
+bones/5/rotation = Quaternion(0.158809, -0.00737807, -0.303774, 0.939386)
+bones/6/rotation = Quaternion(0.288329, -0.0503529, 0.0721405, 0.953481)
+bones/7/rotation = Quaternion(0.336918, 0.00167615, -0.0118008, 0.941459)
+bones/8/rotation = Quaternion(0.00485338, -0.139564, -0.0292441, 0.989769)
+
+[node name="claws" parent="Crab2/CrabArmature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("2_0oxjf")
+
+[node name="Crab" parent="Crab2/CrabArmature/Skeleton3D" index="1"]
+surface_material_override/0 = ExtResource("2_0oxjf")
+
+[node name="AnimationPlayer" parent="Crab2" index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_ggjyk")
+}
+autoplay = "Idle"
+
+[node name="Eyes" type="Node3D" parent="Crab2"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="Eye" parent="Crab2/Eyes" instance=ExtResource("3_g6tu0")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="EyeStalk" parent="Crab2/Eyes/Eye" index="0"]
+surface_material_override/0 = ExtResource("2_0oxjf")
+
+[node name="LidBored" parent="Crab2/Eyes/Eye" index="1"]
+visible = false
+surface_material_override/0 = ExtResource("2_0oxjf")
+
+[node name="Pupil" parent="Crab2/Eyes/Eye" index="2"]
+surface_material_override/0 = ExtResource("2_0oxjf")
+
+[node name="LidShock" parent="Crab2/Eyes/Eye" index="3"]
+visible = false
+surface_material_override/0 = ExtResource("2_0oxjf")
+
+[node name="LidSlant" parent="Crab2/Eyes/Eye" index="4"]
+surface_material_override/0 = ExtResource("2_0oxjf")
+
+[node name="Eye2" parent="Crab2/Eyes" instance=ExtResource("3_g6tu0")]
+transform = Transform3D(-0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="EyeStalk" parent="Crab2/Eyes/Eye2" index="0"]
+surface_material_override/0 = ExtResource("2_0oxjf")
+
+[node name="LidBored" parent="Crab2/Eyes/Eye2" index="1"]
+visible = false
+surface_material_override/0 = ExtResource("2_0oxjf")
+
+[node name="Pupil" parent="Crab2/Eyes/Eye2" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, -0.398773, 0.635117, -0.414628)
+surface_material_override/0 = ExtResource("2_0oxjf")
+
+[node name="LidShock" parent="Crab2/Eyes/Eye2" index="3"]
+visible = false
+surface_material_override/0 = ExtResource("2_0oxjf")
+
+[node name="LidSlant" parent="Crab2/Eyes/Eye2" index="4"]
+surface_material_override/0 = ExtResource("2_0oxjf")
+
+[node name="Legs" parent="." instance=ExtResource("4_avb3u")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="LegMesh" parent="Legs/LegArmatrure/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("2_0oxjf")
+
+[node name="LeftLeg1" type="SkeletonIK3D" parent="Legs/LegArmatrure/Skeleton3D" index="1"]
+root_bone = &"leg1-bicep.L"
+tip_bone = &"leg1-tip.L"
+use_magnet = true
+magnet = Vector3(0, 10, 0)
+target_node = NodePath("../../Target_LeftLeg1")
+script = ExtResource("5_a4m8f")
+
+[node name="LeftLeg2" type="SkeletonIK3D" parent="Legs/LegArmatrure/Skeleton3D" index="2"]
+root_bone = &"leg2-bicep.L"
+tip_bone = &"leg2-tipL"
+use_magnet = true
+magnet = Vector3(0, 10, 0)
+target_node = NodePath("../../Target_LeftLeg2")
+script = ExtResource("5_a4m8f")
+
+[node name="LeftLeg3" type="SkeletonIK3D" parent="Legs/LegArmatrure/Skeleton3D" index="3"]
+root_bone = &"leg3-bicep.L"
+tip_bone = &"leg3-tipL"
+use_magnet = true
+magnet = Vector3(0, 10, 0)
+target_node = NodePath("../../Target_LeftLeg3")
+script = ExtResource("5_a4m8f")
+
+[node name="RightLeg1" type="SkeletonIK3D" parent="Legs/LegArmatrure/Skeleton3D" index="4"]
+root_bone = &"leg1-bicep.R"
+tip_bone = &"leg1-tipR"
+use_magnet = true
+magnet = Vector3(0, 10, 0)
+target_node = NodePath("../../Target_RightLeg1")
+script = ExtResource("5_a4m8f")
+
+[node name="RightLeg2" type="SkeletonIK3D" parent="Legs/LegArmatrure/Skeleton3D" index="5"]
+root_bone = &"leg2-bicep.R"
+tip_bone = &"leg2-tip.R"
+use_magnet = true
+magnet = Vector3(0, 10, 0)
+target_node = NodePath("../../Target_RightLeg2")
+script = ExtResource("5_a4m8f")
+
+[node name="RightLeg3" type="SkeletonIK3D" parent="Legs/LegArmatrure/Skeleton3D" index="6"]
+root_bone = &"leg3-bicep.R"
+tip_bone = &"leg3-tipR"
+use_magnet = true
+magnet = Vector3(0, 10, 0)
+target_node = NodePath("../../Target_RightLeg3")
+script = ExtResource("5_a4m8f")
+
+[node name="Target_LeftLeg1" type="Marker3D" parent="Legs/LegArmatrure" index="1" node_paths=PackedStringArray("step_target", "crab_model")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.794217, 0, -0.392187)
+top_level = true
+script = ExtResource("6_p1lxt")
+step_target = NodePath("../StepTargets/RayLeft1/Target_LeftLeg1")
+crab_model = NodePath("../../..")
+
+[node name="Target_LeftLeg2" type="Marker3D" parent="Legs/LegArmatrure" index="2" node_paths=PackedStringArray("step_target", "crab_model")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.855952, 0, 0.105417)
+top_level = true
+script = ExtResource("6_p1lxt")
+step_target = NodePath("../StepTargets/RayLeft2/Target_LeftLeg2")
+crab_model = NodePath("../../..")
+
+[node name="Target_LeftLeg3" type="Marker3D" parent="Legs/LegArmatrure" index="3" node_paths=PackedStringArray("step_target", "crab_model")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.727217, 0, 0.525481)
+top_level = true
+script = ExtResource("6_p1lxt")
+step_target = NodePath("../StepTargets/RayLeft3/Target_LeftLeg3")
+crab_model = NodePath("../../..")
+
+[node name="Target_RightLeg1" type="Marker3D" parent="Legs/LegArmatrure" index="4" node_paths=PackedStringArray("step_target", "crab_model")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.794217, 0, -0.392187)
+top_level = true
+script = ExtResource("6_p1lxt")
+step_target = NodePath("../StepTargets/RayRight1/Target_RightLeg1")
+crab_model = NodePath("../../..")
+
+[node name="Target_RightLeg2" type="Marker3D" parent="Legs/LegArmatrure" index="5" node_paths=PackedStringArray("step_target", "crab_model")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.855952, 0, 0.105417)
+top_level = true
+script = ExtResource("6_p1lxt")
+step_target = NodePath("../StepTargets/RayRight2/Target_RightLeg2")
+crab_model = NodePath("../../..")
+
+[node name="Target_RightLeg3" type="Marker3D" parent="Legs/LegArmatrure" index="6" node_paths=PackedStringArray("step_target", "crab_model")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.727217, 0, 0.525481)
+top_level = true
+script = ExtResource("6_p1lxt")
+step_target = NodePath("../StepTargets/RayRight3/Target_RightLeg3")
+crab_model = NodePath("../../..")
+
+[node name="StepTargets" type="Node3D" parent="Legs/LegArmatrure" index="7"]
+
+[node name="RayLeft1" type="RayCast3D" parent="Legs/LegArmatrure/StepTargets" node_paths=PackedStringArray("step_target", "crab_model")]
+transform = Transform3D(0.997463, 0.0711841, 0, -0.0708452, 0.992715, -0.0974613, -0.00693769, 0.0972141, 0.995239, -1.55233, -0.203042, -0.742891)
+script = ExtResource("6_18dah")
+step_target = NodePath("Target_LeftLeg1")
+crab_model = NodePath("../../../..")
+
+[node name="Target_LeftLeg1" type="Marker3D" parent="Legs/LegArmatrure/StepTargets/RayLeft1"]
+transform = Transform3D(0.997463, -0.0708452, -0.00693769, 0.0711841, 0.992714, 0.0972141, -4.65661e-10, -0.0974613, 0.995239, -0.00455344, -0.443397, 0.00159746)
+
+[node name="RayLeft2" type="RayCast3D" parent="Legs/LegArmatrure/StepTargets" node_paths=PackedStringArray("step_target", "crab_model")]
+transform = Transform3D(0.995754, 0.0920578, 0, -0.0920578, 0.995754, 0, 0, 0, 1, -1.6789, -0.203042, 0.210835)
+script = ExtResource("6_18dah")
+step_target = NodePath("Target_LeftLeg2")
+crab_model = NodePath("../../../..")
+
+[node name="Target_LeftLeg2" type="Marker3D" parent="Legs/LegArmatrure/StepTargets/RayLeft2"]
+transform = Transform3D(0.995754, -0.0920578, 0, 0.0920578, 0.995754, 0, 0, 0, 1, 0.00764561, -0.44117, 0)
+
+[node name="RayLeft3" type="RayCast3D" parent="Legs/LegArmatrure/StepTargets" node_paths=PackedStringArray("step_target", "crab_model")]
+transform = Transform3D(0.997441, 0.0714974, 0, -0.0713995, 0.996074, 0.052336, 0.00374189, -0.052202, 0.99863, -1.43043, -0.203042, 1.03096)
+script = ExtResource("6_18dah")
+step_target = NodePath("Target_LeftLeg3")
+crab_model = NodePath("../../../..")
+
+[node name="Target_LeftLeg3" type="Marker3D" parent="Legs/LegArmatrure/StepTargets/RayLeft3"]
+transform = Transform3D(0.997441, -0.0713995, 0.00374189, 0.0714974, 0.996074, -0.052202, -2.32831e-10, 0.052336, 0.99863, 0.00755203, -0.441032, -0.00305521)
+
+[node name="RayRight1" type="RayCast3D" parent="Legs/LegArmatrure/StepTargets" node_paths=PackedStringArray("step_target", "crab_model")]
+transform = Transform3D(0.997441, -0.0714974, 0, 0.0711562, 0.99268, -0.0975829, 0.00697693, 0.0973332, 0.995227, 1.55243, -0.203042, -0.743375)
+script = ExtResource("6_18dah")
+step_target = NodePath("Target_RightLeg1")
+crab_model = NodePath("../../../..")
+
+[node name="Target_RightLeg1" type="Marker3D" parent="Legs/LegArmatrure/StepTargets/RayRight1"]
+transform = Transform3D(0.997441, 0.0711562, 0.00697693, -0.0714974, 0.99268, 0.0973332, 0, -0.0975829, 0.995227, 0.00431299, -0.443344, 0.00213212)
+
+[node name="RayRight2" type="RayCast3D" parent="Legs/LegArmatrure/StepTargets" node_paths=PackedStringArray("step_target", "crab_model")]
+transform = Transform3D(0.995725, -0.0923706, 0, 0.0923706, 0.995725, 0, 0, 0, 1, 1.67913, -0.203042, 0.210835)
+script = ExtResource("6_18dah")
+step_target = NodePath("Target_RightLeg2")
+crab_model = NodePath("../../../..")
+
+[node name="Target_RightLeg2" type="Marker3D" parent="Legs/LegArmatrure/StepTargets/RayRight2"]
+transform = Transform3D(0.995725, 0.0923706, 0, -0.0923706, 0.995725, 0, 0, 0, 1, -0.00800526, -0.441147, 0)
+
+[node name="RayRight3" type="RayCast3D" parent="Legs/LegArmatrure/StepTargets" node_paths=PackedStringArray("step_target", "crab_model")]
+transform = Transform3D(0.997451, -0.0713582, 0, 0.0712604, 0.996084, 0.052336, -0.0037346, -0.0522025, 0.99863, 1.43033, -0.203042, 1.03067)
+script = ExtResource("6_18dah")
+step_target = NodePath("Target_RightLeg3")
+crab_model = NodePath("../../../..")
+
+[node name="Target_RightLeg3" type="Marker3D" parent="Legs/LegArmatrure/StepTargets/RayRight3"]
+transform = Transform3D(0.997451, 0.0712604, -0.0037346, -0.0713582, 0.996084, -0.0522025, 0, 0.052336, 0.99863, -0.00738716, -0.441057, -0.00275791)
+
+[node name="EyesTarget" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.243073, -1.79388)
+
+[node name="TestDebugVisual" type="MeshInstance3D" parent="EyesTarget"]
+transform = Transform3D(0.5, -7.45058e-09, 4.65661e-09, 2.9825e-08, 0.5, 5.58793e-08, 4.42489e-09, 7.45058e-09, 0.5, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_bt3n4")
+skeleton = NodePath("../../Legs/LegArmatrure/StepTargets/RayLeft1/Target_LeftLeg1")
+surface_material_override/0 = SubResource("StandardMaterial3D_ilcsj")
+
+[editable path="Crab2"]
+[editable path="Crab2/Eyes/Eye"]
+[editable path="Crab2/Eyes/Eye2"]
+[editable path="Legs"]

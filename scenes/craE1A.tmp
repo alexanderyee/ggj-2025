@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfsep4rjt4s4m"]
+
+[ext_resource type="Script" path="res://scripts/class/crab.gd" id="1_x3l5e"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0ajk3"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ns67v"]
+
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_v060s"]
+
+[node name="Crab" type="CharacterBody3D"]
+script = ExtResource("1_x3l5e")
+fov_radius_meters = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_0ajk3")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="CrabVision" type="Area3D" parent="."]
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CrabVision"]
+shape = SubResource("SphereShape3D_ns67v")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamPolyphonic_v060s")
+max_polyphony = 10
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

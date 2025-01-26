@@ -1,19 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://bjm5trsh5ponb"]
+[gd_scene load_steps=19 format=3 uid="uid://bjm5trsh5ponb"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="1_cgvsa"]
+[ext_resource type="Texture2D" uid="uid://dwqqnft73i6ia" path="res://game_sandbox/devone_sandbox/assets/photo_studio_loft_hall_2k.exr" id="1_drluy"]
+[ext_resource type="Environment" uid="uid://ws3wl4s12s5h" path="res://default_env.tres" id="1_q1gcq"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="2_8vgn0"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_iyltw"]
-[ext_resource type="PackedScene" uid="uid://yaw41h3vjeti" path="res://game_sandbox/jake_sandbox/Assets/Models/seashell.glb" id="4_j48th"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kbcgm"]
-
-[sub_resource type="Sky" id="Sky_o5002"]
-sky_material = SubResource("ProceduralSkyMaterial_kbcgm")
-
-[sub_resource type="Environment" id="Environment_1thx3"]
-background_mode = 2
-background_energy_multiplier = 1.5
-sky = SubResource("Sky_o5002")
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="3_v1m45"]
+[ext_resource type="PackedScene" uid="uid://ddr0eyav0x5cr" path="res://scenes/selectables/seashell.tscn" id="5_ohhq1"]
+[ext_resource type="Script" path="res://addons/DragAndDrop3D/nodes/drag_and_drop_3d.gd" id="5_s6p64"]
+[ext_resource type="PackedScene" uid="uid://dnw670y81o6wc" path="res://game_sandbox/devone_sandbox/fish_tank.tscn" id="6_78ovq"]
 
 [sub_resource type="Resource" id="Resource_r1ygu"]
 script = ExtResource("2_8vgn0")
@@ -21,55 +16,103 @@ duration = 1.0
 transition = 0
 ease = 2
 
+[sub_resource type="Resource" id="Resource_2yayy"]
+script = ExtResource("3_v1m45")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 74.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6jsnm"]
+panorama = ExtResource("1_drluy")
+
+[sub_resource type="Sky" id="Sky_o5002"]
+sky_material = SubResource("PanoramaSkyMaterial_6jsnm")
+
+[sub_resource type="Environment" id="Environment_k7kbm"]
+background_mode = 2
+background_energy_multiplier = 1.5
+sky = SubResource("Sky_o5002")
+tonemap_mode = 3
+tonemap_exposure = 0.25
+
 [sub_resource type="NavigationMesh" id="NavigationMesh_s26kr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_niry1"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qgeg3"]
+albedo_color = Color(7.46027e-07, 0, 0.403407, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_i17vl"]
+material = SubResource("StandardMaterial3D_qgeg3")
 
 [node name="Main" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_1thx3")
+environment = ExtResource("1_q1gcq")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.844991, -0.327394, 0.422851, 0, 0.7907, 0.612203, -0.53478, -0.517307, 0.668135, 0, 2.72948, -2.52983)
+shadow_enabled = true
 
 [node name="MainCamera" type="Node3D" parent="." node_paths=PackedStringArray("look_at_target")]
-transform = Transform3D(0.999999, -1.40884e-17, 2.11362e-17, 3.84857e-18, 0.906522, 0.422159, -2.51079e-17, -0.422159, 0.906522, 0, 2, 2.602)
+transform = Transform3D(0.999999, -0.000682079, 0.000303226, -4.04019e-07, 0.405733, 0.913992, -0.000746443, -0.913991, 0.405733, 0, 14.519, 6.445)
 script = ExtResource("1_cgvsa")
 look_at_mode = 2
-look_at_target = NodePath("../Environment/seashell")
+look_at_target = NodePath("../Environment")
 tween_resource = SubResource("Resource_r1ygu")
+camera_3d_resource = SubResource("Resource_2yayy")
+environment = ExtResource("1_q1gcq")
 follow_offset = Vector3(0, 1.845, 0)
-look_at_offset = Vector3(0, 0.785, 0)
 look_at_damping = true
 
 [node name="HostCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, -1.40884e-17, 2.11362e-17, 3.84857e-18, 0.906522, 0.422159, -2.5108e-17, -0.422159, 0.906522, 0, 2, 2.602)
+
+transform = Transform3D(1, -1.40883e-17, 2.11362e-17, 3.84857e-18, 0.906522, 0.422159, -2.51079e-17, -0.422159, 0.906522, 0, 2, 2.602)
 
 [node name="PhantomCameraHost" type="Node" parent="HostCamera"]
 process_priority = 300
 process_physics_priority = 300
 script = ExtResource("3_iyltw")
 
+[node name="DragAndDropManager" type="Node3D" parent="."]
+script = ExtResource("5_s6p64")
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_s26kr")
 
 [node name="Environment" type="Node3D" parent="."]
 
-[node name="seashell" parent="Environment" instance=ExtResource("4_j48th")]
-transform = Transform3D(0.332329, 0.100969, 0.35967, -0.344137, -0.104557, 0.347329, 0.145351, -0.478407, -1.57217e-08, 0, 0, 0)
+[node name="Seashell" parent="Environment" instance=ExtResource("5_ohhq1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27759, 0.180054, -3.92865)
 
 [node name="Default Cube" type="StaticBody3D" parent="Environment"]
-transform = Transform3D(-0.325123, 0, 0.945672, 0, 1, 0, -0.945672, 0, -0.325123, 0, 0, 0)
-visible = false
+transform = Transform3D(-0.325123, 0, 0.945672, 0, 1, 0, -0.945672, 0, -0.325123, 3, 0, -3)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Default Cube"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_niry1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Default Cube"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, -1, 0)
 mesh = SubResource("BoxMesh_i17vl")
+
+[node name="Floor" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+use_collision = true
+size = Vector3(32, 1, 18)
+
+[node name="FishTank" parent="Environment" instance=ExtResource("6_78ovq")]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Environment"]
+transform = Transform3D(0.905754, 0, 0.423804, 0, 1, 0, -0.423804, 0, 0.905754, 10.2191, 0.393497, -5.50217)
+light_energy = 4.0
+spot_range = 7.0
 
 [node name="NeedsSystem" type="Node3D" parent="."]
 
