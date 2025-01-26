@@ -16,6 +16,9 @@ extends CharacterBody3D
 @onready var random_move_pos_target : Vector3 = Vector3.ZERO
 @onready var currently_random_moving : bool = false
 
+
+
+
 var current_fixation = null
 var current_objects_within_fov := []
 
@@ -49,7 +52,7 @@ func _physics_process(delta: float) -> void:
 				move_target_pos = objects_within_fov[hand_index].position
 	else:
 		current_fixation = null
-	
+	print(current_fixation)
 	if !do_we_want_to_move:
 		if !currently_random_moving:#we're chillin, should we start moving?
 			var rand_chance : float =  randf_range(0.0, 1.0) * delta
