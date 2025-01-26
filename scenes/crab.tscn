@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfsep4rjt4s4m"]
+[gd_scene load_steps=6 format=3 uid="uid://dfsep4rjt4s4m"]
 
 [ext_resource type="Script" path="res://scripts/class/crab.gd" id="1_x3l5e"]
 [ext_resource type="PackedScene" path="res://game_sandbox/thaddeus_sandbox/CrabModel.tscn" id="2_ahruy"]
+[ext_resource type="AudioStream" uid="uid://cejoy0c6mbv8d" path="res://game_sandbox/fluffy_sandbox/sfx/scuttle.wav" id="3_4dibv"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0ajk3"]
 
@@ -31,6 +32,10 @@ shape = SubResource("SphereShape3D_ns67v")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 max_polyphony = 10
+
+[node name="ScuttleVFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4dibv")
+volume_db = -16.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="CrabVision" to="." method="_on_crab_vision_body_entered"]
