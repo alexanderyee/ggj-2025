@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dnw670y81o6wc"]
+[gd_scene load_steps=11 format=3 uid="uid://dnw670y81o6wc"]
 
 [ext_resource type="Shader" path="res://game_sandbox/devone_sandbox/glass.gdshader" id="1_gcsfv"]
+[ext_resource type="Shader" path="res://game_sandbox/devone_sandbox/water.gdshader" id="2_6voo2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ibo6"]
 albedo_color = Color(0.196443, 0.0921203, 0, 1)
@@ -12,6 +13,43 @@ shader_parameter/albedo = Color(1, 1, 1, 0.0901961)
 shader_parameter/roughness = 0.15
 shader_parameter/normal_strength = 1.0
 shader_parameter/edge_color = Color(0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_p4i3c"]
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cw4tq"]
+noise = SubResource("FastNoiseLite_p4i3c")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lxm7q"]
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ivexe"]
+noise = SubResource("FastNoiseLite_lxm7q")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bt1ra"]
+render_priority = 0
+shader = ExtResource("2_6voo2")
+shader_parameter/time_speed = 0.085
+shader_parameter/surface_speed = 0.02
+shader_parameter/spin = 0.0
+shader_parameter/brightness = 0.6
+shader_parameter/color_intensity = 0.0
+shader_parameter/horizontal_frequency = 2.0
+shader_parameter/vertical_frequency = 2.0
+shader_parameter/size = 3.0
+shader_parameter/banding_bias = 0.6
+shader_parameter/wave_height = 0.25
+shader_parameter/texture_height = 0.025
+shader_parameter/color1 = Color(0.874377, 0.926624, 1, 1)
+shader_parameter/color2 = Color(0.274, 0.474, 0.98, 1)
+shader_parameter/color3 = Color(0.059, 0.389, 0.85, 1)
+shader_parameter/color4 = Color(0.00148069, 0.176477, 0.694171, 1)
+shader_parameter/wave_texture = SubResource("NoiseTexture2D_ivexe")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_cw4tq")
+
+[sub_resource type="BoxMesh" id="BoxMesh_rnygi"]
+material = SubResource("ShaderMaterial_bt1ra")
+size = Vector3(30, 0.1, 16)
 
 [node name="FishTank" type="Node3D"]
 
@@ -54,3 +92,7 @@ material = SubResource("ShaderMaterial_k0tw7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.78107)
 size = Vector3(29.825, 10, 1)
 material = SubResource("ShaderMaterial_k0tw7")
+
+[node name="Water" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.87568, 0)
+mesh = SubResource("BoxMesh_rnygi")
