@@ -27,6 +27,17 @@ DragAndDropGroupHelper="*res://addons/DragAndDrop3D/DragAndDropGroupHelper.gd"
 
 enabled=PackedStringArray("res://addons/DragAndDrop3D/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/scene_manager/plugin.cfg")
 
+[global_group]
+
+hand=""
+food=""
+comfort=""
+community=""
+shelter=""
+bubble=""
+friend=""
+crunch=""
+
 [input]
 
 click={

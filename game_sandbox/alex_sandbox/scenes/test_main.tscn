@@ -1,25 +1,37 @@
-[gd_scene load_steps=21 format=3 uid="uid://c4kyiwo0wkhpk"]
+[gd_scene load_steps=35 format=3 uid="uid://c4kyiwo0wkhpk"]
 
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="1_2ncpv"]
-[ext_resource type="Environment" uid="uid://ws3wl4s12s5h" path="res://default_env.tres" id="1_npube"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="2_m65ry"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_q1j4j"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="4_jdlay"]
-[ext_resource type="PackedScene" uid="uid://dfsep4rjt4s4m" path="res://scenes/crab.tscn" id="5_kgg2k"]
-[ext_resource type="Texture2D" uid="uid://dwqqnft73i6ia" path="res://game_sandbox/devone_sandbox/assets/photo_studio_loft_hall_2k.exr" id="5_x32in"]
-[ext_resource type="Script" path="res://addons/DragAndDrop3D/nodes/drag_and_drop_3d.gd" id="7_3c67l"]
-[ext_resource type="PackedScene" uid="uid://ddr0eyav0x5cr" path="res://scenes/selectables/seashell.tscn" id="8_iir4u"]
-[ext_resource type="PackedScene" uid="uid://dnw670y81o6wc" path="res://game_sandbox/devone_sandbox/fish_tank.tscn" id="9_io8x1"]
-[ext_resource type="PackedScene" uid="uid://d3mgwdjbjyq0b" path="res://scenes/mouse_position.tscn" id="10_nklqb"]
+[ext_resource type="Environment" uid="uid://ws3wl4s12s5h" path="res://default_env.tres" id="1_0e5gq"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="2_o2sd4"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_q4bg6"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="4_xnbtg"]
+[ext_resource type="Texture2D" uid="uid://dwqqnft73i6ia" path="res://game_sandbox/devone_sandbox/assets/photo_studio_loft_hall_2k.exr" id="5_wqmow"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="6_rwov8"]
+[ext_resource type="Script" path="res://addons/DragAndDrop3D/nodes/drag_and_drop_3d.gd" id="7_0oddm"]
+[ext_resource type="PackedScene" uid="uid://bw2a2nieojo3x" path="res://game_sandbox/thaddeus_sandbox/Hand.tscn" id="8_3ioqe"]
+[ext_resource type="PackedScene" uid="uid://ddr0eyav0x5cr" path="res://scenes/selectables/seashell.tscn" id="9_xn117"]
+[ext_resource type="PackedScene" uid="uid://dd41hl1os2gx2" path="res://game_sandbox/devone_sandbox/rock.tscn" id="10_gx22s"]
+[ext_resource type="Shader" path="res://game_sandbox/devone_sandbox/caustic.gdshader" id="11_bxrl5"]
+[ext_resource type="PackedScene" uid="uid://dnw670y81o6wc" path="res://game_sandbox/devone_sandbox/fish_tank.tscn" id="12_dnytl"]
+[ext_resource type="PackedScene" uid="uid://8do6ot5jryi2" path="res://game_sandbox/devone_sandbox/bubbles.tscn" id="13_b75n6"]
+[ext_resource type="Texture2D" uid="uid://h8nkf61rxc3y" path="res://game_sandbox/devone_sandbox/assets/SpotLightMask.png" id="14_xtuy0"]
+[ext_resource type="Texture2D" uid="uid://d2jtf8p66f2ei" path="res://game_sandbox/devone_sandbox/assets/SpotLightMaskLine.png" id="15_ju5yo"]
+[ext_resource type="PackedScene" uid="uid://d3mgwdjbjyq0b" path="res://scenes/mouse_position.tscn" id="16_hm1xu"]
+[ext_resource type="PackedScene" uid="uid://cvb85hrhl8k2s" path="res://game_sandbox/jake_sandbox/Assets/Models/doughnut_coral.glb" id="17_nqkew"]
+[ext_resource type="Script" path="res://addons/DragAndDrop3D/nodes/dragging_object_3d.gd" id="18_w7ol8"]
+[ext_resource type="PackedScene" uid="uid://bh3ix7ppos4l7" path="res://scenes/moss_ball.tscn" id="19_1s6yr"]
+[ext_resource type="PackedScene" uid="uid://cor16fxb43qho" path="res://scenes/pineapple_house.tscn" id="20_05max"]
+[ext_resource type="AudioStream" uid="uid://124qdt1buj80" path="res://game_sandbox/fluffy_sandbox/Music/crembient.ogg" id="21_sv1b1"]
+[ext_resource type="PackedScene" uid="uid://dfsep4rjt4s4m" path="res://scenes/crab.tscn" id="22_exko7"]
+[ext_resource type="PackedScene" uid="uid://btf5fqqctoyid" path="res://game_sandbox/jake_sandbox/Scenes/chest_three.tscn" id="23_gv3h0"]
 
 [sub_resource type="Resource" id="Resource_r1ygu"]
-script = ExtResource("2_m65ry")
+script = ExtResource("3_q4bg6")
 duration = 1.0
 transition = 0
 ease = 2
 
 [sub_resource type="Resource" id="Resource_2yayy"]
-script = ExtResource("4_jdlay")
+script = ExtResource("4_xnbtg")
 cull_mask = 1048575
 h_offset = 0.0
 v_offset = 0.0
@@ -31,12 +43,12 @@ near = 0.05
 far = 4000.0
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6jsnm"]
-panorama = ExtResource("5_x32in")
+panorama = ExtResource("5_wqmow")
 
 [sub_resource type="Sky" id="Sky_o5002"]
 sky_material = SubResource("PanoramaSkyMaterial_6jsnm")
 
-[sub_resource type="Environment" id="Environment_6bpky"]
+[sub_resource type="Environment" id="Environment_b7nm6"]
 background_mode = 2
 background_energy_multiplier = 1.5
 sky = SubResource("Sky_o5002")
@@ -45,18 +57,31 @@ tonemap_exposure = 0.25
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_s26kr"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_niry1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_drp6g"]
+render_priority = 0
+shader = ExtResource("11_bxrl5")
+shader_parameter/iteration_times = 5
+shader_parameter/speed = 0.5
+shader_parameter/color = Color(1, 0.870588, 0.501961, 1)
+shader_parameter/intensity = 0.005
+shader_parameter/enabled = false
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qgeg3"]
-albedo_color = Color(7.46027e-07, 0, 0.403407, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vhxc3"]
+next_pass = SubResource("ShaderMaterial_drp6g")
+albedo_color = Color(1, 0.839216, 0, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_i17vl"]
-material = SubResource("StandardMaterial3D_qgeg3")
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_y0mcc"]
+data = PackedVector3Array(-20, 7.5, 0.5, 20, 7.5, 0.5, -20, -7.5, 0.5, 20, 7.5, 0.5, 20, -7.5, 0.5, -20, -7.5, 0.5, 20, 7.5, -0.5, -20, 7.5, -0.5, 20, -7.5, -0.5, -20, 7.5, -0.5, -20, -7.5, -0.5, 20, -7.5, -0.5, 20, 7.5, 0.5, 20, 7.5, -0.5, 20, -7.5, 0.5, 20, 7.5, -0.5, 20, -7.5, -0.5, 20, -7.5, 0.5, -20, 7.5, -0.5, -20, 7.5, 0.5, -20, -7.5, -0.5, -20, 7.5, 0.5, -20, -7.5, 0.5, -20, -7.5, -0.5, 20, 7.5, 0.5, -20, 7.5, 0.5, 20, 7.5, -0.5, -20, 7.5, 0.5, -20, 7.5, -0.5, 20, 7.5, -0.5, -20, -7.5, 0.5, 20, -7.5, 0.5, -20, -7.5, -0.5, 20, -7.5, 0.5, 20, -7.5, -0.5, -20, -7.5, -0.5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_6wjpp"]
+data = PackedVector3Array(-0.5, 7.5875, 18.4425, 0.5, 7.5875, 18.4425, -0.5, -7.5875, 18.4425, 0.5, 7.5875, 18.4425, 0.5, -7.5875, 18.4425, -0.5, -7.5875, 18.4425, 0.5, 7.5875, -18.4425, -0.5, 7.5875, -18.4425, 0.5, -7.5875, -18.4425, -0.5, 7.5875, -18.4425, -0.5, -7.5875, -18.4425, 0.5, -7.5875, -18.4425, 0.5, 7.5875, 18.4425, 0.5, 7.5875, -18.4425, 0.5, -7.5875, 18.4425, 0.5, 7.5875, -18.4425, 0.5, -7.5875, -18.4425, 0.5, -7.5875, 18.4425, -0.5, 7.5875, -18.4425, -0.5, 7.5875, 18.4425, -0.5, -7.5875, -18.4425, -0.5, 7.5875, 18.4425, -0.5, -7.5875, 18.4425, -0.5, -7.5875, -18.4425, 0.5, 7.5875, 18.4425, -0.5, 7.5875, 18.4425, 0.5, 7.5875, -18.4425, -0.5, 7.5875, 18.4425, -0.5, 7.5875, -18.4425, 0.5, 7.5875, -18.4425, -0.5, -7.5875, 18.4425, 0.5, -7.5875, 18.4425, -0.5, -7.5875, -18.4425, 0.5, -7.5875, 18.4425, 0.5, -7.5875, -18.4425, -0.5, -7.5875, -18.4425)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_sc8gp"]
 
 [node name="Main" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("1_npube")
+environment = ExtResource("1_0e5gq")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.844991, -0.327394, 0.422851, 0, 0.7907, 0.612203, -0.53478, -0.517307, 0.668135, 0, 2.72948, -2.52983)
@@ -64,70 +89,190 @@ shadow_enabled = true
 
 [node name="MainCamera" type="Node3D" parent="." node_paths=PackedStringArray("look_at_target")]
 transform = Transform3D(0.999999, -0.000682079, 0.000303226, -4.04019e-07, 0.405733, 0.913992, -0.000746443, -0.913991, 0.405733, 0, 14.519, 6.445)
-script = ExtResource("1_2ncpv")
+script = ExtResource("2_o2sd4")
 look_at_mode = 2
 look_at_target = NodePath("../Environment")
 tween_resource = SubResource("Resource_r1ygu")
 camera_3d_resource = SubResource("Resource_2yayy")
-environment = ExtResource("1_npube")
+environment = ExtResource("1_0e5gq")
 follow_offset = Vector3(0, 1.845, 0)
 look_at_damping = true
 
 [node name="HostCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, -0.000682079, 0.000303226, -4.04019e-07, 0.405733, 0.913992, -0.000746444, -0.913991, 0.405733, 0, 14.519, 6.445)
-environment = SubResource("Environment_6bpky")
+environment = SubResource("Environment_b7nm6")
 fov = 74.0
 
 [node name="PhantomCameraHost" type="Node" parent="HostCamera"]
 process_priority = 300
 process_physics_priority = 300
-script = ExtResource("3_q1j4j")
+script = ExtResource("6_rwov8")
 
 [node name="DragAndDropManager" type="Node3D" parent="."]
-script = ExtResource("7_3c67l")
+script = ExtResource("7_0oddm")
+
+[node name="Hand" parent="DragAndDropManager" instance=ExtResource("8_3ioqe")]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_s26kr")
 
 [node name="Environment" type="Node3D" parent="."]
 
-[node name="Seashell" parent="Environment" instance=ExtResource("8_iir4u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27759, 0.180054, -3.92865)
+[node name="Seashell2" parent="Environment" instance=ExtResource("9_xn117")]
+transform = Transform3D(0.999713, -0.0239611, 0, 0.0239611, 0.999713, 0, 0, 0, 1, 7.83454, -1.26305, 6.73697)
 
-[node name="Default Cube" type="StaticBody3D" parent="Environment"]
-transform = Transform3D(-0.325123, 0, 0.945672, 0, 1, 0, -0.945672, 0, -0.325123, 3, 0, -3)
-collision_layer = 8
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Default Cube"]
-transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0)
-shape = SubResource("BoxShape3D_niry1")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Default Cube"]
-transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, -1, 0)
-mesh = SubResource("BoxMesh_i17vl")
+[node name="Rock" parent="Environment" instance=ExtResource("10_gx22s")]
+transform = Transform3D(-0.967378, 0, 0.253336, 0, 1, 0, -0.253336, 0, -0.967378, -5.77909, -1.39049, -6.78566)
 
 [node name="Floor" type="CSGBox3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 use_collision = true
 size = Vector3(32, 1, 18)
+material = SubResource("StandardMaterial3D_vhxc3")
 
-[node name="FishTank" parent="Environment" instance=ExtResource("9_io8x1")]
+[node name="FishTank" parent="Environment" instance=ExtResource("12_dnytl")]
+
+[node name="Bubbles" parent="Environment/FishTank" instance=ExtResource("13_b75n6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9682, 1.48958, -3.08658)
+
+[node name="Bubbles2" parent="Environment/FishTank" instance=ExtResource("13_b75n6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2717, -0.25142, -6.393)
+
+[node name="Bubbles3" parent="Environment/FishTank" instance=ExtResource("13_b75n6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2717, -0.25142, 4.94553)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Environment"]
 transform = Transform3D(0.905754, 0, 0.423804, 0, 1, 0, -0.423804, 0, 0.905754, 10.2191, 0.393497, -5.50217)
 light_energy = 4.0
+light_specular = 10.0
 spot_range = 7.0
 
-[node name="MousePosition" parent="Environment" instance=ExtResource("10_nklqb")]
+[node name="SpotLight3D2" type="SpotLight3D" parent="Environment"]
+transform = Transform3D(0.378859, 0.925455, 4.04529e-08, 6.30673e-16, -4.37114e-08, 1, 0.925455, -0.378859, -1.65604e-08, -2.01552, 1.32242, -7.07055)
+light_projector = ExtResource("14_xtuy0")
+light_specular = 5.465
+shadow_enabled = true
+spot_attenuation = -2.0
+spot_angle = 53.0
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Environment"]
+transform = Transform3D(0.378859, 0.925455, 4.04529e-08, 6.30673e-16, -4.37114e-08, 1, 0.925455, -0.378859, -1.65604e-08, -15.2972, 1.32242, 0.427837)
+light_projector = ExtResource("14_xtuy0")
+light_specular = 5.465
+shadow_enabled = true
+spot_attenuation = -1.0
+spot_angle = 53.0
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Environment"]
+transform = Transform3D(-0.0945581, 0.485983, 0.868838, -0.883294, 0.361599, -0.298391, -0.459184, -0.795655, 0.395074, -10.4986, 1.32242, 9.91528)
+light_energy = 1.242
+light_projector = ExtResource("15_ju5yo")
+light_size = 10.0
+shadow_enabled = true
+spot_range = 7.0
+spot_angle = 53.0
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="Environment"]
+transform = Transform3D(-0.0344084, -0.68476, -0.727956, -0.883294, 0.361599, -0.298391, 0.467555, 0.632733, -0.617286, 12.864, -2.06481, -1.61481)
+light_energy = 1.702
+light_projector = ExtResource("15_ju5yo")
+light_specular = 10.0
+shadow_enabled = true
+spot_range = 8.184
+spot_angle = 53.0
+
+[node name="WallCollider" type="StaticBody3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.883, -8.2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/WallCollider"]
+shape = SubResource("ConcavePolygonShape3D_y0mcc")
+
+[node name="WallRight" type="StaticBody3D" parent="Environment/WallCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5067, -2.16427, 8.2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/WallCollider/WallRight"]
+shape = SubResource("ConcavePolygonShape3D_6wjpp")
+
+[node name="WallLeft" type="StaticBody3D" parent="Environment/WallCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.507, -2.164, 8.2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/WallCollider/WallLeft"]
+shape = SubResource("ConcavePolygonShape3D_6wjpp")
+
+[node name="MousePosition" parent="Environment" instance=ExtResource("16_hm1xu")]
+
+[node name="doughnut_coral" parent="Environment" instance=ExtResource("17_nqkew")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3714, -1.5, 0.399492)
+
+[node name="doughnut_coral3" parent="Environment" instance=ExtResource("17_nqkew")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.42484, -1.5, 2.93493)
+
+[node name="Moss Ball" type="Node3D" parent="Environment"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 8.21238, -1.01647, 3.43197)
+script = ExtResource("18_w7ol8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Moss Ball" groups=["food"]]
+collision_layer = 9
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Moss Ball/StaticBody3D"]
+shape = SubResource("SphereShape3D_sc8gp")
+
+[node name="Mesh" parent="Environment/Moss Ball/StaticBody3D" instance=ExtResource("19_1s6yr")]
+
+[node name="Moss Ball2" type="Node3D" parent="Environment"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -6.22783, -1.01647, 6.85783)
+script = ExtResource("18_w7ol8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Moss Ball2" groups=["food"]]
+collision_layer = 9
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Moss Ball2/StaticBody3D"]
+shape = SubResource("SphereShape3D_sc8gp")
+
+[node name="Mesh" parent="Environment/Moss Ball2/StaticBody3D" instance=ExtResource("19_1s6yr")]
+
+[node name="Moss Ball3" type="Node3D" parent="Environment"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 13.4476, -1.01647, -0.597424)
+script = ExtResource("18_w7ol8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Moss Ball3" groups=["food"]]
+collision_layer = 9
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Moss Ball3/StaticBody3D"]
+shape = SubResource("SphereShape3D_sc8gp")
+
+[node name="Mesh" parent="Environment/Moss Ball3/StaticBody3D" instance=ExtResource("19_1s6yr")]
+
+[node name="Moss Ball4" type="Node3D" parent="Environment"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 5.77684, -1.01647, -7.4631)
+script = ExtResource("18_w7ol8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Moss Ball4" groups=["food"]]
+collision_layer = 9
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Moss Ball4/StaticBody3D"]
+shape = SubResource("SphereShape3D_sc8gp")
+
+[node name="Mesh" parent="Environment/Moss Ball4/StaticBody3D" instance=ExtResource("19_1s6yr")]
+
+[node name="PineappleHouse" parent="Environment" groups=["shelter"] instance=ExtResource("20_05max")]
+transform = Transform3D(-0.450441, 0, 0.892806, 0, 1, 0, -0.892806, 0, -0.450441, 11.0578, -1.16812, -5.7793)
 
 [node name="NeedsSystem" type="Node3D" parent="."]
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_sv1b1")
+volume_db = -24.0
+autoplay = true
 
 [node name="CrabCast" type="Node3D" parent="."]
 
-[node name="Crab" parent="CrabCast" instance=ExtResource("5_kgg2k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.878421, -1.5, -7.15338)
-fov_radius_meters = 12.0
+[node name="Crab" parent="CrabCast" instance=ExtResource("22_exko7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.96564, 0, 0)
+tick_length_milliseconds = 1200
+fov_radius_meters = 4.0
 
 [node name="UIRoot" type="CanvasLayer" parent="."]
+
+[node name="chest_three" parent="." instance=ExtResource("23_gv3h0")]
+transform = Transform3D(0.0900938, 0, 0.995933, 0, 1, 0, -0.995933, 0, 0.0900938, -10.0667, -1.58734, 3.38723)

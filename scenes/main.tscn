@@ -17,12 +17,12 @@
 [ext_resource type="Texture2D" uid="uid://d2jtf8p66f2ei" path="res://game_sandbox/devone_sandbox/assets/SpotLightMaskLine.png" id="11_se7xa"]
 [ext_resource type="PackedScene" uid="uid://d3mgwdjbjyq0b" path="res://scenes/mouse_position.tscn" id="12_8awkg"]
 [ext_resource type="PackedScene" uid="uid://cvb85hrhl8k2s" path="res://game_sandbox/jake_sandbox/Assets/Models/doughnut_coral.glb" id="13_puxit"]
-[ext_resource type="PackedScene" uid="uid://s3755bhbqwk7" path="res://game_sandbox/jake_sandbox/Assets/Models/pineapple_house.glb" id="14_abfds"]
-[ext_resource type="PackedScene" path="res://game_sandbox/devone_sandbox/bubbles.tscn" id="16_5iowc"]
-[ext_resource type="AudioStream" uid="uid://b7uox2pdhalhr" path="res://game_sandbox/fluffy_sandbox/Music/crembient.ogg" id="17_46pjg"]
+[ext_resource type="PackedScene" uid="uid://8do6ot5jryi2" path="res://game_sandbox/devone_sandbox/bubbles.tscn" id="16_5iowc"]
+[ext_resource type="AudioStream" uid="uid://124qdt1buj80" path="res://game_sandbox/fluffy_sandbox/Music/crembient.ogg" id="17_46pjg"]
 [ext_resource type="Script" path="res://addons/DragAndDrop3D/nodes/dragging_object_3d.gd" id="19_78aoa"]
 [ext_resource type="PackedScene" uid="uid://bh3ix7ppos4l7" path="res://scenes/moss_ball.tscn" id="20_chi6s"]
-[ext_resource type="PackedScene" uid="uid://btf5fqqctoyid" path="res://game_sandbox/jake_sandbox/Scenes/chest_three.tscn" id="21_qwe2g"]
+[ext_resource type="PackedScene" uid="uid://cor16fxb43qho" path="res://scenes/pineapple_house.tscn" id="20_puhfo"]
+[ext_resource type="PackedScene" uid="uid://dcve4p6wguqp5" path="res://scenes/chest.tscn" id="21_u33my"]
 
 [sub_resource type="Resource" id="Resource_r1ygu"]
 script = ExtResource("2_8vgn0")
@@ -48,7 +48,7 @@ panorama = ExtResource("1_drluy")
 [sub_resource type="Sky" id="Sky_o5002"]
 sky_material = SubResource("PanoramaSkyMaterial_6jsnm")
 
-[sub_resource type="Environment" id="Environment_pq8it"]
+[sub_resource type="Environment" id="Environment_oodvb"]
 background_mode = 2
 background_energy_multiplier = 1.5
 sky = SubResource("Sky_o5002")
@@ -99,8 +99,8 @@ follow_offset = Vector3(0, 1.845, 0)
 look_at_damping = true
 
 [node name="HostCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, -0.000682079, 0.000303226, -4.0399e-07, 0.405733, 0.913992, -0.000746444, -0.913991, 0.405733, 0, 14.519, 6.445)
-environment = SubResource("Environment_pq8it")
+transform = Transform3D(1, -0.000682079, 0.000303226, -4.04019e-07, 0.405733, 0.913992, -0.000746444, -0.913991, 0.405733, 0, 14.519, 6.445)
+environment = SubResource("Environment_oodvb")
 fov = 74.0
 
 [node name="PhantomCameraHost" type="Node" parent="HostCamera"]
@@ -110,9 +110,8 @@ script = ExtResource("3_iyltw")
 
 [node name="DragAndDropManager" type="Node3D" parent="."]
 script = ExtResource("5_s6p64")
-groupExclude = Array[String](["hand"])
 
-[node name="Hand" parent="DragAndDropManager" instance=ExtResource("8_rjwfd")]
+[node name="Hand" parent="DragAndDropManager" groups=["comfort", "hand"] instance=ExtResource("8_rjwfd")]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_s26kr")
@@ -208,14 +207,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3714, -1.5, 0.399492)
 [node name="doughnut_coral3" parent="Environment" instance=ExtResource("13_puxit")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.42484, -1.5, 2.93493)
 
-[node name="pineapple_house" parent="Environment" instance=ExtResource("14_abfds")]
-transform = Transform3D(-0.774217, 0, 1.28475, 0, 1.5, 0, -1.28475, 0, -0.774217, 10.0106, -1.5, -4.72789)
-
 [node name="Moss Ball" type="Node3D" parent="Environment"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 8.21238, -1.01647, 3.43197)
 script = ExtResource("19_78aoa")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Moss Ball"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Moss Ball" groups=["crunch", "food"]]
+collision_layer = 9
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Moss Ball/StaticBody3D"]
 shape = SubResource("SphereShape3D_sc8gp")
@@ -226,7 +223,8 @@ shape = SubResource("SphereShape3D_sc8gp")
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -6.22783, -1.01647, 6.85783)
 script = ExtResource("19_78aoa")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Moss Ball2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Moss Ball2" groups=["crunch", "food"]]
+collision_layer = 9
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Moss Ball2/StaticBody3D"]
 shape = SubResource("SphereShape3D_sc8gp")
@@ -237,7 +235,8 @@ shape = SubResource("SphereShape3D_sc8gp")
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 13.4476, -1.01647, -0.597424)
 script = ExtResource("19_78aoa")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Moss Ball3"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Moss Ball3" groups=["crunch", "food"]]
+collision_layer = 9
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Moss Ball3/StaticBody3D"]
 shape = SubResource("SphereShape3D_sc8gp")
@@ -248,12 +247,19 @@ shape = SubResource("SphereShape3D_sc8gp")
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 5.77684, -1.01647, -7.4631)
 script = ExtResource("19_78aoa")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Moss Ball4"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Moss Ball4" groups=["crunch", "food"]]
+collision_layer = 9
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Moss Ball4/StaticBody3D"]
 shape = SubResource("SphereShape3D_sc8gp")
 
 [node name="Mesh" parent="Environment/Moss Ball4/StaticBody3D" instance=ExtResource("20_chi6s")]
+
+[node name="PineappleHouse" parent="Environment" groups=["shelter"] instance=ExtResource("20_puhfo")]
+transform = Transform3D(-0.450441, 0, 0.892806, 0, 1, 0, -0.892806, 0, -0.450441, 11.0578, -1.16812, -5.7793)
+
+[node name="chest" parent="Environment" instance=ExtResource("21_u33my")]
+transform = Transform3D(0.0900938, 0, 0.995933, 0, 1, 0, -0.995933, 0, 0.0900938, -10.0667, -1.58734, 3.38723)
 
 [node name="NeedsSystem" type="Node3D" parent="."]
 
@@ -284,6 +290,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38386, 0, -3.61803)
 fov_radius_meters = 4.0
 
 [node name="UIRoot" type="CanvasLayer" parent="."]
-
-[node name="chest_three" parent="." instance=ExtResource("21_qwe2g")]
-transform = Transform3D(0.0900938, 0, 0.995933, 0, 1, 0, -0.995933, 0, 0.0900938, -10.0667, -1.58734, 3.38723)
