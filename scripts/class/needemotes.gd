@@ -3,6 +3,8 @@ extends Needs
 ## emoteID should go from 0 - 8. 0 is the 'nothing' emote. 
 @export var emoteID : int = 0
 
+@export var crabCoords : CollisionShape3D
+
 @export var speechSprite : Sprite3D
 @export var foodSprite : Sprite3D
 @export var shelterSprite : Sprite3D
@@ -36,6 +38,11 @@ func _ready() -> void:
 	shelterSprite.transparency = 1
 	comfortSprite.transparency = 1
 	communitySprite.transparency = 1
+	
+	emote(1)
+	emote(2)
+	emote(3)
+	emote(4)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -44,15 +51,43 @@ func _process(delta: float) -> void:
 	checkneed(1)
 	checkneed(2)
 	checkneed(3)
+	
+	checkpercentage(food, 0)
+	checkpercentage(shelter, 1)
+	checkpercentage(comfort, 2)
+	checkpercentage(community, 3)
+	
+	setcoords(0)
+	setcoords(1)
+	setcoords(2)
+	setcoords(3)
+	
+	updatespritetimer(delta)
 
 func emote(stat_id):
 	findsprite(stat_id)
 	startspritetimer(stat_id)
-	setcoords(stat_id)
 
 func setcoords(stat_id):
 	
-	speechSprite.global_position.x += stat_id * 10
+	speechSprite.global_position.x = crabCoords.global_position.x + (stat_id * 10)
+	
+	var temp = speechSprite.global_position.x
+	
+	speechSprite.global_position.y = crabCoords.global_position.y + 500
+	speechSprite.global_position.z = crabCoords.global_position.z + 500
+	
+	if stat_id == 1:
+		foodSprite.global_position.x = crabCoords.global_position.x + (stat_id / 50)
+		
+	elif stat_id == 2:
+		shelterSprite.global_position.x = crabCoords.global_position.x + (stat_id / 50)
+		
+	elif stat_id == 3:
+		comfortSprite.global_position.x = crabCoords.global_position.x + (stat_id / 50)
+		
+	elif stat_id == 4:
+		communitySprite.global_position.x = crabCoords.global_position.x + (stat_id / 50)
 
 func findsprite(stat_id):
 	

@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfsep4rjt4s4m"]
+[gd_scene load_steps=7 format=3 uid="uid://dfsep4rjt4s4m"]
 
 [ext_resource type="Script" path="res://scripts/class/crab.gd" id="1_x3l5e"]
 [ext_resource type="PackedScene" uid="uid://pxgf0xl24adb" path="res://game_sandbox/thaddeus_sandbox/CrabModel.tscn" id="2_ahruy"]
+[ext_resource type="PackedScene" uid="uid://d2j6u7une1aln" path="res://game_sandbox/adrianna_sandbox/defineneeds.tscn" id="3_d4k28"]
+[ext_resource type="PackedScene" uid="uid://c7nhh6gy0vbp7" path="res://game_sandbox/adrianna_sandbox/emotes.tscn" id="4_dny1i"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0ajk3"]
 
@@ -31,6 +33,12 @@ shape = SubResource("SphereShape3D_ns67v")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 max_polyphony = 10
+
+[node name="Defineneeds" parent="." instance=ExtResource("3_d4k28")]
+
+[node name="Emotes" parent="." node_paths=PackedStringArray("crabCoords") instance=ExtResource("4_dny1i")]
+transform = Transform3D(0.719471, 0, 0, 0, 0.719471, 0, 0, 0, 1, 0, 3.12939, 0)
+crabCoords = NodePath("../CollisionShape3D")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="CrabVision" to="." method="_on_crab_vision_body_entered"]

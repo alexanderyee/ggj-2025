@@ -41,7 +41,7 @@ panorama = ExtResource("1_drluy")
 [sub_resource type="Sky" id="Sky_o5002"]
 sky_material = SubResource("PanoramaSkyMaterial_6jsnm")
 
-[sub_resource type="Environment" id="Environment_q2n56"]
+[sub_resource type="Environment" id="Environment_0beu0"]
 background_mode = 2
 background_energy_multiplier = 1.5
 sky = SubResource("Sky_o5002")
@@ -68,6 +68,7 @@ environment = ExtResource("1_q1gcq")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.844991, -0.327394, 0.422851, 0, 0.7907, 0.612203, -0.53478, -0.517307, 0.668135, 0, 2.72948, -2.52983)
+shadow_enabled = true
 
 [node name="MainCamera" type="Node3D" parent="." node_paths=PackedStringArray("look_at_target")]
 transform = Transform3D(0.999999, -0.000682079, 0.000303226, -4.04019e-07, 0.405733, 0.913992, -0.000746443, -0.913991, 0.405733, 0, 14.519, 6.445)
@@ -82,7 +83,7 @@ look_at_damping = true
 
 [node name="HostCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, -0.000682079, 0.000303226, -4.04019e-07, 0.405733, 0.913992, -0.000746444, -0.913991, 0.405733, 0, 14.519, 6.445)
-environment = SubResource("Environment_q2n56")
+environment = SubResource("Environment_0beu0")
 fov = 74.0
 
 [node name="PhantomCameraHost" type="Node" parent="HostCamera"]
