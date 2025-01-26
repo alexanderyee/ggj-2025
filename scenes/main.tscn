@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bjm5trsh5ponb"]
+[gd_scene load_steps=29 format=3 uid="uid://bjm5trsh5ponb"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="1_cgvsa"]
 [ext_resource type="Texture2D" uid="uid://dwqqnft73i6ia" path="res://game_sandbox/devone_sandbox/assets/photo_studio_loft_hall_2k.exr" id="1_drluy"]
@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://d3mgwdjbjyq0b" path="res://scenes/mouse_position.tscn" id="12_8awkg"]
 [ext_resource type="PackedScene" uid="uid://cvb85hrhl8k2s" path="res://game_sandbox/jake_sandbox/Assets/Models/doughnut_coral.glb" id="13_puxit"]
 [ext_resource type="PackedScene" uid="uid://s3755bhbqwk7" path="res://game_sandbox/jake_sandbox/Assets/Models/pineapple_house.glb" id="14_abfds"]
+[ext_resource type="PackedScene" uid="uid://8do6ot5jryi2" path="res://game_sandbox/devone_sandbox/bubbles.tscn" id="16_5iowc"]
+[ext_resource type="AudioStream" uid="uid://124qdt1buj80" path="res://game_sandbox/fluffy_sandbox/Music/crembient.ogg" id="17_46pjg"]
 
 [sub_resource type="Resource" id="Resource_r1ygu"]
 script = ExtResource("2_8vgn0")
@@ -42,7 +44,7 @@ panorama = ExtResource("1_drluy")
 [sub_resource type="Sky" id="Sky_o5002"]
 sky_material = SubResource("PanoramaSkyMaterial_6jsnm")
 
-[sub_resource type="Environment" id="Environment_i60pj"]
+[sub_resource type="Environment" id="Environment_pm1n1"]
 background_mode = 2
 background_energy_multiplier = 1.5
 sky = SubResource("Sky_o5002")
@@ -90,7 +92,7 @@ look_at_damping = true
 
 [node name="HostCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, -0.000682079, 0.000303226, -4.04019e-07, 0.405733, 0.913992, -0.000746444, -0.913991, 0.405733, 0, 14.519, 6.445)
-environment = SubResource("Environment_i60pj")
+environment = SubResource("Environment_pm1n1")
 fov = 74.0
 
 [node name="PhantomCameraHost" type="Node" parent="HostCamera"]
@@ -133,6 +135,15 @@ size = Vector3(32, 1, 18)
 material = SubResource("StandardMaterial3D_vhxc3")
 
 [node name="FishTank" parent="Environment" instance=ExtResource("6_78ovq")]
+
+[node name="Bubbles" parent="Environment/FishTank" instance=ExtResource("16_5iowc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9682, 1.48958, -3.08658)
+
+[node name="Bubbles2" parent="Environment/FishTank" instance=ExtResource("16_5iowc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2717, -0.25142, -6.393)
+
+[node name="Bubbles3" parent="Environment/FishTank" instance=ExtResource("16_5iowc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2717, -0.25142, 4.94553)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Environment"]
 transform = Transform3D(0.905754, 0, 0.423804, 0, 1, 0, -0.423804, 0, 0.905754, 10.2191, 0.393497, -5.50217)
@@ -212,6 +223,9 @@ transform = Transform3D(-0.774217, 0, 1.28475, 0, 1.5, 0, -1.28475, 0, -0.774217
 [node name="NeedsSystem" type="Node3D" parent="."]
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_46pjg")
+volume_db = -24.0
+autoplay = true
 
 [node name="CrabCast" type="Node3D" parent="."]
 
