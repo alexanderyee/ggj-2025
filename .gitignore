@@ -16,3 +16,6 @@ mono_crash.*.json
 
 # because fluffy is a Mac user
 .DS_Store
+
+# Project specific ignores
+bin/
