@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://djunkdvprw0ft" path="res://game_sandbox/adrianna_sandbox/assets/ComfortBubble.png" id="5_qxtwj"]
 [ext_resource type="Texture2D" uid="uid://buyxeal1sr15q" path="res://game_sandbox/adrianna_sandbox/assets/CommunityBubble.png" id="6_w7gea"]
 
-[node name="Emotes" type="Node" node_paths=PackedStringArray("speechSprite", "foodSprite", "shelterSprite", "comfortSprite", "communitySprite")]
+[node name="Emotes" type="Node3D" node_paths=PackedStringArray("speechSprite", "foodSprite", "shelterSprite", "comfortSprite", "communitySprite")]
 script = ExtResource("1_ewvhq")
 speechSprite = NodePath("Speech")
 foodSprite = NodePath("Emote Bubble/Food")
@@ -20,7 +20,9 @@ communitySprite = NodePath("Emote Bubble/Community")
 [node name="Coords" type="Node3D" parent="."]
 
 [node name="Speech" type="Sprite3D" parent="."]
+transform = Transform3D(0.435692, 0, 0, 0, 0.435692, 0, 0, 0, 0.435692, 0, 0, 0)
 billboard = 1
+shaded = true
 texture = ExtResource("2_ap6k3")
 
 [node name="Emote Bubble" type="Node3D" parent="."]
@@ -28,17 +30,29 @@ texture = ExtResource("2_ap6k3")
 [node name="Stat ID" type="Node3D" parent="Emote Bubble"]
 
 [node name="Food" type="Sprite3D" parent="Emote Bubble"]
+transform = Transform3D(0.542252, 0, 0, 0, 0.542252, 0, 0, 0, 0.542252, 0, 0, 0)
 billboard = 1
+shaded = true
+render_priority = 1
 texture = ExtResource("3_2g8tb")
 
 [node name="Shelter" type="Sprite3D" parent="Emote Bubble"]
+transform = Transform3D(0.542252, 0, 0, 0, 0.542252, 0, 0, 0, 0.542252, 0, 0, 0)
 billboard = 1
+shaded = true
+render_priority = 1
 texture = ExtResource("4_0wi8v")
 
 [node name="Comfort" type="Sprite3D" parent="Emote Bubble"]
+transform = Transform3D(0.542252, 0, 0, 0, 0.542252, 0, 0, 0, 0.542252, 0, 0, 0)
 billboard = 1
+shaded = true
+render_priority = 1
 texture = ExtResource("5_qxtwj")
 
 [node name="Community" type="Sprite3D" parent="Emote Bubble"]
+transform = Transform3D(0.542252, 0, 0, 0, 0.542252, 0, 0, 0, 0.542252, 0, 0, 0)
 billboard = 1
+shaded = true
+render_priority = 1
 texture = ExtResource("6_w7gea")

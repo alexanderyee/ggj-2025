@@ -1,12 +1,9 @@
 extends Needs
 
-@export var foodXCoord : int = 0
-@export var shelterXCoord : int = 20
-@export var comfortXCoord : int = 40
-@export var communityXCoord : int = 60
-
 ## emoteID should go from 0 - 8. 0 is the 'nothing' emote. 
 @export var emoteID : int = 0
+
+@export var crabCoords : CollisionShape3D
 
 @export var speechSprite : Sprite3D
 @export var foodSprite : Sprite3D
@@ -14,33 +11,33 @@ extends Needs
 @export var comfortSprite : Sprite3D
 @export var communitySprite : Sprite3D
 
-var foodTimer : float
-var shelterTimer : float
-var comfortTimer : float
-var communityTimer : float
+var foodTimer : float = -60
+var shelterTimer : float = -60
+var comfortTimer : float = -60
+var communityTimer : float = -60
 
 var foodEmoteTimer : float
 var shelterEmoteTimer : float
 var comfortEmoteTimer : float
 var communityEmoteTimer : float
 
-var prevFood : int
-var prevShelter : int
-var prevComfort : int
-var prevCommunity : int
+var foodTimerOn : bool = false
+var shelterTimerOn : bool = false
+var comfortTimerOn : bool = false
+var communityTimerOn : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	prevFood = food
-	prevShelter = shelter
-	prevComfort = comfort
-	prevCommunity = community
-  
 	speechSprite.transparency = 1
 	foodSprite.transparency = 1
 	shelterSprite.transparency = 1
 	comfortSprite.transparency = 1
 	communitySprite.transparency = 1
+	
+	emote(1)
+	emote(2)
+	emote(3)
+	emote(4)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -49,11 +46,43 @@ func _process(delta: float) -> void:
 	checkneed(1)
 	checkneed(2)
 	checkneed(3)
+	
+	setcoords(0)
+	setcoords(1)
+	setcoords(2)
+	setcoords(3)
+	
+	countdowntimer(0, delta)
+	countdowntimer(1, delta)
+	countdowntimer(2, delta)
+	countdowntimer(3, delta)
+	
+	updatespritetimer(delta)
 
 func emote(stat_id):
 	findsprite(stat_id)
 	startspritetimer(stat_id)
-	#setcoords(stat_id)
+
+func setcoords(stat_id):
+	
+	speechSprite.global_position.x = crabCoords.global_position.x + (stat_id * 10)
+	
+	var temp = speechSprite.global_position.x
+	
+	speechSprite.global_position.y = crabCoords.global_position.y + 500
+	speechSprite.global_position.z = crabCoords.global_position.z + 500
+	
+	if stat_id == 1:
+		foodSprite.global_position.x = crabCoords.global_position.x + (stat_id / 50)
+		
+	elif stat_id == 2:
+		shelterSprite.global_position.x = crabCoords.global_position.x + (stat_id / 50)
+		
+	elif stat_id == 3:
+		comfortSprite.global_position.x = crabCoords.global_position.x + (stat_id / 50)
+		
+	elif stat_id == 4:
+		communitySprite.global_position.x = crabCoords.global_position.x + (stat_id / 50)
 
 func findsprite(stat_id):
 	
@@ -86,7 +115,33 @@ func startspritetimer(stat_id):
 		communityEmoteTimer = 5
 
 func updatespritetimer(subtract):
-	pass
+	if foodEmoteTimer != -60:
+		foodEmoteTimer -= subtract
+		if foodEmoteTimer <= 0:
+			speechSprite.transparency = 1
+			foodSprite.transparency = 1
+			foodEmoteTimer = -60
+	
+	if shelterEmoteTimer != -60:
+		shelterEmoteTimer -= subtract
+		if shelterEmoteTimer <= 0:
+			speechSprite.transparency = 1
+			shelterSprite.transparency = 1
+			shelterEmoteTimer = -60
+	
+	if comfortEmoteTimer != -60:
+		comfortEmoteTimer -= subtract
+		if comfortEmoteTimer <= 0:
+			speechSprite.transparency = 1
+			comfortSprite.transparency = 1
+			comfortEmoteTimer = -60
+	
+	if communityEmoteTimer != -60:
+		communityEmoteTimer -= subtract
+		if communityEmoteTimer <= 0:
+			speechSprite.transparency = 1
+			communitySprite.transparency = 1
+			communityEmoteTimer = -60
 
 ##  0-3 - Check whether the need has to be fucked with or not
 func checkneed(stat_id: int): 
@@ -96,24 +151,20 @@ func checkneed(stat_id: int):
 	# Basically, it tells it if there's no change, don't fuck with the timers.
 
 	if stat_id == 0:	
-		if prevFood != food:
+		if !foodTimerOn:
 			checkpercentage(food, stat_id)
-		prevFood = food
 		
 	elif stat_id == 1:
-		if prevShelter != shelter:
+		if !shelterTimerOn:
 			checkpercentage(shelter, stat_id)
-		prevShelter = shelter
 		
 	elif stat_id == 2:
-		if prevComfort != comfort:
+		if !comfortTimerOn:
 			checkpercentage(comfort, stat_id)
-		prevComfort = comfort
 		
 	else:
-		if prevCommunity != community:
+		if !communityTimerOn:
 			checkpercentage(community, stat_id)
-		prevCommunity = community
 
 func checkpercentage(need: int, stat_id: int):
 	
@@ -134,16 +185,20 @@ func checkpercentage(need: int, stat_id: int):
 func starttimer(stat_id: int, time: float):
 	
 	if stat_id == 0:	
-		foodTimer = time;
+		foodTimer = time
+		foodTimerOn = true
 		
 	elif stat_id == 1:
-		shelterTimer = time;
+		shelterTimer = time
+		shelterTimerOn = true
 		
 	elif stat_id == 2:
-		comfortTimer = time;
+		comfortTimer = time
+		comfortTimerOn = true
 		
 	else:
-		communityTimer = time;
+		communityTimer = time
+		communityTimerOn = true
 
 func countdowntimer(stat_id: int, subtract: float):
 	
@@ -152,31 +207,37 @@ func countdowntimer(stat_id: int, subtract: float):
 		
 		if foodTimer <= 0:
 			if foodTimer > -60:
+				
 				emote(1)
 				checkneed(0)
+				foodTimerOn = false
 		
 	elif stat_id == 1:
 		shelterTimer = shelterTimer - subtract;
 		
 		if shelterTimer <= 0:
 			if shelterTimer > -60:
-
+				
 				emote(2)
 				checkneed(1)
+				shelterTimerOn = false
 		
 	elif stat_id == 2:
 		comfortTimer = comfortTimer - subtract;
 		
 		if comfortTimer <= 0:
 			if comfortTimer > -60:
+				
 				emote(3)
-
 				checkneed(2)
+				comfortTimerOn = false
 		
 	else:
 		communityTimer = communityTimer - subtract;
 		
 		if communityTimer <= 0:
 			if communityTimer > -60:
+				
 				emote(4)
 				checkneed(3)
+				communityTimerOn = false

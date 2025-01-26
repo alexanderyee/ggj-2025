@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bjm5trsh5ponb"]
+[gd_scene load_steps=32 format=3 uid="uid://bjm5trsh5ponb"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="1_cgvsa"]
 [ext_resource type="Texture2D" uid="uid://dwqqnft73i6ia" path="res://game_sandbox/devone_sandbox/assets/photo_studio_loft_hall_2k.exr" id="1_drluy"]
@@ -46,7 +46,7 @@ panorama = ExtResource("1_drluy")
 [sub_resource type="Sky" id="Sky_o5002"]
 sky_material = SubResource("PanoramaSkyMaterial_6jsnm")
 
-[sub_resource type="Environment" id="Environment_pm1n1"]
+[sub_resource type="Environment" id="Environment_24y62"]
 background_mode = 2
 background_energy_multiplier = 1.5
 sky = SubResource("Sky_o5002")
@@ -95,7 +95,7 @@ look_at_damping = true
 
 [node name="HostCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, -0.000682079, 0.000303226, -4.04019e-07, 0.405733, 0.913992, -0.000746444, -0.913991, 0.405733, 0, 14.519, 6.445)
-environment = SubResource("Environment_pm1n1")
+environment = SubResource("Environment_24y62")
 fov = 74.0
 
 [node name="PhantomCameraHost" type="Node" parent="HostCamera"]
@@ -238,5 +238,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38386, 0, -3.61803)
 fov_radius_meters = 4.0
 
 [node name="UIRoot" type="CanvasLayer" parent="."]
-
-[editable path="Environment/Seashell"]

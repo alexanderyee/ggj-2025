@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://ddr0eyav0x5cr"]
 
 [ext_resource type="Script" path="res://addons/DragAndDrop3D/nodes/dragging_object_3d.gd" id="1_dwr4b"]
-[ext_resource type="Shape3D" uid="uid://bnhwhxiumgqhj" path="res://game_sandbox/devone_sandbox/seashell_collision_shape.shape" id="2_tjebr"]
-[ext_resource type="ArrayMesh" uid="uid://dnrtthbqf4mcb" path="res://game_sandbox/devone_sandbox/seashell.mesh" id="3_p2sbt"]
+[ext_resource type="Shape3D" uid="uid://depk078v245k4" path="res://game_sandbox/devone_sandbox/seashell_collision_shape.shape" id="2_tjebr"]
+[ext_resource type="ArrayMesh" path="res://game_sandbox/devone_sandbox/seashell.mesh" id="3_p2sbt"]
 
 [node name="Seashell" type="Node3D"]
 script = ExtResource("1_dwr4b")
