@@ -3,7 +3,7 @@ extends Node
 # Constants
 # there should be an .mp3 for each of these in assets/sfx/tts/
 # TODO: make these into resources and add an audiolibrary class
-const crab_sound_names = ["crab", "hand", "frightened", "scared", "food", "comfort", "shelter", "bubble"]
+const crab_sound_names = ["crab", "hand", "frightened", "scared", "food", "comfort", "shelter", "bubble", "friend", "crunch"]
 var crab_tts_sounds = {}
 ## 0 = food
 ## 1 = shelter

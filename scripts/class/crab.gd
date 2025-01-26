@@ -118,6 +118,7 @@ func emote() -> void:
 		var emote_to_play = all_groups_within_fov[emote_to_play_index]
 		if (Global.crab_tts_sounds.has(emote_to_play)):
 			var tts_emote_to_play_stream = Global.crab_tts_sounds[emote_to_play]
+			# TODO adjust pitch_scale to make crab tts sound a bit more natural
 			crab_voice_polyphonic.play_stream(tts_emote_to_play_stream)
 	
 	pass

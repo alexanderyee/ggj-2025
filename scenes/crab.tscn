@@ -11,7 +11,8 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_ns67v"]
 radius = 5.0
 
-[node name="Crab" type="CharacterBody3D"]
+[node name="Crab" type="CharacterBody3D" groups=["community", "friend"]]
+collision_layer = 9
 script = ExtResource("1_x3l5e")
 speed = 1.7
 fov_radius_meters = 10.0
