@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dw2yy0n5aofi8"]
+[gd_scene load_steps=3 format=3 uid="uid://8do6ot5jryi2"]
 
-[ext_resource type="SphereMesh" uid="uid://1r30ptr8apar" path="res://game_sandbox/devone_sandbox/bubbles.tres" id="1_ulay2"]
+[ext_resource type="SphereMesh" path="res://game_sandbox/devone_sandbox/bubbles.tres" id="1_ulay2"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7wj5y"]
 emission_shape = 3
