@@ -75,7 +75,6 @@ environment = ExtResource("1_q1gcq")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.844991, -0.327394, 0.422851, 0, 0.7907, 0.612203, -0.53478, -0.517307, 0.668135, 0, 2.72948, -2.52983)
-shadow_enabled = true
 
 [node name="MainCamera" type="Node3D" parent="." node_paths=PackedStringArray("look_at_target")]
 transform = Transform3D(0.999999, -7.52129e-13, 3.17208e-13, -1.61164e-14, 0.370333, 0.9289, -8.16124e-13, -0.928899, 0.370333, 0, 16.219, 6.445)
@@ -108,6 +107,7 @@ navigation_mesh = SubResource("NavigationMesh_s26kr")
 
 [node name="Seashell" parent="Environment" instance=ExtResource("5_ohhq1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27759, -1.26305, -6.11404)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27759, -1.26305, -6.11404)
 
 [node name="Default Cube" type="StaticBody3D" parent="Environment"]
 transform = Transform3D(-0.325123, 0, 0.945672, 0, 1, 0, -0.945672, 0, -0.325123, 3, 0, -3)
@@ -125,6 +125,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 use_collision = true
 size = Vector3(32, 1, 18)
 material = SubResource("StandardMaterial3D_vhxc3")
+material = SubResource("StandardMaterial3D_vhxc3")
 
 [node name="FishTank" parent="Environment" instance=ExtResource("6_78ovq")]
 
@@ -135,7 +136,42 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.03308, 0)
 transform = Transform3D(0.905754, 0, 0.423804, 0, 1, 0, -0.423804, 0, 0.905754, 10.2191, 0.393497, -5.50217)
 light_energy = 4.0
 light_specular = 10.0
+light_specular = 10.0
 spot_range = 7.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Environment"]
+transform = Transform3D(0.378859, 0.925455, 4.04529e-08, 6.30673e-16, -4.37114e-08, 1, 0.925455, -0.378859, -1.65604e-08, -2.01552, 1.32242, -7.07055)
+light_projector = ExtResource("10_4fthu")
+light_specular = 5.465
+shadow_enabled = true
+spot_attenuation = -2.0
+spot_angle = 53.0
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Environment"]
+transform = Transform3D(0.378859, 0.925455, 4.04529e-08, 6.30673e-16, -4.37114e-08, 1, 0.925455, -0.378859, -1.65604e-08, -15.2972, 1.32242, 0.427837)
+light_projector = ExtResource("10_4fthu")
+light_specular = 5.465
+shadow_enabled = true
+spot_attenuation = -1.0
+spot_angle = 53.0
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Environment"]
+transform = Transform3D(-0.0945581, 0.485983, 0.868838, -0.883294, 0.361599, -0.298391, -0.459184, -0.795655, 0.395074, -10.4986, 1.32242, 9.91528)
+light_energy = 1.242
+light_projector = ExtResource("11_se7xa")
+light_size = 10.0
+shadow_enabled = true
+spot_range = 7.0
+spot_angle = 53.0
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="Environment"]
+transform = Transform3D(-0.0344084, -0.68476, -0.727956, -0.883294, 0.361599, -0.298391, 0.467555, 0.632733, -0.617286, 12.864, -2.06481, -1.61481)
+light_energy = 1.702
+light_projector = ExtResource("11_se7xa")
+light_specular = 10.0
+shadow_enabled = true
+spot_range = 8.184
+spot_angle = 53.0
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Environment"]
 transform = Transform3D(0.378859, 0.925455, 4.04529e-08, 6.30673e-16, -4.37114e-08, 1, 0.925455, -0.378859, -1.65604e-08, -2.01552, 1.32242, -7.07055)
