@@ -22,6 +22,7 @@ viewport_path = NodePath("Comfort Bubble")
 viewport_path = NodePath("Community Bubble")
 
 [node name="Needs Emotes" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00514674, 0, 0)
 
 [node name="Needs Bubble" type="SubViewport" parent="."]
 size = Vector2i(600, 600)
@@ -33,12 +34,14 @@ texture = ExtResource("1_wqdxm")
 
 [node name="Speech Bubble Sprite" type="Sprite3D" parent="Needs Bubble"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.73299, 0, 0)
+billboard = 1
 texture = SubResource("ViewportTexture_6sjye")
 
 [node name="Food Bubble" type="SubViewport" parent="."]
 size = Vector2i(210, 210)
 
 [node name="Food Sprite" type="Sprite3D" parent="Food Bubble"]
+billboard = 1
 texture = SubResource("ViewportTexture_qeoed")
 
 [node name="Food" type="TextureRect" parent="Food Bubble"]
@@ -51,6 +54,7 @@ size = Vector2i(210, 210)
 
 [node name="Shelter Sprite" type="Sprite3D" parent="Shelter Bubble"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.22674, 0, 0)
+billboard = 1
 texture = SubResource("ViewportTexture_2pvxb")
 
 [node name="Shelter" type="TextureRect" parent="Shelter Bubble"]
@@ -63,6 +67,7 @@ size = Vector2i(210, 210)
 
 [node name="Comfort Sprite" type="Sprite3D" parent="Comfort Bubble"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.49121, 0, 0)
+billboard = 1
 texture = SubResource("ViewportTexture_dqih8")
 
 [node name="Comfort" type="TextureRect" parent="Comfort Bubble"]
@@ -75,9 +80,10 @@ size = Vector2i(210, 210)
 
 [node name="Community Sprite" type="Sprite3D" parent="Community Bubble"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.73696, 0, 0)
+billboard = 1
 texture = SubResource("ViewportTexture_wsfg1")
 
 [node name="Community" type="TextureRect" parent="Community Bubble"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 210.0
+offset_bottom = 210.0
 texture = ExtResource("5_m0ck5")

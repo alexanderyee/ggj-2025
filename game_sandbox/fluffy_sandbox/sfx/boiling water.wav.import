@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b32vci0he3yv5"
+path="res://.godot/imported/boiling water.wav-80ec626dc4ac83dda20a36e84743588a.sample"
+
+[deps]
+
+source_file="res://game_sandbox/fluffy_sandbox/sfx/boiling water.wav"
+dest_files=["res://.godot/imported/boiling water.wav-80ec626dc4ac83dda20a36e84743588a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
