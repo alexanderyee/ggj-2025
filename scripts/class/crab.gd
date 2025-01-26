@@ -9,6 +9,7 @@ extends CharacterBody3D
 @onready var crab_vision: Area3D = $CrabVision
 @onready var crab_voice: AudioStreamPlayer3D = $AudioStreamPlayer3D
 @onready var crab_model: Node3D = $CollisionShape3D/CrabModel
+@onready var scuttle_vfx: AudioStreamPlayer = $ScuttleVFX
 
 var current_fixation = null
 
@@ -42,11 +43,15 @@ func _physics_process(delta: float) -> void:
 			global_rotation.y = lerp_angle(current_ang, modified_ang, delta*2.0)
 		else:
 			velocity = Vector3.ZERO
+			scuttle_vfx.stop()
 	else:
 		current_fixation = null
 		velocity = Vector3.ZERO
+		scuttle_vfx.stop()
 		
 	move_and_slide()
+	if not scuttle_vfx.playing:
+		scuttle_vfx.play()
 
 func emote() -> void:
 	
