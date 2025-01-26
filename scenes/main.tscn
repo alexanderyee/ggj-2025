@@ -37,7 +37,7 @@ panorama = ExtResource("1_drluy")
 [sub_resource type="Sky" id="Sky_o5002"]
 sky_material = SubResource("PanoramaSkyMaterial_6jsnm")
 
-[sub_resource type="Environment" id="Environment_8y24j"]
+[sub_resource type="Environment" id="Environment_15p5b"]
 background_mode = 2
 background_energy_multiplier = 1.5
 sky = SubResource("Sky_o5002")
@@ -77,8 +77,9 @@ follow_offset = Vector3(0, 1.845, 0)
 look_at_damping = true
 
 [node name="HostCamera" type="Camera3D" parent="."]
-
-transform = Transform3D(1, -1.40883e-17, 2.11362e-17, 3.84857e-18, 0.906522, 0.422159, -2.51079e-17, -0.422159, 0.906522, 0, 2, 2.602)
+transform = Transform3D(1, -0.000682079, 0.000303226, -4.04019e-07, 0.405733, 0.913992, -0.000746444, -0.913991, 0.405733, 0, 14.519, 6.445)
+environment = SubResource("Environment_15p5b")
+fov = 74.0
 
 [node name="PhantomCameraHost" type="Node" parent="HostCamera"]
 process_priority = 300
@@ -126,7 +127,7 @@ transform = Transform3D(0.378859, 0.925455, 4.04529e-08, 6.30673e-16, -4.37114e-
 light_projector = ExtResource("10_4fthu")
 light_specular = 5.465
 shadow_enabled = true
-spot_attenuation = -1.0
+spot_attenuation = -2.0
 spot_angle = 53.0
 
 [node name="SpotLight3D3" type="SpotLight3D" parent="Environment"]
