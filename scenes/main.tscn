@@ -72,9 +72,8 @@ follow_offset = Vector3(0, 1.845, 0)
 look_at_damping = true
 
 [node name="HostCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, -0.000682079, 0.000303226, -4.04019e-07, 0.405733, 0.913992, -0.000746443, -0.913991, 0.405733, 0, 14.519, 6.445)
-environment = SubResource("Environment_k7kbm")
-fov = 74.0
+
+transform = Transform3D(1, -1.40883e-17, 2.11362e-17, 3.84857e-18, 0.906522, 0.422159, -2.51079e-17, -0.422159, 0.906522, 0, 2, 2.602)
 
 [node name="PhantomCameraHost" type="Node" parent="HostCamera"]
 process_priority = 300
