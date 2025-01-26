@@ -1,12 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://bw2a2nieojo3x"]
+[gd_scene load_steps=7 format=3 uid="uid://bw2a2nieojo3x"]
 
 [ext_resource type="Script" path="res://game_sandbox/thaddeus_sandbox/hand.gd" id="1_kg1lt"]
 [ext_resource type="PackedScene" uid="uid://4piwk702ihx4" path="res://game_sandbox/thaddeus_sandbox/hand.glb" id="2_nggbk"]
+[ext_resource type="Texture2D" uid="uid://u075uw2lb7gw" path="res://game_sandbox/thaddeus_sandbox/HandDiffuse.png" id="3_k0jc0"]
+[ext_resource type="Texture2D" uid="uid://dewgfpygmr1ti" path="res://game_sandbox/thaddeus_sandbox/HandNormal.png" id="4_rk3c0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8wtr5"]
+albedo_color = Color(0.858824, 0.690196, 0.858824, 1)
+albedo_texture = ExtResource("3_k0jc0")
+normal_enabled = true
+normal_scale = 0.4
+normal_texture = ExtResource("4_rk3c0")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7hu75"]
+radius = 1.5
 
 [node name="Hand" type="Node3D"]
 script = ExtResource("1_kg1lt")
 
 [node name="hand" parent="." instance=ExtResource("2_nggbk")]
+transform = Transform3D(-0.275, -1.69997e-08, -1.69997e-08, 0, -0.194454, 0.194454, -2.40413e-08, 0.194454, 0.194454, 0, 0, 0)
+
+[node name="Armature" parent="hand" index="0"]
+transform = Transform3D(-1, 7.10543e-15, -1.42109e-14, -7.10543e-15, -1, -5.59723e-34, 1.42109e-14, -1.00974e-28, -1, -3.82271e-08, -1.66502, 1.71357)
 
 [node name="Skeleton3D" parent="hand/Armature" index="0"]
 bones/2/rotation = Quaternion(-0.107246, 0.221926, 0.409082, 0.878578)
@@ -143,5 +159,16 @@ bones/177/rotation = Quaternion(-0.591495, 0.0787014, -0.0341952, 0.80173)
 bones/178/rotation = Quaternion(0.841457, 0.0270165, 0.0909807, 0.531924)
 bones/181/rotation = Quaternion(-0.730651, -0.118843, -0.274144, 0.613898)
 bones/182/rotation = Quaternion(-0.568404, -0.190264, 0.237536, 0.764391)
+
+[node name="Hand" parent="hand/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_8wtr5")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." groups=["hand"]]
+collision_layer = 8
+collision_mask = 8
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("SphereShape3D_7hu75")
 
 [editable path="hand"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bjm5trsh5ponb"]
+[gd_scene load_steps=26 format=3 uid="uid://bjm5trsh5ponb"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="1_cgvsa"]
 [ext_resource type="Texture2D" uid="uid://dwqqnft73i6ia" path="res://game_sandbox/devone_sandbox/assets/photo_studio_loft_hall_2k.exr" id="1_drluy"]
@@ -9,7 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://ddr0eyav0x5cr" path="res://scenes/selectables/seashell.tscn" id="5_ohhq1"]
 [ext_resource type="Script" path="res://addons/DragAndDrop3D/nodes/drag_and_drop_3d.gd" id="5_s6p64"]
 [ext_resource type="PackedScene" uid="uid://dnw670y81o6wc" path="res://game_sandbox/devone_sandbox/fish_tank.tscn" id="6_78ovq"]
-[ext_resource type="PackedScene" path="res://scenes/crab.tscn" id="9_386os"]
+[ext_resource type="PackedScene" uid="uid://bw2a2nieojo3x" path="res://game_sandbox/thaddeus_sandbox/Hand.tscn" id="8_rjwfd"]
+[ext_resource type="PackedScene" uid="uid://dfsep4rjt4s4m" path="res://scenes/crab.tscn" id="9_386os"]
 [ext_resource type="Texture2D" uid="uid://h8nkf61rxc3y" path="res://game_sandbox/devone_sandbox/assets/SpotLightMask.png" id="10_4fthu"]
 [ext_resource type="Texture2D" uid="uid://d2jtf8p66f2ei" path="res://game_sandbox/devone_sandbox/assets/SpotLightMaskLine.png" id="11_se7xa"]
 
@@ -37,7 +38,7 @@ panorama = ExtResource("1_drluy")
 [sub_resource type="Sky" id="Sky_o5002"]
 sky_material = SubResource("PanoramaSkyMaterial_6jsnm")
 
-[sub_resource type="Environment" id="Environment_15p5b"]
+[sub_resource type="Environment" id="Environment_qufj8"]
 background_mode = 2
 background_energy_multiplier = 1.5
 sky = SubResource("Sky_o5002")
@@ -57,6 +58,12 @@ material = SubResource("StandardMaterial3D_qgeg3")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vhxc3"]
 albedo_color = Color(1, 0.839216, 0, 1)
 
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_y0mcc"]
+data = PackedVector3Array(-20, 7.5, 0.5, 20, 7.5, 0.5, -20, -7.5, 0.5, 20, 7.5, 0.5, 20, -7.5, 0.5, -20, -7.5, 0.5, 20, 7.5, -0.5, -20, 7.5, -0.5, 20, -7.5, -0.5, -20, 7.5, -0.5, -20, -7.5, -0.5, 20, -7.5, -0.5, 20, 7.5, 0.5, 20, 7.5, -0.5, 20, -7.5, 0.5, 20, 7.5, -0.5, 20, -7.5, -0.5, 20, -7.5, 0.5, -20, 7.5, -0.5, -20, 7.5, 0.5, -20, -7.5, -0.5, -20, 7.5, 0.5, -20, -7.5, 0.5, -20, -7.5, -0.5, 20, 7.5, 0.5, -20, 7.5, 0.5, 20, 7.5, -0.5, -20, 7.5, 0.5, -20, 7.5, -0.5, 20, 7.5, -0.5, -20, -7.5, 0.5, 20, -7.5, 0.5, -20, -7.5, -0.5, 20, -7.5, 0.5, 20, -7.5, -0.5, -20, -7.5, -0.5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_6wjpp"]
+data = PackedVector3Array(-0.5, 7.5875, 18.4425, 0.5, 7.5875, 18.4425, -0.5, -7.5875, 18.4425, 0.5, 7.5875, 18.4425, 0.5, -7.5875, 18.4425, -0.5, -7.5875, 18.4425, 0.5, 7.5875, -18.4425, -0.5, 7.5875, -18.4425, 0.5, -7.5875, -18.4425, -0.5, 7.5875, -18.4425, -0.5, -7.5875, -18.4425, 0.5, -7.5875, -18.4425, 0.5, 7.5875, 18.4425, 0.5, 7.5875, -18.4425, 0.5, -7.5875, 18.4425, 0.5, 7.5875, -18.4425, 0.5, -7.5875, -18.4425, 0.5, -7.5875, 18.4425, -0.5, 7.5875, -18.4425, -0.5, 7.5875, 18.4425, -0.5, -7.5875, -18.4425, -0.5, 7.5875, 18.4425, -0.5, -7.5875, 18.4425, -0.5, -7.5875, -18.4425, 0.5, 7.5875, 18.4425, -0.5, 7.5875, 18.4425, 0.5, 7.5875, -18.4425, -0.5, 7.5875, 18.4425, -0.5, 7.5875, -18.4425, 0.5, 7.5875, -18.4425, -0.5, -7.5875, 18.4425, 0.5, -7.5875, 18.4425, -0.5, -7.5875, -18.4425, 0.5, -7.5875, 18.4425, 0.5, -7.5875, -18.4425, -0.5, -7.5875, -18.4425)
+
 [node name="Main" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -64,6 +71,7 @@ environment = ExtResource("1_q1gcq")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.844991, -0.327394, 0.422851, 0, 0.7907, 0.612203, -0.53478, -0.517307, 0.668135, 0, 2.72948, -2.52983)
+shadow_enabled = true
 
 [node name="MainCamera" type="Node3D" parent="." node_paths=PackedStringArray("look_at_target")]
 transform = Transform3D(0.999999, -0.000682079, 0.000303226, -4.04019e-07, 0.405733, 0.913992, -0.000746443, -0.913991, 0.405733, 0, 14.519, 6.445)
@@ -78,7 +86,7 @@ look_at_damping = true
 
 [node name="HostCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, -0.000682079, 0.000303226, -4.04019e-07, 0.405733, 0.913992, -0.000746444, -0.913991, 0.405733, 0, 14.519, 6.445)
-environment = SubResource("Environment_15p5b")
+environment = SubResource("Environment_qufj8")
 fov = 74.0
 
 [node name="PhantomCameraHost" type="Node" parent="HostCamera"]
@@ -88,6 +96,9 @@ script = ExtResource("3_iyltw")
 
 [node name="DragAndDropManager" type="Node3D" parent="."]
 script = ExtResource("5_s6p64")
+groupExclude = Array[String](["hand"])
+
+[node name="Hand" parent="DragAndDropManager" instance=ExtResource("8_rjwfd")]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_s26kr")
@@ -156,6 +167,24 @@ shadow_enabled = true
 spot_range = 8.184
 spot_angle = 53.0
 
+[node name="WallCollider" type="StaticBody3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.883, -8.2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/WallCollider"]
+shape = SubResource("ConcavePolygonShape3D_y0mcc")
+
+[node name="WallRight" type="StaticBody3D" parent="Environment/WallCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5067, -2.16427, 8.2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/WallCollider/WallRight"]
+shape = SubResource("ConcavePolygonShape3D_6wjpp")
+
+[node name="WallLeft" type="StaticBody3D" parent="Environment/WallCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.507, -2.164, 8.2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/WallCollider/WallLeft"]
+shape = SubResource("ConcavePolygonShape3D_6wjpp")
+
 [node name="NeedsSystem" type="Node3D" parent="."]
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
@@ -178,3 +207,5 @@ tick_length_milliseconds = 1300
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38386, 0, -3.61803)
 
 [node name="UIRoot" type="CanvasLayer" parent="."]
+
+[editable path="Environment/Seashell"]
