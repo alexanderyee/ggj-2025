@@ -17,8 +17,7 @@ extends CharacterBody3D
 @onready var currently_random_moving : bool = false
 
 
-@onready var random_move_pos_target : Vector3 = Vector3.ZERO
-@onready var currently_random_moving : bool = false
+
 
 var current_fixation = null
 var current_objects_within_fov := []
