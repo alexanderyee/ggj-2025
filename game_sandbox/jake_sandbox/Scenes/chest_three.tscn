@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://btf5fqqctoyid"]
+[gd_scene load_steps=7 format=3 uid="uid://btf5fqqctoyid"]
 
 [ext_resource type="PackedScene" uid="uid://c6qvrm4du4utv" path="res://game_sandbox/jake_sandbox/Scenes/chest_two_eletric_boogaloo.glb" id="1_q5wtw"]
-[ext_resource type="PackedScene" path="res://game_sandbox/devone_sandbox/bubbles.tscn" id="2_7bjui"]
+[ext_resource type="PackedScene" uid="uid://8do6ot5jryi2" path="res://game_sandbox/devone_sandbox/bubbles.tscn" id="2_7bjui"]
+[ext_resource type="PackedScene" uid="uid://dcve4p6wguqp5" path="res://scenes/chest.tscn" id="3_5j2ra"]
 
 [sub_resource type="Animation" id="Animation_03a75"]
 length = 0.001
@@ -98,3 +99,5 @@ libraries = {
 autoplay = "idle"
 
 [node name="Bubbles" parent="." index="5" instance=ExtResource("2_7bjui")]
+
+[node name="DraggingObject3D" parent="." index="6" instance=ExtResource("3_5j2ra")]
