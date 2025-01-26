@@ -25,4 +25,5 @@ void fragment()
     colour = clamp(colour + color, 0.0, 1.0);
     
 	ALBEDO = colour.xyz;
+	ALPHA = color.a;
 }
