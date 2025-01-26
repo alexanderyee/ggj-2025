@@ -17,9 +17,6 @@ foodSprite = NodePath("Emote Bubble/Food")
 shelterSprite = NodePath("Emote Bubble/Shelter")
 comfortSprite = NodePath("Emote Bubble/Comfort")
 communitySprite = NodePath("Emote Bubble/Community")
-food = 10
-shelter = 10
-comfort = 10
 
 [node name="Transparency" type="Node3D" parent="."]
 

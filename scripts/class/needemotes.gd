@@ -205,7 +205,8 @@ func checkpercentage(need: int, stat_id: int):
 		winTimerOn = false
 		
 	elif need < 100:
-		if (food >= 75) || (shelter >= 75) || (comfort >= 75) || (community >= 75):
+		if ((food >= 75) || (shelter >= 75) || (comfort >= 75) || (community >= 75)) && (winTimerOn == false):
+			winTimerOn = true
 			starttimer(4, 15)
 
 func starttimer(stat_id: int, time: float):

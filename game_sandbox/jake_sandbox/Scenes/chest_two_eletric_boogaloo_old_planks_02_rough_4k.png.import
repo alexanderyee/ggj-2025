@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpi1qkl00i54p"
+uid="uid://cvr5yiccuyrky"
 path.s3tc="res://.godot/imported/chest_two_eletric_boogaloo_old_planks_02_rough_4k.png-d75d4ad7006fc7c737366e95436012b0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "4194f4a722502a0406c874bc2ac7f6f6"
 }
 
 [deps]
