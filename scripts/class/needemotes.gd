@@ -35,7 +35,7 @@ func _ready() -> void:
 	prevShelter = shelter
 	prevComfort = comfort
 	prevCommunity = community
-	
+  
 	speechSprite.transparency = 1
 	foodSprite.transparency = 1
 	shelterSprite.transparency = 1
@@ -94,6 +94,7 @@ func checkneed(stat_id: int):
 	# The prevFood stuff is to make sure that checkPercentage doesn't get 
 	# called every frame, because this func has to be updated!
 	# Basically, it tells it if there's no change, don't fuck with the timers.
+
 	if stat_id == 0:	
 		if prevFood != food:
 			checkpercentage(food, stat_id)
@@ -159,6 +160,7 @@ func countdowntimer(stat_id: int, subtract: float):
 		
 		if shelterTimer <= 0:
 			if shelterTimer > -60:
+
 				emote(2)
 				checkneed(1)
 		
@@ -168,6 +170,7 @@ func countdowntimer(stat_id: int, subtract: float):
 		if comfortTimer <= 0:
 			if comfortTimer > -60:
 				emote(3)
+
 				checkneed(2)
 		
 	else:
