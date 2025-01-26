@@ -1,13 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://g7nhxo6dhaxt"]
+[gd_scene load_steps=9 format=3 uid="uid://g7nhxo6dhaxt"]
 
 [ext_resource type="Script" path="res://game_sandbox/devone_sandbox/menu/main_menu.gd" id="1_gcpvp"]
 [ext_resource type="Texture2D" uid="uid://bspf4arc8ti01" path="res://game_sandbox/devone_sandbox/menu/assets/button_square_flat.png" id="2_fmfis"]
 [ext_resource type="PackedScene" uid="uid://colohtmwn61ji" path="res://game_sandbox/thaddeus_sandbox/ModelTester.tscn" id="3_p1hef"]
 [ext_resource type="AudioStream" uid="uid://d2fbpquxxthfi" path="res://game_sandbox/devone_sandbox/menu/assets/Creb.ogg" id="3_upwim"]
+[ext_resource type="FontFile" uid="uid://c0bue0kcnh2gq" path="res://game_sandbox/jake_sandbox/Assets/Fonts/BubblegumSans-Regular.ttf" id="4_y40df"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p1wyo"]
 font_size = 128
 font_color = Color(3.56168e-06, 0, 0.852083, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_don7u"]
+bg_color = Color(0.1, 0.1, 0.1, 0.898039)
+corner_radius_top_left = 65
+corner_radius_top_right = 65
+corner_radius_bottom_right = 65
+corner_radius_bottom_left = 65
+
+[sub_resource type="LabelSettings" id="LabelSettings_yg1im"]
+font = ExtResource("4_y40df")
+font_size = 46
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -97,6 +109,63 @@ size_flags_horizontal = 4
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 32
 text = "EXIT"
+
+[node name="CreditsPanel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_don7u")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CreditsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.106
+anchor_right = 0.75
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="MarginContainer/CreditsPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+text = "Adrianna Rieke - Design, Systems Programming"
+label_settings = SubResource("LabelSettings_yg1im")
+
+[node name="Label2" type="Label" parent="MarginContainer/CreditsPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+text = "Alex Yee - Programming, Design"
+label_settings = SubResource("LabelSettings_yg1im")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="MarginContainer/CreditsPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+text = "Devone Reynolds - Production"
+label_settings = SubResource("LabelSettings_yg1im")
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="MarginContainer/CreditsPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+text = "Fluffy-Music and SFX"
+label_settings = SubResource("LabelSettings_yg1im")
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="MarginContainer/CreditsPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+text = "Jake Fusco - Art Assets, Crunch Sound, Design"
+label_settings = SubResource("LabelSettings_yg1im")
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="MarginContainer/CreditsPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+text = "Thaddeus Psarris-Crab Visuals and Movement"
+label_settings = SubResource("LabelSettings_yg1im")
+horizontal_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_upwim")
