@@ -1,6 +1,13 @@
-extends CrabNeeds
+extends Node3D
 
 class_name Needs
+
+# These are set to 60, because starting at 100%
+# of a property would be boring.
+@export var food : = 60
+@export var shelter : = 60
+@export var comfort : = 60
+@export var community : = 60
 
 var total
 
@@ -21,6 +28,44 @@ func _process(delta: float) -> void:
 func find_total():
 	total = food + shelter + comfort + community
 	return total
+
+## Directly read a need
+## 0 = food
+## 1 = shelter
+## 2 = comfort
+## 3 = community
+func read_need(stat_id: int):
+	
+	if stat_id == 0:	
+		return food
+			
+	elif stat_id == 1:
+		return shelter
+			
+	elif stat_id == 2:
+		return comfort
+			
+	else:
+		return community
+
+## Directly edit a need
+## 0 = food
+## 1 = shelter
+## 2 = comfort
+## 3 = community
+func change_need(stat_id: int, number: int):
+	
+	if stat_id == 0:	
+		food = number
+			
+	elif stat_id == 1:
+		shelter = number
+			
+	elif stat_id == 2:
+		comfort = number
+			
+	else:
+		community = number
 
 ## Increase a stat, 0-3
 func increase(stat_id: int):
