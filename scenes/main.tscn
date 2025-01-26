@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://cvb85hrhl8k2s" path="res://game_sandbox/jake_sandbox/Assets/Models/doughnut_coral.glb" id="13_puxit"]
 [ext_resource type="PackedScene" uid="uid://s3755bhbqwk7" path="res://game_sandbox/jake_sandbox/Assets/Models/pineapple_house.glb" id="14_abfds"]
 [ext_resource type="PackedScene" path="res://game_sandbox/devone_sandbox/bubbles.tscn" id="16_5iowc"]
-[ext_resource type="AudioStream" uid="uid://124qdt1buj80" path="res://game_sandbox/fluffy_sandbox/Music/crembient.ogg" id="17_46pjg"]
+[ext_resource type="AudioStream" uid="uid://b7uox2pdhalhr" path="res://game_sandbox/fluffy_sandbox/Music/crembient.ogg" id="17_46pjg"]
 [ext_resource type="Script" path="res://addons/DragAndDrop3D/nodes/dragging_object_3d.gd" id="19_78aoa"]
 [ext_resource type="PackedScene" uid="uid://bh3ix7ppos4l7" path="res://scenes/moss_ball.tscn" id="20_chi6s"]
 [ext_resource type="PackedScene" uid="uid://btf5fqqctoyid" path="res://game_sandbox/jake_sandbox/Scenes/chest_three.tscn" id="21_qwe2g"]
@@ -64,6 +64,7 @@ shader_parameter/iteration_times = 5
 shader_parameter/speed = 0.5
 shader_parameter/color = Color(1, 0.870588, 0.501961, 1)
 shader_parameter/intensity = 0.005
+shader_parameter/enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vhxc3"]
 next_pass = SubResource("ShaderMaterial_drp6g")
