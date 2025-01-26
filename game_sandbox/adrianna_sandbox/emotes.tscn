@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://q0u0ipdiqmw7"]
+[gd_scene load_steps=7 format=3 uid="uid://c7nhh6gy0vbp7"]
 
 [ext_resource type="Script" path="res://scripts/class/needemotes.gd" id="1_ewvhq"]
 [ext_resource type="Texture2D" uid="uid://bundy5rmyihep" path="res://game_sandbox/adrianna_sandbox/assets/NeedBubble.png" id="2_ap6k3"]
