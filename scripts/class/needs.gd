@@ -5,10 +5,10 @@ extends Node3D
 
 # These are set to 60, because starting at 100%
 # of a property would be boring.
-@export var food : = 10
-@export var shelter : = 10
-@export var comfort : = 10
-@export var community : = 10
+@export var food : = 90
+@export var shelter : = 90
+@export var comfort : = 90
+@export var community : = 90
 
 var total
 

@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://h8nkf61rxc3y" path="res://game_sandbox/devone_sandbox/assets/SpotLightMask.png" id="10_4fthu"]
 [ext_resource type="Texture2D" uid="uid://d2jtf8p66f2ei" path="res://game_sandbox/devone_sandbox/assets/SpotLightMaskLine.png" id="11_se7xa"]
 [ext_resource type="PackedScene" uid="uid://clokowewa7geu" path="res://game_sandbox/jake_sandbox/Scenes/chest.tscn" id="12_2aqk5"]
-[ext_resource type="PackedScene" path="res://scenes/mouse_position.tscn" id="12_8awkg"]
+[ext_resource type="PackedScene" uid="uid://d3mgwdjbjyq0b" path="res://scenes/mouse_position.tscn" id="12_8awkg"]
 [ext_resource type="PackedScene" uid="uid://cvb85hrhl8k2s" path="res://game_sandbox/jake_sandbox/Assets/Models/doughnut_coral.glb" id="13_puxit"]
 [ext_resource type="PackedScene" uid="uid://s3755bhbqwk7" path="res://game_sandbox/jake_sandbox/Assets/Models/pineapple_house.glb" id="14_abfds"]
 
@@ -41,7 +41,7 @@ panorama = ExtResource("1_drluy")
 [sub_resource type="Sky" id="Sky_o5002"]
 sky_material = SubResource("PanoramaSkyMaterial_6jsnm")
 
-[sub_resource type="Environment" id="Environment_0beu0"]
+[sub_resource type="Environment" id="Environment_xhalb"]
 background_mode = 2
 background_energy_multiplier = 1.5
 sky = SubResource("Sky_o5002")
@@ -82,9 +82,9 @@ follow_offset = Vector3(0, 1.845, 0)
 look_at_damping = true
 
 [node name="HostCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, -0.000682079, 0.000303226, -4.04019e-07, 0.405733, 0.913992, -0.000746444, -0.913991, 0.405733, 0, 14.519, 6.445)
-environment = SubResource("Environment_0beu0")
-fov = 74.0
+transform = Transform3D(1, -0.000682079, 0.000303226, -4.0399e-07, 0.405733, 0.913992, -0.000746444, -0.913991, 0.405733, 0, 14.519, 6.445)
+environment = SubResource("Environment_xhalb")
+fov = 74.3415
 
 [node name="PhantomCameraHost" type="Node" parent="HostCamera"]
 process_priority = 300

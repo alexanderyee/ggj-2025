@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://by78d05jdjq4e"]
+
+[ext_resource type="Texture2D" uid="uid://bundy5rmyihep" path="res://game_sandbox/adrianna_sandbox/assets/NeedBubble.png" id="1_4plhx"]
+
+[node name="Wincondition" type="Node3D"]
+
+[node name="Bubble" type="Sprite3D" parent="."]
+texture = ExtResource("1_4plhx")
+
+[node name="CrabCoords" type="Node3D" parent="."]
