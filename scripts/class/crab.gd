@@ -39,11 +39,14 @@ func _physics_process(delta: float) -> void:
 	current_objects_within_fov = objects_within_fov.duplicate()
 	if objects_within_fov.size() > 0:
 		var closest_object = objects_within_fov[0]
+		var all_fixations : Array = get_all_fixation_groups()
 		current_fixation = closest_object
-		if current_fixation.get_groups().find("hand") >= 0:
-			# crabs will be attracted to the hand that feeds them
-			do_we_want_to_move = true
-			move_target_pos = current_fixation.position
+		if !all_fixations.is_empty():
+			if all_fixations.has("hand"):
+				var hand_index = find_hand_index(objects_within_fov)
+				# crabs will be attracted to the hand that feeds them
+				do_we_want_to_move = true
+				move_target_pos = objects_within_fov[hand_index].position
 	else:
 		current_fixation = null
 	
@@ -152,6 +155,21 @@ func adjust_needs(all_groups_within_fov):
 			needs.decrease(i)
 		
 
+func get_all_fixation_groups() -> Array:
+	var all_groups_within_fov = []
+	if !current_objects_within_fov.is_empty():
+		# get groups of each object within fov
+		for fixation in current_objects_within_fov:
+			var fixation_groups = fixation.get_groups()
+			for fixation_group in fixation_groups:
+				all_groups_within_fov.append(fixation_group)
+	return all_groups_within_fov
+
+func find_hand_index(objects_within_fov) -> int:
+	for i in range(objects_within_fov.size()):
+		if objects_within_fov[i].get_groups().has("hand"):
+			return i
+	return -1
 func _on_timer_timeout() -> void:
 	emote()
 	pass # Replace with function body.
