@@ -36,10 +36,10 @@ var _otherObjectOnPosition: DraggingObject3D
 func _ready() -> void:
 	if not Engine.is_editor_hint(): 
 		DragAndDropGroupHelper.group_added.connect(_set_dragging_object_signals)
-
+		Global.drag_n_drop_manager = self
+	
 	_set_group()
 	
-	Global.drag_n_drop_manager = self
 
 #func _process(delta: float) -> void:
 	#print(draggingObject == self)	
