@@ -15,7 +15,6 @@ func _process(delta: float) -> void:
 	var target_alpha :float = 0.0
 	if $MarginContainer/VBoxContainer/Credits.is_hovered():
 		target_alpha = 1.0
-		print("hfdss")
 	creditspanel.modulate.a = lerpf(creditspanel.modulate.a, target_alpha, delta*10.0)
 
 func on_play_mouse_entered():
