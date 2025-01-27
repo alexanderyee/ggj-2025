@@ -48,7 +48,7 @@ panorama = ExtResource("5_t3xy2")
 [sub_resource type="Sky" id="Sky_o5002"]
 sky_material = SubResource("PanoramaSkyMaterial_6jsnm")
 
-[sub_resource type="Environment" id="Environment_ysv8n"]
+[sub_resource type="Environment" id="Environment_0jqdk"]
 background_mode = 2
 background_energy_multiplier = 1.5
 sky = SubResource("Sky_o5002")
@@ -100,7 +100,7 @@ look_at_damping = true
 
 [node name="HostCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, -0.000682079, 0.000303226, -4.04019e-07, 0.405733, 0.913992, -0.000746444, -0.913991, 0.405733, 0, 14.519, 6.445)
-environment = SubResource("Environment_ysv8n")
+environment = SubResource("Environment_0jqdk")
 fov = 74.0
 
 [node name="PhantomCameraHost" type="Node" parent="HostCamera"]
@@ -279,3 +279,6 @@ fov_radius_meters = 4.0
 
 [node name="Crab" parent="." instance=ExtResource("23_7s7qv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.69392, -0.387788, -1.4665)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+autoplay = true

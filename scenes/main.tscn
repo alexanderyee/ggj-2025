@@ -21,7 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://124qdt1buj80" path="res://game_sandbox/fluffy_sandbox/Music/crembient.ogg" id="17_46pjg"]
 [ext_resource type="Script" path="res://addons/DragAndDrop3D/nodes/dragging_object_3d.gd" id="19_78aoa"]
 [ext_resource type="PackedScene" uid="uid://bh3ix7ppos4l7" path="res://scenes/moss_ball.tscn" id="20_chi6s"]
-[ext_resource type="PackedScene" uid="uid://cor16fxb43qho" path="res://scenes/pineapple_house.tscn" id="20_puhfo"]
+[ext_resource type="PackedScene" path="res://scenes/pineapple_house.tscn" id="20_puhfo"]
 [ext_resource type="PackedScene" uid="uid://dcve4p6wguqp5" path="res://scenes/chest.tscn" id="21_u33my"]
 
 [sub_resource type="Resource" id="Resource_r1ygu"]
@@ -48,7 +48,7 @@ panorama = ExtResource("1_drluy")
 [sub_resource type="Sky" id="Sky_o5002"]
 sky_material = SubResource("PanoramaSkyMaterial_6jsnm")
 
-[sub_resource type="Environment" id="Environment_oodvb"]
+[sub_resource type="Environment" id="Environment_8fy4t"]
 background_mode = 2
 background_energy_multiplier = 1.5
 sky = SubResource("Sky_o5002")
@@ -100,7 +100,7 @@ look_at_damping = true
 
 [node name="HostCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, -0.000682079, 0.000303226, -4.04019e-07, 0.405733, 0.913992, -0.000746444, -0.913991, 0.405733, 0, 14.519, 6.445)
-environment = SubResource("Environment_oodvb")
+environment = SubResource("Environment_8fy4t")
 fov = 74.0
 
 [node name="PhantomCameraHost" type="Node" parent="HostCamera"]

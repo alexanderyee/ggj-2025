@@ -24,7 +24,5 @@ func _process(delta: float) -> void:
 
 func preload_crab_voices() -> void:
 	for crab_sound_name in crab_sound_names:
-		var file = FileAccess.open("res://assets/sfx/tts/" + crab_sound_name + ".mp3", FileAccess.READ)
-		var sound = AudioStreamMP3.new()
-		sound.data = file.get_buffer(file.get_length())
-		crab_tts_sounds[crab_sound_name] = sound
+		var filepath = "res://assets/sfx/tts/" + crab_sound_name + ".wav"
+		crab_tts_sounds[crab_sound_name] = filepath
