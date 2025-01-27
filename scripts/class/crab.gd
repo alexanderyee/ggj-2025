@@ -12,12 +12,8 @@ extends CharacterBody3D
 @onready var scuttle_vfx: AudioStreamPlayer = $ScuttleVFX
 @onready var needs: Needs = $Defineneeds
 
-
 @onready var random_move_pos_target : Vector3 = Vector3.ZERO
 @onready var currently_random_moving : bool = false
-
-
-
 
 var current_fixation = null
 var current_objects_within_fov := []
@@ -37,9 +33,17 @@ func _physics_process(delta: float) -> void:
 	var move_target_pos : Vector3 = Vector3.ZERO
 	# check if an object is within the crab's FOV
 	var objects_within_fov : Array[Node3D] = crab_vision.get_overlapping_bodies()
+	
 	# sort objects by distance from crab
 	objects_within_fov.sort_custom(sort_objects_within_crab_vision)
+	
+	# TODO find a better way to stop the crab from detecting itself
+	if objects_within_fov.size() > 0:
+		if objects_within_fov[0] == self:
+			objects_within_fov.erase(self)
+	
 	current_objects_within_fov = objects_within_fov.duplicate()
+	
 	if objects_within_fov.size() > 0:
 		var closest_object = objects_within_fov[0]
 		var all_fixations : Array = get_all_fixation_groups()
@@ -52,7 +56,7 @@ func _physics_process(delta: float) -> void:
 				move_target_pos = objects_within_fov[hand_index].position
 	else:
 		current_fixation = null
-	print(current_fixation)
+	
 	if !do_we_want_to_move:
 		if !currently_random_moving:#we're chillin, should we start moving?
 			var rand_chance : float =  randf_range(0.0, 1.0) * delta
@@ -101,13 +105,7 @@ func emote() -> void:
 	## 1 = shelter
 	## 2 = comfort
 	## 3 = community
-	var all_groups_within_fov = []
-	if !current_objects_within_fov.is_empty():
-		# get groups of each object within fov
-		for fixation in current_objects_within_fov:
-			var fixation_groups = fixation.get_groups()
-			for fixation_group in fixation_groups:
-				all_groups_within_fov.append(fixation_group)
+	var all_groups_within_fov = get_all_fixation_groups()
 	adjust_needs(all_groups_within_fov)
 		
 	# play TTS soundfx
@@ -156,7 +154,22 @@ func adjust_needs(all_groups_within_fov):
 	for i in range(need_counter.size()):
 		if need_counter[i] <= 0:
 			needs.decrease(i)
-		
+
+func get_all_fixation_groups() -> Array:
+	var all_groups_within_fov = []
+	if !current_objects_within_fov.is_empty():
+		# get groups of each object within fov
+		for fixation in current_objects_within_fov:
+			var fixation_groups = fixation.get_groups()
+			for fixation_group in fixation_groups:
+				all_groups_within_fov.append(fixation_group)
+	return all_groups_within_fov
+
+func find_hand_index(objects_within_fov) -> int:
+	for i in range(objects_within_fov.size()):
+		if objects_within_fov[i].get_groups().has("hand"):
+			return i
+	return -1
 
 func get_all_fixation_groups() -> Array:
 	var all_groups_within_fov = []
